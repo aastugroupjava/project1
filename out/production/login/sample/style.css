@@ -1,0 +1,42 @@
+.button
+{
+-fx-background-color : black;
+-fx-text-fill : white;
+}
+.button:hover{
+-fx-background-color : #ffd699;
+}
+.button:pressed
+{
+-fx-background-color : #bf7600;
+}
+
+.scroll-pane {
+    -fx-background-color: #bf7600;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:black;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: black;
+    -fx-border-color: black;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #bf7600;
+    -fx-background-radius: 5em;
+}
+
+.scroll-pane > .corner {
+    -fx-background-color: black;
+}
