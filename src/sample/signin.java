@@ -22,7 +22,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 
-public class signin{
+public class signin {
     private static AnchorPane anchorPane;
     private static Pane pane;
     private static  Label label;
@@ -39,11 +39,12 @@ public class signin{
     private static Stage window=Main.window;
     private static TextField txtSecurity;
     protected  static Stage signin;
+    private static Button go_back;
 
     public static void display(){
         signin =new Stage();
 
-
+        go_back = new Button();
         anchorPane = new AnchorPane();
         pane = new Pane();
         label = new Label();
@@ -62,12 +63,12 @@ public class signin{
         anchorPane.setMinWidth(Region.USE_PREF_SIZE);
         anchorPane.setPrefHeight(490.0);
         anchorPane.setPrefWidth(696.0);
-        anchorPane.setStyle("-fx-background-color: #262626;");
+        anchorPane.setStyle("-fx-background-color: #262626");
 
         pane.setLayoutX(-2.0);
         pane.setPrefHeight(500.0);
         pane.setPrefWidth(209.0);
-        pane.setStyle("-fx-background-color: black;");
+        pane.setStyle("-fx-background-color: black");
 
         label.setAlignment(Pos.CENTER);
         label.setLayoutX(5.0);
@@ -98,29 +99,29 @@ public class signin{
         txtUsername.setPrefHeight(48.0);
         txtUsername.setPrefWidth(275.0);
         txtUsername.setPromptText("username or email");
-        txtUsername.setStyle("-fx-background-color: black;");
+        txtUsername.setStyle("-fx-background-color: black");
 
         txtSecurity.setAlignment(Pos.CENTER);
         txtSecurity.setPrefHeight(53.0);
         txtSecurity.setPrefWidth(275.0);
         txtSecurity.setPromptText("Security word");
-        txtSecurity.setStyle("-fx-background-color: black;");
+        txtSecurity.setStyle("-fx-background-color: black");
 
         VBox.setVgrow(txtPassword, Priority.ALWAYS);
         txtPassword.setAlignment(Pos.CENTER);
         txtPassword.setPrefHeight(58.0);
         txtPassword.setPrefWidth(275.0);
         txtPassword.setPromptText("password");
-        txtPassword.setStyle("-fx-background-color: black;");
+        txtPassword.setStyle("-fx-background-color: black");
 
         separator.setPrefHeight(7.0);
         separator.setPrefWidth(275.0);
-        separator.setStyle("-fx-background-color: ;");
+        separator.setStyle("-fx-background-color: ");
 
         btnSignup.setMnemonicParsing(false);
         btnSignup.setPrefHeight(58.0);
         btnSignup.setPrefWidth(275.0);
-        btnSignup.setStyle("-fx-background-color: #bf7600;");
+        btnSignup.setStyle("-fx-background-color: #bf7600");
         btnSignup.setText("Sign up");
         btnSignup.setTextFill(Color.WHITE);
         btnSignup.setOnAction(e -> {
@@ -129,11 +130,23 @@ public class signin{
             security = txtSecurity.getText();
             Controller signup = new Controller();
             if(signup.signup(username,password,security)){
-                window.show();
+                dashboard.newdashboard();
                 signin.close();
+            }
+            else{
+                System.out.println("couldn't register.please try again.");
             }
         });
         btnSignup.setEffect(blend);
+
+        go_back.setMnemonicParsing(false);
+        go_back.setStyle("-fx-background-color:black");
+        go_back.setText("Go back.");
+        go_back.setTextFill(Color.WHITE);
+        go_back.setOnAction(event -> {
+            signin.close();
+            window.show();
+        });
 
         pane.getChildren().add(label);
         pane.getChildren().add(label0);
@@ -143,6 +156,7 @@ public class signin{
         vBox.getChildren().add(txtSecurity);
         vBox.getChildren().add(separator);
         vBox.getChildren().add(btnSignup);
+        vBox.getChildren().add(go_back);
         anchorPane.getChildren().add(vBox);
 
 

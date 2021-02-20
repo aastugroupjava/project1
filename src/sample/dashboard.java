@@ -89,6 +89,7 @@ public class dashboard {
     protected static Controller controller;
     protected static Stage dashboard;
     private static HBox hBox;
+    public  static Stage newdashboard = new Stage();
 
     public static void display(){
         dashboard = new Stage();
@@ -142,11 +143,7 @@ public class dashboard {
         anchorpane.setPrefHeight(576.0);
         anchorpane.setPrefWidth(1050.0);
         anchorpane.setStyle("-fx-background-color: #02030A;");
-        dashboard.setOnCloseRequest(event ->{
-            event.consume();
-            alertbox close = new alertbox();
-            close.closeconfirm();
-        } );
+
 
         AnchorPane.setBottomAnchor(vBox, 0.0);
         AnchorPane.setTopAnchor(vBox, 0.0);
@@ -536,6 +533,11 @@ public class dashboard {
         dashboard.setScene(scene1);
         dashboard.setTitle("Dashboard");
         dashboard.show();
+        dashboard.setOnCloseRequest(event ->{
+            event.consume();
+            alertbox close = new alertbox();
+            close.closeconfirmlogin();
+        } );
     }
     public static void stolenitemsview(){
         AnchorPane  anchorpane = new AnchorPane();
@@ -591,7 +593,7 @@ public class dashboard {
         dashboard.setOnCloseRequest(event ->{
             event.consume();
             alertbox close = new alertbox();
-            close.closeconfirm();
+            close.closeconfirmlogin();
         } );
 
         AnchorPane.setBottomAnchor(vBox, 0.0);
@@ -993,7 +995,6 @@ public class dashboard {
           TableColumn tableColumn3;
           TableColumn tableColumn4;
          HBox mainBox;
-        Stage newdashboard = new Stage();
         vBox = new VBox();
         imageView = new ImageView();
         button = new Button();
@@ -1196,6 +1197,11 @@ public class dashboard {
         newdashboard.setScene(scene);
         newdashboard.setResizable(true);
         newdashboard.show();
+        newdashboard.setOnCloseRequest(event ->{
+            event.consume();
+            alertbox close = new alertbox();
+            close.closeconfirmdashboard();
+        } );
 
     }
 

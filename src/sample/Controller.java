@@ -27,7 +27,9 @@ public class Controller implements Serializable {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/aastu_inventory","root","");
+            System.out.println("connected to database");
             st = con.createStatement();
+            System.out.println("created statement");
         }catch(Exception e){
             System.out.println("error2:"+e);
         }
@@ -117,16 +119,19 @@ public class Controller implements Serializable {
 
     }
     public boolean validator(String username,String password){
-
-        for(int i=0;i<Controller.count;i++){
-            if(username.equals(Controller.userdata[i][0]) && password.equals(Controller.userdata[i][1])){
+        String login_query = "SELECT 1 FROM users where username='"+username+"'&&"+"passwords='"+password+"';";
+        System.out.println(login_query);
+        ResultSet checker=null;
+        try{
+            checker = st.executeQuery(login_query);
+            if(checker.next()){
                 return true;
-            }
-            else{
-                continue;
-            }
+            }else
+                return false;
+        }catch(Exception e){
+            System.out.println("error_on_validator:"+e);
+            return false;
         }
-        return false;
     }
     public boolean signup(String username,String password,String security){
         String query = "INSERT INTO users VALUES("+"'"+username+"'"+","+"'"+password+"','"+security+"')";
@@ -141,16 +146,20 @@ public class Controller implements Serializable {
         }
     }
     public String forgetpassword(String security){
-        String password ="can't find your username";
-        for(int i=0;i<count;i++){
-        if(security.equals(userdata[i][2])) {
-            password = userdata[i][1];
-            return password;
+        String forget_password_query = "SELECT passwords FROM users where security='"+security+"';";
+        ResultSet checker=null;
+        try{
+            checker = st.executeQuery(forget_password_query);
+            if(checker.next()){
+                return checker.getString("passwords");
+            }
+            else{
+                return "ur account doesn't exist. please create an account.";
+            }
+        }catch (Exception e){
+            System.out.println("error_on_forgetpassword:"+e);
+            return e.toString();
         }
-        else
-            continue;
-        }
-        return password;
     }
 
 }

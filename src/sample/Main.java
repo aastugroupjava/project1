@@ -18,16 +18,12 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
-
 import java.io.*;
-import java.net.*;
 import java.sql.SQLException;
 import java.lang.*;
 
 
 public class Main extends Application {
-    private  ObjectOutputStream toServer;
-    private  DataInputStream fromServer;
     protected String username= null;
     protected String password= null;
     protected  Pane pane;
@@ -78,7 +74,7 @@ public class Main extends Application {
         window.setOnCloseRequest(event -> {
             event.consume();
             alertbox close = new alertbox();
-            close.closeconfirm();
+            close.closeconfirmlogin();
         });
 
         hbox.setMaxHeight(Double.MAX_VALUE);
@@ -86,11 +82,11 @@ public class Main extends Application {
         hbox.setPrefHeight(558.0);
         hbox.setPrefWidth(749.0);
         hbox.setSpacing(100.0);
-        hbox.setStyle("-fx-background-color: #262626;");
+        hbox.setStyle("-fx-background-color: #262626");
 
         pane.setPrefHeight(558.0);
         pane.setPrefWidth(266.0);
-        pane.setStyle("-fx-background-color: black;");
+        pane.setStyle("-fx-background-color: black");
 
 
         label.setAlignment(javafx.geometry.Pos.CENTER);
@@ -134,26 +130,24 @@ public class Main extends Application {
         txtUsername.setPrefHeight(48.0);
         txtUsername.setPrefWidth(275.0);
         txtUsername.setPromptText("username or email");
-        txtUsername.setStyle("-fx-background-color: black;");
+        txtUsername.setStyle("-fx-background-color: black");
 
         VBox.setVgrow(txtPassword, javafx.scene.layout.Priority.ALWAYS);
         txtPassword.setAlignment(javafx.geometry.Pos.CENTER);
         txtPassword.setPrefHeight(53.0);
         txtPassword.setPrefWidth(275.0);
         txtPassword.setPromptText("password");
-        txtPassword.setStyle("-fx-background-color: black;");
+        txtPassword.setStyle("-fx-background-color: black");
 
         btnSignin.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
         btnSignin.setMnemonicParsing(false);
         btnSignin.setOnMouseClicked(this::handleClicks);
         btnSignin.setPrefHeight(34.0);
         btnSignin.setPrefWidth(137.0);
-        btnSignin.setStyle("-fx-background-color: #bf7600;");
+        btnSignin.setStyle("-fx-background-color: #bf7600");
         btnSignin.setText("Sign in");
         btnSignin.setTextFill(javafx.scene.paint.Color.valueOf("#f7f7f7"));
-
         btnSignin.setEffect(blend);
-
         VBox.setVgrow(btnForgot, javafx.scene.layout.Priority.ALWAYS);
         btnForgot.setAlignment(javafx.geometry.Pos.CENTER);
         btnForgot.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
@@ -163,20 +157,17 @@ public class Main extends Application {
         btnForgot.setTextFill(javafx.scene.paint.Color.valueOf("#2868dd"));
         btnForgot.setFont(new Font("Segoe UI", 12.0));
         btnForgot.setOnMouseClicked(this::handleClicks);
-
         separator.setPrefHeight(7.0);
         separator.setPrefWidth(275.0);
-        separator.setStyle("-fx-background-color: ;");
-
+        separator.setStyle("-fx-background-color: ");
         btnSignup.setMnemonicParsing(false);
         btnSignup.setPrefHeight(58.0);
         btnSignup.setPrefWidth(275.0);
-        btnSignup.setStyle("-fx-background-color: #bf7600;");
+        btnSignup.setStyle("-fx-background-color: #bf7600");
         btnSignup.setText("Sign up");
         btnSignup.setTextFill(javafx.scene.paint.Color.WHITE);
         btnSignup.setOnMouseClicked(this::handleClicks);
         btnSignup.setEffect(blend0);
-
         pane.getChildren().add(label);
         pane.getChildren().add(label0);
         pane.getChildren().add(imageView);
@@ -189,21 +180,10 @@ public class Main extends Application {
         vBox.getChildren().add(separator);
         vBox.getChildren().add(btnSignup);
         hbox.getChildren().add(vBox);
-
-
         login = new Scene(hbox);
         window.setScene(login);
         window.setResizable(false);
         window.show();
-        try {
-            Socket socket = new Socket("127.0.0.1",8000);
-            toServer = new ObjectOutputStream(socket.getOutputStream());
-            fromServer = new DataInputStream(socket.getInputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
     }
 
 
@@ -211,52 +191,19 @@ public class Main extends Application {
         if (mouseEvent.getSource() == btnSignup) {
             signin.display();
             window.close();
-
         }
         if (mouseEvent.getSource() == btnSignin) {
-//            username = txtUsername.getText();
-//            password = txtPassword.getText();
-//            Controller validator = new Controller();
-//            if(validator.validator(username, password)){
-//                dashboard.newdashboard();
-//                window.close();
-//            }
-//            else{
-//                warning.setVisible(true);
-//            }
-            //c = new String[4][3];
-//            Object[][] userdata= new Object[EventAll.size()][];
-
-//
-            try {
-                 //toServer.writeInt(1);
-                 usercount = fromServer.readInt();
-                //int t = fromServer.readInt();
-               // System.out.println(t);
-                System.out.println(usercount);
-            } catch (IOException e) {
-                e.printStackTrace();
+            username = txtUsername.getText();
+            password = txtPassword.getText();
+            Controller validator = new Controller();
+            if(validator.validator(username, password)){
+                dashboard.newdashboard();
+                window.close();
             }
-            String[][] userdata = new String[usercount][3];
-            for(int i =0;i<usercount;i++) {
-                for(int j=0;j<3;j++) {
-                    try {
-//                   System.out.println(Controller.userdata[0][0]);
-                       // toServer.writeInt(2);
-                        userdata[i][j] = fromServer.readUTF();
-//                    c++;
-//                    b++;
-                        System.out.println(userdata[i][j]);
-                        //System.out.println(userdata);
-                        // c = fromServer.readLine();
-                        // System.out.println(c);
-
-
-                    } catch (IOException e) {
-                        System.out.println("error1:" + e);
-                    }
-                }
+            else{
+                warning.setVisible(true);
             }
+
         }
         if(mouseEvent.getSource()==btnForgot)
         {
@@ -268,8 +215,7 @@ public class Main extends Application {
     public static void main(String[] args) throws SQLException {
         launch(args);
         Controller connect = new Controller();
-        //connect.getData();
-
+        connect.getData();
     }
 }
 

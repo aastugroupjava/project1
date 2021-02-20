@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.effect.Blend;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.net.URL;
@@ -30,11 +31,13 @@ public class sign_in implements Initializable {
     protected  Separator separator;
     protected  Button btnSignup;
     protected  Blend blend;
+    private static Stage window = Main.window;
+    private static Button go_back;
     public void initialize (URL url, ResourceBundle rb){
 
     }
     public void start(Stage primaryStage) throws Exception{
-
+        go_back = new Button();
         anchorPane = new AnchorPane();
         pane = new Pane();
         label = new Label();
@@ -110,6 +113,15 @@ public class sign_in implements Initializable {
 
         btnSignup.setEffect(blend);
 
+        go_back.setMnemonicParsing(false);
+        go_back.setStyle("-fx-background-color:black");
+        go_back.setText("Go back.");
+        go_back.setTextFill(Color.WHITE);
+        go_back.setOnAction(event -> {
+            primaryStage.close();
+            window.show();
+        });
+
         pane.getChildren().add(label);
         pane.getChildren().add(label0);
         anchorPane.getChildren().add(pane);
@@ -117,6 +129,7 @@ public class sign_in implements Initializable {
         vBox.getChildren().add(txtPassword);
         vBox.getChildren().add(separator);
         vBox.getChildren().add(btnSignup);
+        vBox.getChildren().add(go_back);
         anchorPane.getChildren().add(vBox);
 
 
