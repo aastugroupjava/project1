@@ -1,18 +1,13 @@
 package sample;
 
-import com.sun.org.apache.xml.internal.security.transforms.params.XPath2FilterContainer04;
-import javafx.application.Application;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -21,12 +16,9 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.scene.control.cell.PropertyValueFactory;
-
 import javax.xml.crypto.Data;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+
+import java.sql.ResultSet;
 
 import static sample.Controller.*;
 
@@ -57,6 +49,7 @@ public class dashboard {
     protected static  TableColumn tableColumn2;
     protected static  TableColumn tableColumn3;
     protected static  TableColumn tableColumn4;
+    protected static TableColumn tableColumn5;
     protected static  HBox mainBox;
     protected static  AnchorPane anchorpane;
     protected static  Button btnOverview;
@@ -92,6 +85,7 @@ public class dashboard {
     public  static Stage newdashboard = new Stage();
 
     public static void display(){
+        System.out.println("display");
         dashboard = new Stage();
         anchorpane = new AnchorPane();
         vBox = new VBox();
@@ -540,6 +534,7 @@ public class dashboard {
         } );
     }
     public static void stolenitemsview(){
+        System.out.println("stolenitemview");
         AnchorPane  anchorpane = new AnchorPane();
         VBox  vBox = new VBox();
         ImageView  imageView = new ImageView();
@@ -968,6 +963,7 @@ public class dashboard {
         System.out.println("it works again.");
     }
     public static void newdashboard(){
+        System.out.println("newdashboard(after the login page redirection.)");
           VBox vBox;
         ImageView imageView;
          Button button;
@@ -979,7 +975,7 @@ public class dashboard {
           VBox vBox0;
          VBox vBox1;
           VBox vBox2;
-           AnchorPane anchorPane;
+           HBox anchorPane;
            Label label;
           TextField textField;
          AnchorPane anchorPane0;
@@ -987,13 +983,14 @@ public class dashboard {
          Label label1;
          Label label2;
           Label label3;
-          TableView tableView;
-          TableColumn tableColumn;
-          TableColumn tableColumn0;
-          TableColumn tableColumn1;
-          TableColumn tableColumn2;
-          TableColumn tableColumn3;
-          TableColumn tableColumn4;
+          TableView<items> tableView;
+          TableColumn<items,String> tableColumn;
+          TableColumn<items,String> tableColumn0;
+          TableColumn<items,String> tableColumn1;
+          TableColumn<items,String> tableColumn2;
+          TableColumn<items,String> tableColumn3;
+          TableColumn<items,String> tableColumn4;
+          TableColumn tableColumn5;
          HBox mainBox;
         vBox = new VBox();
         imageView = new ImageView();
@@ -1006,7 +1003,7 @@ public class dashboard {
         vBox0 = new VBox();
         vBox1 = new VBox();
         vBox2 = new VBox();
-        anchorPane = new AnchorPane();
+        anchorPane = new HBox();
         label = new Label();
         textField = new TextField();
         anchorPane0 = new AnchorPane();
@@ -1014,13 +1011,14 @@ public class dashboard {
         label1 = new Label();
         label2 = new Label();
         label3 = new Label();
-        tableView = new TableView<Data>();
-        tableColumn = new TableColumn();
-        tableColumn0 = new TableColumn();
-        tableColumn1 = new TableColumn();
-        tableColumn2 = new TableColumn();
-        tableColumn3 = new TableColumn();
-        tableColumn4 = new TableColumn();
+        tableView = new TableView<items>();
+        tableColumn = new TableColumn<>();
+        tableColumn0 = new TableColumn<>();
+        tableColumn1 = new TableColumn<>();
+        tableColumn2 = new TableColumn<>();
+        tableColumn3 = new TableColumn<>();
+        tableColumn4 = new TableColumn<>();
+        tableColumn5 = new TableColumn<>();
         mainBox = new HBox();
 
         mainBox.setMaxHeight(Region.USE_PREF_SIZE);
@@ -1031,7 +1029,7 @@ public class dashboard {
         mainBox.setPrefWidth(600.0);
 
         vBox.setPrefHeight(400.0);
-        vBox.setPrefWidth(166.0);
+        vBox.setPrefWidth(230.0);
         vBox.setSpacing(15.0);
         vBox.setStyle("-fx-background-color: black;");
 
@@ -1039,65 +1037,65 @@ public class dashboard {
         imageView.setFitWidth(167.0);
         //imageView.setImage(new Image(getClass().getResource("photo_2020-09-24_19-38-11.jpg").toExternalForm()));
 
-        VBox.setVgrow(button, javafx.scene.layout.Priority.ALWAYS);
-        button.setAlignment(javafx.geometry.Pos.CENTER);
-        button.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
+        VBox.setVgrow(button, Priority.ALWAYS);
+        button.setAlignment(Pos.CENTER);
+        button.setContentDisplay(ContentDisplay.CENTER);
         button.setMnemonicParsing(false);
         button.setStyle("-fx-background-color: black;");
-        button.setText("Button");
-        button.setTextFill(javafx.scene.paint.Color.valueOf("#bf7600"));
+        button.setText("All Items");
+        button.setTextFill(Color.valueOf("#bf7600"));
         VBox.setMargin(button, new Insets(0.0, 0.0, 0.0, 60.0));
 
-        VBox.setVgrow(button0, javafx.scene.layout.Priority.ALWAYS);
-        button0.setAlignment(javafx.geometry.Pos.CENTER);
-        button0.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
+        VBox.setVgrow(button0, Priority.ALWAYS);
+        button0.setAlignment(Pos.CENTER);
+        button0.setContentDisplay(ContentDisplay.CENTER);
         button0.setMnemonicParsing(false);
         button0.setStyle("-fx-background-color: black;");
-        button0.setText("Button");
-        button0.setTextFill(javafx.scene.paint.Color.valueOf("#bf7600"));
+        button0.setText("Stolen Items");
+        button0.setTextFill(Color.valueOf("#bf7600"));
         VBox.setMargin(button0, new Insets(0.0, 0.0, 0.0, 60.0));
 
-        VBox.setVgrow(button1, javafx.scene.layout.Priority.ALWAYS);
-        button1.setAlignment(javafx.geometry.Pos.CENTER);
-        button1.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
+        VBox.setVgrow(button1, Priority.ALWAYS);
+        button1.setAlignment(Pos.CENTER);
+        button1.setContentDisplay(ContentDisplay.CENTER);
         button1.setMnemonicParsing(false);
         button1.setStyle("-fx-background-color: black;");
-        button1.setText("Button");
-        button1.setTextFill(javafx.scene.paint.Color.valueOf("#bf7600"));
+        button1.setText("Student List");
+        button1.setTextFill(Color.valueOf("#bf7600"));
         VBox.setMargin(button1, new Insets(0.0, 0.0, 0.0, 60.0));
 
-        VBox.setVgrow(button2, javafx.scene.layout.Priority.ALWAYS);
-        button2.setAlignment(javafx.geometry.Pos.CENTER);
-        button2.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
+        VBox.setVgrow(button2, Priority.ALWAYS);
+        button2.setAlignment(Pos.CENTER);
+        button2.setContentDisplay(ContentDisplay.CENTER);
         button2.setMnemonicParsing(false);
         button2.setStyle("-fx-background-color: black;");
-        button2.setText("Button");
-        button2.setTextFill(javafx.scene.paint.Color.valueOf("#bf7600"));
+        button2.setText("Appending Items");
+        button2.setTextFill(Color.valueOf("#bf7600"));
         VBox.setMargin(button2, new Insets(0.0, 0.0, 0.0, 60.0));
 
-        VBox.setVgrow(button3, javafx.scene.layout.Priority.ALWAYS);
-        button3.setAlignment(javafx.geometry.Pos.CENTER);
-        button3.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
+        VBox.setVgrow(button3, Priority.ALWAYS);
+        button3.setAlignment(Pos.CENTER);
+        button3.setContentDisplay(ContentDisplay.CENTER);
         button3.setMnemonicParsing(false);
         button3.setStyle("-fx-background-color: black;");
-        button3.setText("Button");
-        button3.setTextFill(javafx.scene.paint.Color.valueOf("#bf7600"));
+        button3.setText("Setting");
+        button3.setTextFill(Color.valueOf("#bf7600"));
         VBox.setMargin(button3, new Insets(0.0, 0.0, 0.0, 60.0));
 
-        VBox.setVgrow(button4, javafx.scene.layout.Priority.ALWAYS);
-        button4.setAlignment(javafx.geometry.Pos.CENTER);
-        button4.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
+        VBox.setVgrow(button4, Priority.ALWAYS);
+        button4.setAlignment(Pos.CENTER);
+        button4.setContentDisplay(ContentDisplay.CENTER);
         button4.setMnemonicParsing(false);
         button4.setStyle("-fx-background-color: black;");
-        button4.setText("Button");
-        button4.setTextFill(javafx.scene.paint.Color.valueOf("#bf7600"));
+        button4.setText("Sign-Out");
+        button4.setTextFill(Color.valueOf("#bf7600"));
         VBox.setMargin(button4, new Insets(0.0, 0.0, 0.0, 60.0));
 
-        HBox.setHgrow(vBox0, javafx.scene.layout.Priority.ALWAYS);
+        HBox.setHgrow(vBox0, Priority.ALWAYS);
         vBox0.setPrefHeight(296.0);
         vBox0.setPrefWidth(434.0);
 
-        VBox.setVgrow(vBox1, javafx.scene.layout.Priority.ALWAYS);
+        VBox.setVgrow(vBox1, Priority.ALWAYS);
         vBox1.setPrefHeight(125.0);
         vBox1.setPrefWidth(434.0);
         vBox1.setStyle("-fx-background-color: #262626;");
@@ -1105,66 +1103,82 @@ public class dashboard {
         vBox2.setPrefHeight(124.0);
         vBox2.setPrefWidth(434.0);
 
-        anchorPane.setPrefHeight(62.0);
-        anchorPane.setPrefWidth(434.0);
+        anchorPane.setPrefHeight(Region.USE_PREF_SIZE);
+        anchorPane.setPrefWidth(Region.USE_PREF_SIZE);
+        anchorPane.setMaxWidth(Region.USE_COMPUTED_SIZE);
+
 
         label.setLayoutX(42.0);
         label.setLayoutY(23.0);
-        label.setText("Label");
-        label.setTextFill(javafx.scene.paint.Color.valueOf("#bf7600"));
+        label.setText("Welcome");
+        label.setTextFill(Color.valueOf("#bf7600"));
 
         textField.setLayoutX(257.0);
         textField.setLayoutY(19.0);
         textField.setPromptText("search");
+        textField.setAlignment(Pos.TOP_RIGHT);
+
 
         anchorPane0.setPrefHeight(62.0);
         anchorPane0.setPrefWidth(434.0);
 
+
         label0.setLayoutX(42.0);
         label0.setLayoutY(14.0);
         label0.setText("Label");
-        label0.setTextFill(javafx.scene.paint.Color.valueOf("#bf7600"));
+        label0.setTextFill(Color.valueOf("#bf7600"));
 
         label1.setLayoutX(42.0);
         label1.setLayoutY(40.0);
         label1.setText("Label");
-        label1.setTextFill(javafx.scene.paint.Color.valueOf("#bf7600"));
+        label1.setTextFill(Color.valueOf("#bf7600"));
 
         label2.setLayoutX(343.0);
         label2.setLayoutY(14.0);
         label2.setText("Label");
-        label2.setTextFill(javafx.scene.paint.Color.valueOf("#bf7600"));
+        label2.setTextFill(Color.valueOf("#bf7600"));
 
         label3.setLayoutX(343.0);
         label3.setLayoutY(40.0);
         label3.setText("Label");
-        label3.setTextFill(javafx.scene.paint.Color.valueOf("#bf7600"));
+        label3.setTextFill(Color.valueOf("#bf7600"));
 
-        VBox.setVgrow(tableView, javafx.scene.layout.Priority.ALWAYS);
+        VBox.setVgrow(tableView, Priority.ALWAYS);
         tableView.setPrefHeight(278.0);
         tableView.setPrefWidth(434.0);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        tableView.setStyle("-fx-textcolor:black");
 
 
         tableColumn.setPrefWidth(58.0);
         tableColumn.setText("Request");
+        tableColumn.setCellValueFactory(new PropertyValueFactory<>("Request"));
 
 
         tableColumn0.setPrefWidth(76.0);
         tableColumn0.setText("Appending");
+        tableColumn0.setCellValueFactory(new PropertyValueFactory<>("Appending"));
 
         tableColumn1.setPrefWidth(76.0);
         tableColumn1.setText("Approved");
+        tableColumn1.setCellValueFactory(new PropertyValueFactory<>("Approved"));
 
         tableColumn2.setPrefWidth(74.0);
         tableColumn2.setText("Denied");
+        tableColumn2.setCellValueFactory(new PropertyValueFactory<>("Denied"));
 
         tableColumn3.setPrefWidth(76.0);
         tableColumn3.setText("Full Name");
+        tableColumn3.setCellValueFactory(new PropertyValueFactory<>("Full_name"));
 
         tableColumn4.setPrefWidth(72.0);
         tableColumn4.setText("Delete");
 
+        tableColumn5.setPrefWidth(72.0);
+        tableColumn5.setText("Block_number");
+        tableColumn5.setCellValueFactory(new PropertyValueFactory<>("Block_number"));
+        //tableColumn5.setStyle("-fx-background-color:black");
+        //tableColumn5.setStyle("-fx-text-color:black");
         vBox.getChildren().add(imageView);
         vBox.getChildren().add(button);
         vBox.getChildren().add(button0);
@@ -1187,11 +1201,36 @@ public class dashboard {
         tableView.getColumns().add(tableColumn1);
         tableView.getColumns().add(tableColumn2);
         tableView.getColumns().add(tableColumn3);
+        tableView.getColumns().add(tableColumn5);
         tableView.getColumns().add(tableColumn4);
         vBox1.getChildren().add(tableView);
         vBox0.getChildren().add(vBox1);
         mainBox.getChildren().add(vBox0);
 
+        Controller item = new Controller();
+        ResultSet items = item.getitemdata();
+        try{
+            ObservableList<items> itemlist = FXCollections.observableArrayList();
+            while(items.next()){
+              String request = items.getString("request");
+              String appending = items.getString("appending");
+              String approved = items.getString("approved");
+              String denied = items.getString("denied");
+              String full_name = items.getString("full_name");
+              String block_number = items.getString("block_number");
+//                System.out.println(request);
+//                System.out.println(appending);
+                itemlist.add(new items(request,appending,approved,denied,full_name,block_number));
+
+
+                //tableView.getItems().add(itemclass);
+               // tableView.setVisible(true);
+            }
+            tableView.setItems(itemlist);
+        }
+        catch(Exception e){
+            System.out.println("error_on_table:"+e);
+        }
 
         Scene scene = new Scene(mainBox);
         newdashboard.setScene(scene);
@@ -1208,3 +1247,4 @@ public class dashboard {
 
 
 }
+

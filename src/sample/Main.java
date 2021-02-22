@@ -2,13 +2,9 @@ package sample;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.Separator;
-import javafx.scene.control.TextField;
 import javafx.scene.effect.Blend;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -18,7 +14,6 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
-import java.io.*;
 import java.sql.SQLException;
 import java.lang.*;
 
@@ -214,8 +209,7 @@ public class Main extends Application {
 
     public static void main(String[] args) throws SQLException {
         launch(args);
-        Controller connect = new Controller();
-        connect.getData();
+
     }
 }
 

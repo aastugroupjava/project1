@@ -128,13 +128,18 @@ public class signin {
             username = txtUsername.getText();
             password = txtPassword.getText();
             security = txtSecurity.getText();
+            System.out.println(username);
             Controller signup = new Controller();
-            if(signup.signup(username,password,security)){
-                dashboard.newdashboard();
-                signin.close();
+            if(username.equals("") || password.equals("") || security.equals("")) {
+                System.out.println("fill all the forms");
             }
-            else{
-                System.out.println("couldn't register.please try again.");
+            else {
+                if (signup.signup(username, password, security)) {
+                    dashboard.newdashboard();
+                    signin.close();
+                } else {
+                    System.out.println("couldn't register.please try again.");
+                }
             }
         });
         btnSignup.setEffect(blend);

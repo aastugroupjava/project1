@@ -1,4 +1,5 @@
 package sample;
+
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -39,70 +40,16 @@ public class Controller implements Serializable {
 
     }
 
-    public void getData() {
-       try{
-           String query ="SELECT * FROM users";
-           String counter ="SELECT COUNT(username) FROM users";
-           String query1= "SELECT * FROM data";
-           String countuser = "SELECT COUNT(request) FROM data";
-           String query3= "SELECT * FROM stolen_item";
-           String countstolen = "SELECT COUNT(status) FROM stolen_item";
-           //System.out.println("hellow");
-           ct = st.executeQuery(counter);
-           //System.out.println("hellow");
-           while(ct.next()) {
-               count = ct.getInt("count(username)");
-           }
-           //System.out.println(count);
-           rt = st.executeQuery(query);
-           //System.out.println("list from db");
-            int i=0;
-           Controller.userdata = new String[count][3];
-           while (rt.next()){
-               //userdata[i][2] = new String();
-              Controller.userdata[i][0]= rt.getString("username");
-              Controller.userdata[i][1]=rt.getString("passwords");
-              Controller.userdata[i][2]=rt.getString("security");
-              i++;
-           }
-           d = st.executeQuery(countuser);
-           while(d.next()){
-               requestcounter=d.getInt("count(request)");
-           }
-           Controller.data = new String[requestcounter][6];
-           d = st.executeQuery(query1);
-           i=0;
-           while(d.next()){
-               Controller.data[i][0]=d.getString("request");
-               Controller.data[i][1]= String.valueOf(d.getInt("appending"));
-               Controller.data[i][2]= String.valueOf(d.getInt("approved"));
-               Controller.data[i][3]= String.valueOf(d.getInt("denied"));
-               Controller.data[i][4]=d.getString("full_name");
-               Controller.data[i][5]=d.getString("block_number");
-//               System.out.println(data[i][2]);
-//               System.out.println(data[i][1]);
-               i++;
-           }
-           stolen_item = st.executeQuery(countstolen);
-           while (stolen_item.next()){
-               counterstolen = stolen_item.getInt("count(status)");
-           }
-           stolen_item = st.executeQuery(query3);
-           Controller.stolen_items= new String[counterstolen][4];
-           i=0;
-           while(stolen_item.next()){
-               Controller.stolen_items[i][0]=stolen_item.getString("stolen_item");
-               Controller.stolen_items[i][1]= String.valueOf(stolen_item.getInt("status"));
-               Controller.stolen_items[i][2]=stolen_item.getString("reported_by");
-               Controller.stolen_items[i][3]=stolen_item.getString("reported_by_address");
-               i++;
-           }
-
-
+    public ResultSet getitemdata() {
+       String getdataquery = "SELECT * FROM data";
+       ResultSet items = null;
+       try {
+           items = st.executeQuery(getdataquery);
+           return items;
        }catch (Exception e){
-           System.out.println("error1:"+e);
+           System.out.println("erro_of_getitemdata:"+e);
+           return null;
        }
-
     }
     public void user(String username, String password, String security){
 
