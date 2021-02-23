@@ -978,7 +978,7 @@ public class dashboard {
            HBox anchorPane;
            Label label;
           TextField textField;
-         AnchorPane anchorPane0;
+         HBox anchorPane0;
            Label label0;
          Label label1;
          Label label2;
@@ -1000,13 +1000,14 @@ public class dashboard {
         button2 = new Button();
         button3 = new Button();
         button4 = new Button();
+        Button btnSignup = new Button();
         vBox0 = new VBox();
         vBox1 = new VBox();
         vBox2 = new VBox();
         anchorPane = new HBox();
         label = new Label();
         textField = new TextField();
-        anchorPane0 = new AnchorPane();
+        anchorPane0 = new HBox();
         label0 = new Label();
         label1 = new Label();
         label2 = new Label();
@@ -1033,9 +1034,9 @@ public class dashboard {
         vBox.setSpacing(15.0);
         vBox.setStyle("-fx-background-color: black;");
 
-        imageView.setFitHeight(124.0);
-        imageView.setFitWidth(167.0);
-        //imageView.setImage(new Image(getClass().getResource("photo_2020-09-24_19-38-11.jpg").toExternalForm()));
+       // imageView.setFitHeight(124.0);
+       // imageView.setFitWidth(167.0);
+//        imageView.setImage(new Image(dashboard.class.getResource("photo_2020-09-24_19-38-11.jpg").toExternalForm()));
 
         VBox.setVgrow(button, Priority.ALWAYS);
         button.setAlignment(Pos.CENTER);
@@ -1102,10 +1103,13 @@ public class dashboard {
 
         vBox2.setPrefHeight(124.0);
         vBox2.setPrefWidth(434.0);
+        vBox2.setSpacing(35);
 
         anchorPane.setPrefHeight(Region.USE_PREF_SIZE);
         anchorPane.setPrefWidth(Region.USE_PREF_SIZE);
         anchorPane.setMaxWidth(Region.USE_COMPUTED_SIZE);
+        anchorPane.setSpacing(5);
+
 
 
         label.setLayoutX(42.0);
@@ -1116,31 +1120,38 @@ public class dashboard {
         textField.setLayoutX(257.0);
         textField.setLayoutY(19.0);
         textField.setPromptText("search");
-        textField.setAlignment(Pos.TOP_RIGHT);
+        textField.setAlignment(Pos.CENTER);
 
+        btnSignup.setMnemonicParsing(false);
+        btnSignup.setPrefHeight(58.0);
+        btnSignup.setPrefWidth(25.0);
+        btnSignup.setStyle("-fx-background-color: #bf7600");
+        btnSignup.setText("search");
+        btnSignup.setTextFill(javafx.scene.paint.Color.WHITE);
 
         anchorPane0.setPrefHeight(62.0);
         anchorPane0.setPrefWidth(434.0);
+        anchorPane0.setSpacing(100);
 
 
         label0.setLayoutX(42.0);
         label0.setLayoutY(14.0);
-        label0.setText("Label");
+        label0.setText("stolen items number");
         label0.setTextFill(Color.valueOf("#bf7600"));
 
         label1.setLayoutX(42.0);
         label1.setLayoutY(40.0);
-        label1.setText("Label");
+        label1.setText("total items number");
         label1.setTextFill(Color.valueOf("#bf7600"));
 
         label2.setLayoutX(343.0);
         label2.setLayoutY(14.0);
-        label2.setText("Label");
+        label2.setText("found items number");
         label2.setTextFill(Color.valueOf("#bf7600"));
 
         label3.setLayoutX(343.0);
         label3.setLayoutY(40.0);
-        label3.setText("Label");
+        label3.setText("complain alerts");
         label3.setTextFill(Color.valueOf("#bf7600"));
 
         VBox.setVgrow(tableView, Priority.ALWAYS);
@@ -1187,8 +1198,8 @@ public class dashboard {
         vBox.getChildren().add(button3);
         vBox.getChildren().add(button4);
         mainBox.getChildren().add(vBox);
-        anchorPane.getChildren().add(label);
-        anchorPane.getChildren().add(textField);
+        //anchorPane.getChildren().add(label);
+        anchorPane.getChildren().addAll(textField,btnSignup);
         vBox2.getChildren().add(anchorPane);
         anchorPane0.getChildren().add(label0);
         anchorPane0.getChildren().add(label1);

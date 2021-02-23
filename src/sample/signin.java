@@ -40,10 +40,11 @@ public class signin {
     private static TextField txtSecurity;
     protected  static Stage signin;
     private static Button go_back;
+    private static ImageView imageview;
 
     public static void display(){
         signin =new Stage();
-
+        imageview = new ImageView();
         go_back = new Button();
         anchorPane = new AnchorPane();
         pane = new Pane();
@@ -70,12 +71,18 @@ public class signin {
         pane.setPrefWidth(209.0);
         pane.setStyle("-fx-background-color: black");
 
-        label.setAlignment(Pos.CENTER);
+        imageview.setFitHeight(170.0);
+        imageview.setFitWidth(150.0);
+        imageview.setLayoutX(35.0);
+        imageview.setLayoutY(105.0);
+        imageview.setImage(new Image(signin.class.getResource("/images/photo_2020-09-24_19-38-11.jpg").toExternalForm()));
+
+        label.setAlignment(Pos.TOP_RIGHT);
         label.setLayoutX(5.0);
         label.setLayoutY(318.0);
         label.setPrefHeight(23.0);
         label.setPrefWidth(173.0);
-        label.setText("A.A.S.T.U   Inventory  ");
+        label.setText(" A.A.S.T.U   Inventory ");
         label.setTextFill(Color.valueOf("#bd7400"));
         label.setFont(new Font("Segoe UI", 18.0));
 
@@ -84,7 +91,7 @@ public class signin {
         label0.setLayoutY(365.0);
         label0.setPrefHeight(23.0);
         label0.setPrefWidth(205.0);
-        label0.setText("Manage your inventory here.");
+        label0.setText("  Manage your inventory here.");
         label0.setTextFill(Color.valueOf("#bd7400"));
         label0.setFont(new Font("Segoe UI", 12.0));
 
@@ -117,6 +124,8 @@ public class signin {
         separator.setPrefHeight(7.0);
         separator.setPrefWidth(275.0);
         separator.setStyle("-fx-background-color: ");
+
+
 
         btnSignup.setMnemonicParsing(false);
         btnSignup.setPrefHeight(58.0);
@@ -153,8 +162,7 @@ public class signin {
             window.show();
         });
 
-        pane.getChildren().add(label);
-        pane.getChildren().add(label0);
+        pane.getChildren().addAll(imageview,label,label0);
         anchorPane.getChildren().add(pane);
         vBox.getChildren().add(txtUsername);
         vBox.getChildren().add(txtPassword);

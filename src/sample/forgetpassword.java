@@ -31,9 +31,11 @@ public class forgetpassword {
     private static   Blend blend;
     private static  AnchorPane anchorPane;
     private static Button go_back;
+    private static ImageView imageview;
 
     public static void display(){
         Stage forgetpassword = new Stage();
+        imageview = new ImageView();
         pane = new Pane();
         label = new Label();
         label0 = new Label();
@@ -57,6 +59,13 @@ public class forgetpassword {
         pane.setPrefHeight(490.0);
         pane.setPrefWidth(227.0);
         pane.setStyle("-fx-background-color: black;");
+
+        imageview.setFitHeight(170.0);
+        imageview.setFitWidth(150.0);
+        imageview.setLayoutX(35.0);
+        imageview.setLayoutY(105.0);
+        imageview.setImage(new Image(forgetpassword.class.getResource("/images/photo_2020-09-24_19-38-11.jpg").toExternalForm()));
+
 
         label.setAlignment(javafx.geometry.Pos.CENTER);
         label.setLayoutX(27.0);
@@ -116,8 +125,7 @@ public class forgetpassword {
             window.show();
         });
 
-        pane.getChildren().add(label);
-        pane.getChildren().add(label0);
+        pane.getChildren().addAll(imageview,label,label0);
         anchorPane.getChildren().add(pane);
         vBox.getChildren().add(txtUsername);
         vBox.getChildren().add(separator);

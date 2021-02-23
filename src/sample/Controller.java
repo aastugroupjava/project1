@@ -27,7 +27,7 @@ public class Controller implements Serializable {
     public Controller(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/aastu_inventory","root","");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/aastu_inventory","root","root123");
             System.out.println("connected to database");
             st = con.createStatement();
             System.out.println("created statement");
