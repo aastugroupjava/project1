@@ -3,6 +3,7 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.geometry.Insets;
@@ -17,6 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javax.xml.crypto.Data;
+import javafx.scene.input.MouseEvent;
 
 import java.sql.ResultSet;
 
@@ -83,6 +85,8 @@ public class dashboard {
     protected static Stage dashboard;
     private static HBox hBox;
     public  static Stage newdashboard = new Stage();
+    private static Button additem = new Button();
+    private static Button delete = new Button();
 
     public static void display(){
         System.out.println("display");
@@ -1020,6 +1024,7 @@ public class dashboard {
         tableColumn3 = new TableColumn<>();
         tableColumn4 = new TableColumn<>();
         tableColumn5 = new TableColumn<>();
+
         mainBox = new HBox();
 
         mainBox.setMaxHeight(Region.USE_PREF_SIZE);
@@ -1034,9 +1039,10 @@ public class dashboard {
         vBox.setSpacing(15.0);
         vBox.setStyle("-fx-background-color: black;");
 
-       // imageView.setFitHeight(124.0);
-       // imageView.setFitWidth(167.0);
-//        imageView.setImage(new Image(dashboard.class.getResource("photo_2020-09-24_19-38-11.jpg").toExternalForm()));
+        imageView.setFitHeight(124.0);
+        imageView.setFitWidth(167.0);
+        imageView.setImage(new Image(dashboard.class.getResource("").toExternalForm()));
+
 
         VBox.setVgrow(button, Priority.ALWAYS);
         button.setAlignment(Pos.CENTER);
@@ -1046,6 +1052,22 @@ public class dashboard {
         button.setText("All Items");
         button.setTextFill(Color.valueOf("#bf7600"));
         VBox.setMargin(button, new Insets(0.0, 0.0, 0.0, 60.0));
+
+        additem.setText("Add Item");
+        additem.setAlignment(Pos.CENTER);
+        additem.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
+        additem.setTextFill(Color.DARKGREEN);
+        additem.setOnMouseClicked(event -> {
+            onAction(event);
+        });
+
+        delete.setText("Delete Item");
+        delete.setAlignment(Pos.TOP_RIGHT);
+        delete.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
+        delete.setTextFill(Color.DARKRED);
+        delete.setOnMouseClicked(event -> {
+            onAction(event);
+        });
 
         VBox.setVgrow(button0, Priority.ALWAYS);
         button0.setAlignment(Pos.CENTER);
@@ -1155,8 +1177,8 @@ public class dashboard {
         label3.setTextFill(Color.valueOf("#bf7600"));
 
         VBox.setVgrow(tableView, Priority.ALWAYS);
-        tableView.setPrefHeight(278.0);
-        tableView.setPrefWidth(434.0);
+//        tableView.setPrefHeight(278.0);
+//        tableView.setPrefWidth(434.0);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         tableView.setStyle("-fx-textcolor:black");
 
@@ -1205,6 +1227,8 @@ public class dashboard {
         anchorPane0.getChildren().add(label1);
         anchorPane0.getChildren().add(label2);
         anchorPane0.getChildren().add(label3);
+        anchorPane0.getChildren().add(additem);
+        anchorPane0.getChildren().add(delete);
         vBox2.getChildren().add(anchorPane0);
         vBox1.getChildren().add(vBox2);
         tableView.getColumns().add(tableColumn);
@@ -1214,6 +1238,7 @@ public class dashboard {
         tableView.getColumns().add(tableColumn3);
         tableView.getColumns().add(tableColumn5);
         tableView.getColumns().add(tableColumn4);
+       // tablevbox.getChildren().add(tableView);
         vBox1.getChildren().add(tableView);
         vBox0.getChildren().add(vBox1);
         mainBox.getChildren().add(vBox0);
@@ -1252,6 +1277,18 @@ public class dashboard {
             alertbox close = new alertbox();
             close.closeconfirmdashboard();
         } );
+
+    }
+
+
+    private static void onAction (MouseEvent event){
+        additems additems = new additems();
+        if(event.getSource()==additem){
+            additems.additem();
+        }
+        else if (event.getSource()==delete){
+            System.out.println("delete has been clicked");
+        }
 
     }
 
