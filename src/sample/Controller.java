@@ -27,7 +27,7 @@ public class Controller implements Serializable {
     public Controller(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/aastu_inventory","root","");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/javadbproject","root","");
             System.out.println("connected to database");
             st = con.createStatement();
             System.out.println("created statement");
@@ -41,13 +41,13 @@ public class Controller implements Serializable {
     }
 
     public ResultSet getitemdata() {
-       String getdataquery = "SELECT * FROM data";
+       String getdataquery = "SELECT * FROM items";
        ResultSet items = null;
        try {
            items = st.executeQuery(getdataquery);
            return items;
        }catch (Exception e){
-           System.out.println("erro_of_getitemdata:"+e);
+           System.out.println("error_of_getitemdata:"+e);
            return null;
        }
     }
@@ -66,7 +66,7 @@ public class Controller implements Serializable {
 
     }
     public boolean validator(String username,String password){
-        String login_query = "SELECT 1 FROM users where username='"+username+"'&&"+"passwords='"+password+"';";
+        String login_query = "SELECT 1 FROM users where name='"+username+"'&&"+"password='"+password+"';";
         System.out.println(login_query);
         ResultSet checker=null;
         try{
