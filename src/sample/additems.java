@@ -25,7 +25,6 @@ public class additems {
                  TextField phone_number = new TextField();
                  TextField computer_serial = new TextField();
                  TextField computer_type = new TextField();
-                 TextField computer_status = new TextField();
                  Label IDlabel = new Label();
                  Label fullnamelabel = new Label();
                  Label emaillabel = new Label();
@@ -157,18 +156,7 @@ public class additems {
             computer_type.setPromptText("Computer-type");
             computer_type.setStyle("-fx-background-color:gray");
 
-                //computer_status label and field.
 
-            computer_statuslabel.setAlignment(javafx.geometry.Pos.CENTER);
-            computer_statuslabel.setText("Block-Number:");
-            computer_statuslabel.setStyle("-fx-background-color:#262626");
-            computer_statuslabel.setTextFill(Color.WHITE);
-
-            computer_status.setAlignment(javafx.geometry.Pos.CENTER);
-            computer_status.setPrefHeight(48.0);
-            computer_status.setPrefWidth(50.0);
-            computer_status.setPromptText("Block-Number");
-            computer_status.setStyle("-fx-background-color:gray");
 
             //submit button
             submit.setText("Add Item");
@@ -177,13 +165,35 @@ public class additems {
             submit.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
             submit.setTextFill(Color.DARKGREEN);
             submit.setOnMouseClicked(event -> {
-                System.out.println("submit button is clicked.");
-               // onAction(event);
+               // System.out.println("submit button is clicked.");
+                Controller additem = new Controller();
+                String id = ID.getText();
+                String fullname = full_name.getText();
+                String Email = email.getText();
+                String dep = departement.getText();
+                String block = block_number.getText();
+                String dorm = dorm_room.getText();
+                String phone = phone_number.getText();
+                String serial = computer_serial.getText();
+                String type = computer_type.getText();
+                if(id.equals("")|| fullname.equals("")||Email.equals("")||dep.equals("")||block.equals("")||dorm.equals("")||phone.equals("")||serial.equals("")||type.equals("")){
+                    System.out.println("fill all the forms");
+                }
+                else{
+                    if(additem.additems(id,fullname,Email,dep,block,dorm,phone,serial,type)){
+                        additemstage.close();
+                        dashboard.newdashboard();
+                    }
+                    else{
+                        System.out.println("couldn't register, please try again.");
+                    }
+                }
+
             });
 
 
                 container.setStyle("-fx-background-color:#262626 ");
-                container.getChildren().addAll(IDlabel,ID,fullnamelabel,full_name,emaillabel,email,departementlabel,departement,blocknumberlabel,block_number,dormroomlabel,dorm_room,phonenumberlabel,phone_number,computer_seriallabel,computer_serial,computer_typelabel,computer_type,computer_statuslabel,computer_status,submit);
+                container.getChildren().addAll(IDlabel,ID,fullnamelabel,full_name,emaillabel,email,departementlabel,departement,blocknumberlabel,block_number,dormroomlabel,dorm_room,phonenumberlabel,phone_number,computer_seriallabel,computer_serial,computer_typelabel,computer_type,submit);
                // additemstage.initModality(Modality.APPLICATION_MODAL);
                 additemstage.setOnCloseRequest(event -> {
                         event.consume();

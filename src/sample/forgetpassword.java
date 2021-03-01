@@ -95,7 +95,7 @@ public class forgetpassword {
         txtUsername.setAlignment(javafx.geometry.Pos.CENTER);
         txtUsername.setPrefHeight(48.0);
         txtUsername.setPrefWidth(275.0);
-        txtUsername.setPromptText("Enter security word");
+        txtUsername.setPromptText("Enter your phone number");
         txtUsername.setStyle("-fx-background-color: black;");
 
         separator.setPrefHeight(7.0);

@@ -995,6 +995,10 @@ public class dashboard {
           TableColumn<items,String> tableColumn3;
           TableColumn<items,String> tableColumn4;
           TableColumn tableColumn5;
+        TableColumn<items,String> tableColumn6;
+        TableColumn<items,String> tableColumn7;
+        TableColumn<items,String> tableColumn8;
+
          HBox mainBox;
         vBox = new VBox();
         imageView = new ImageView();
@@ -1024,6 +1028,11 @@ public class dashboard {
         tableColumn3 = new TableColumn<>();
         tableColumn4 = new TableColumn<>();
         tableColumn5 = new TableColumn<>();
+        tableColumn6 = new TableColumn<>();
+        tableColumn7 = new TableColumn<>();
+        tableColumn8 = new TableColumn<>();
+
+
 
         mainBox = new HBox();
 
@@ -1184,24 +1193,24 @@ public class dashboard {
 
 
         tableColumn.setPrefWidth(58.0);
-        tableColumn.setText("Request");
-        tableColumn.setCellValueFactory(new PropertyValueFactory<>("Request"));
+        tableColumn.setText("Serial Number");
+        tableColumn.setCellValueFactory(new PropertyValueFactory<>("Serial"));
 
 
         tableColumn0.setPrefWidth(76.0);
-        tableColumn0.setText("Appending");
-        tableColumn0.setCellValueFactory(new PropertyValueFactory<>("Appending"));
+        tableColumn0.setText("Status");
+        tableColumn0.setCellValueFactory(new PropertyValueFactory<>("Status"));
 
         tableColumn1.setPrefWidth(76.0);
-        tableColumn1.setText("Approved");
-        tableColumn1.setCellValueFactory(new PropertyValueFactory<>("Approved"));
+        tableColumn1.setText("Type");
+        tableColumn1.setCellValueFactory(new PropertyValueFactory<>("Type"));
 
         tableColumn2.setPrefWidth(74.0);
-        tableColumn2.setText("Denied");
-        tableColumn2.setCellValueFactory(new PropertyValueFactory<>("Denied"));
+        tableColumn2.setText("Id");
+        tableColumn2.setCellValueFactory(new PropertyValueFactory<>("Id"));
 
         tableColumn3.setPrefWidth(76.0);
-        tableColumn3.setText("Full Name");
+        tableColumn3.setText("Full_Name");
         tableColumn3.setCellValueFactory(new PropertyValueFactory<>("Full_name"));
 
         tableColumn4.setPrefWidth(72.0);
@@ -1209,7 +1218,20 @@ public class dashboard {
 
         tableColumn5.setPrefWidth(72.0);
         tableColumn5.setText("Block_number");
-        tableColumn5.setCellValueFactory(new PropertyValueFactory<>("Block_number"));
+        tableColumn5.setCellValueFactory(new PropertyValueFactory<>("Block"));
+
+        tableColumn6.setPrefWidth(72.0);
+        tableColumn6.setText("Dep");
+        tableColumn6.setCellValueFactory(new PropertyValueFactory<>("Dep"));
+
+        tableColumn7.setPrefWidth(72.0);
+        tableColumn7.setText("Dorm");
+        tableColumn7.setCellValueFactory(new PropertyValueFactory<>("Dorm"));
+
+        tableColumn8.setPrefWidth(72.0);
+        tableColumn8.setText("Phone_number");
+        tableColumn8.setCellValueFactory(new PropertyValueFactory<>("Phonenumber"));
+
         //tableColumn5.setStyle("-fx-background-color:black");
         //tableColumn5.setStyle("-fx-text-color:black");
         vBox.getChildren().add(imageView);
@@ -1237,7 +1259,11 @@ public class dashboard {
         tableView.getColumns().add(tableColumn2);
         tableView.getColumns().add(tableColumn3);
         tableView.getColumns().add(tableColumn5);
+        tableView.getColumns().add(tableColumn6);
+        tableView.getColumns().add(tableColumn7);
+        tableView.getColumns().add(tableColumn8);
         tableView.getColumns().add(tableColumn4);
+
        // tablevbox.getChildren().add(tableView);
         vBox1.getChildren().add(tableView);
         vBox0.getChildren().add(vBox1);
@@ -1248,15 +1274,18 @@ public class dashboard {
         try{
             ObservableList<items> itemlist = FXCollections.observableArrayList();
             while(items.next()){
-              String request = items.getString("request");
-              String appending = items.getString("appending");
-              String approved = items.getString("approved");
-              String denied = items.getString("denied");
+              String serial = items.getString("serial_number");
+              String status = items.getString("current_status");
+              String type = items.getString("computer_type");
+              String id = items.getString("ID");
               String full_name = items.getString("full_name");
+              String dep = items.getString("departement");
               String block_number = items.getString("block_number");
+              String dorm = items.getString("dorm_room");
+              String phone = items.getString("phone_number");
 //                System.out.println(request);
 //                System.out.println(appending);
-                itemlist.add(new items(request,appending,approved,denied,full_name,block_number));
+                itemlist.add(new items(serial,status,type,id,full_name,dep,block_number,dorm,phone));
 
 
                 //tableView.getItems().add(itemclass);

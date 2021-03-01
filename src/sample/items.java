@@ -1,38 +1,60 @@
 package sample;
 
 public class items {
-        private String Request;
-        private String Appending;
-        private String Approved;
-        private String Denied;
+        private String Serial;
+        private String Status;
+        private String Type;
+        private String Id;
         private String Full_name;
-        private String Block_number;
+        private String Dep;
+        private String Block;
+        private String Dorm;
+        private String Phonenumber;
 
-        public items (String request,String appending,String approved,String denied, String full_name,String block_number){
-            this.Request = request;
-            this.Appending = appending;
-            this.Approved = approved;
-            this.Denied = denied;
+        public items (String serial,String status,String type,String id, String full_name,String dep,String block_number,String dorm,String phone){
+            this.Serial = serial;
+            this.Status = status;
+            this.Type = type;
+            this.Id = id;
             this.Full_name = full_name;
-            this.Block_number = block_number;
+            this.Block =block_number;
+            this.Dorm = dorm;
+            this.Phonenumber = phone;
+            this.Dep = dep;
         }
-        public String getRequest(){
-            return Request;
+        public String getSerial(){
+            return Serial;
         }
-        public String getAppending(){
-            return Appending;
+        public String getStatus(){
+            if(Status.equals("1")){
+                return "Inside school";
+            }
+            else if(Status.equals("0")){
+                return "Outside school";
+            }
+            return Status;
         }
-        public String getApproved(){
-            return Approved;
+        public String getType(){
+            return Type;
         }
-        public String getDenied(){
-            return Denied;
+        public String getId(){
+            return Id;
         }
         public String getFull_name(){
             return Full_name;
         }
-        public String getBlock_number(){
-            return Block_number;
+        public String getBlock(){
+            return Block;
         }
+        public String getDep(){
+        return Dep;
+    }
+        public String getDorm(){
+        return Dorm;
+    }
+        public String getPhonenumber(){
+        return Phonenumber;
+    }
+
 
 }

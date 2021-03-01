@@ -35,9 +35,13 @@ public class signin {
     private static  Blend blend;
     static String username;
     static String password;
-    static String security;
+    static String ID;
+    static String Email;
+    static String phonenumber;
     private static Stage window=Main.window;
-    private static TextField txtSecurity;
+    private static TextField txtID;
+    private static TextField email;
+    private static TextField phone_number;
     protected  static Stage signin;
     private static Button go_back;
     private static ImageView imageview;
@@ -53,10 +57,12 @@ public class signin {
         vBox = new VBox();
         txtUsername = new TextField();
         txtPassword = new PasswordField();
-        txtSecurity = new TextField();
+        txtID= new TextField();
         separator = new Separator();
         btnSignup = new Button();
         blend = new Blend();
+        email = new TextField();
+        phone_number = new TextField();
 
         anchorPane.setMaxHeight(Region.USE_PREF_SIZE);
         anchorPane.setMaxWidth(Region.USE_PREF_SIZE);
@@ -105,14 +111,26 @@ public class signin {
         txtUsername.setAlignment(Pos.CENTER);
         txtUsername.setPrefHeight(48.0);
         txtUsername.setPrefWidth(275.0);
-        txtUsername.setPromptText("username or email");
+        txtUsername.setPromptText("Username");
         txtUsername.setStyle("-fx-background-color: black");
 
-        txtSecurity.setAlignment(Pos.CENTER);
-        txtSecurity.setPrefHeight(53.0);
-        txtSecurity.setPrefWidth(275.0);
-        txtSecurity.setPromptText("Security word");
-        txtSecurity.setStyle("-fx-background-color: black");
+        txtID.setAlignment(Pos.CENTER);
+        txtID.setPrefHeight(53.0);
+        txtID.setPrefWidth(275.0);
+        txtID.setPromptText("ID Number");
+        txtID.setStyle("-fx-background-color: black");
+
+        email.setAlignment(Pos.CENTER);
+        email.setPrefHeight(53.0);
+        email.setPrefWidth(275.0);
+        email.setPromptText("Email");
+        email.setStyle("-fx-background-color: black");
+
+        phone_number.setAlignment(Pos.CENTER);
+        phone_number.setPrefHeight(53.0);
+        phone_number.setPrefWidth(275.0);
+        phone_number.setPromptText("phone-number");
+        phone_number.setStyle("-fx-background-color: black");
 
         VBox.setVgrow(txtPassword, Priority.ALWAYS);
         txtPassword.setAlignment(Pos.CENTER);
@@ -136,14 +154,16 @@ public class signin {
         btnSignup.setOnAction(e -> {
             username = txtUsername.getText();
             password = txtPassword.getText();
-            security = txtSecurity.getText();
+            ID = txtID.getText();
+            Email = email.getText();
+            phonenumber = phone_number.getText();
             System.out.println(username);
             Controller signup = new Controller();
-            if(username.equals("") || password.equals("") || security.equals("")) {
+            if(username.equals("") || password.equals("") || ID.equals("")||Email.equals("")||phonenumber.equals("")) {
                 System.out.println("fill all the forms");
             }
             else {
-                if (signup.signup(username, password, security)) {
+                if (signup.signup(username, password, ID,Email,phonenumber)) {
                     dashboard.newdashboard();
                     signin.close();
                 } else {
@@ -164,12 +184,13 @@ public class signin {
 
         pane.getChildren().addAll(imageview,label,label0);
         anchorPane.getChildren().add(pane);
+        vBox.getChildren().add(txtID);
         vBox.getChildren().add(txtUsername);
+        vBox.getChildren().add(email);
         vBox.getChildren().add(txtPassword);
-        vBox.getChildren().add(txtSecurity);
+        vBox.getChildren().add(phone_number);
         vBox.getChildren().add(separator);
         vBox.getChildren().add(btnSignup);
-        vBox.getChildren().add(go_back);
         anchorPane.getChildren().add(vBox);
 
 
