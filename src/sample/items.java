@@ -22,7 +22,10 @@ public class items {
             this.Phonenumber = phone;
             this.Dep = dep;
         }
-        public String getSerial(){
+
+
+
+    public String getSerial(){
             return Serial;
         }
         public String getStatus(){

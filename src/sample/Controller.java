@@ -119,4 +119,16 @@ public class Controller implements Serializable {
             return false;
         }
     }
-}
+
+    public boolean deleteitems(items item) {
+        String delete_query ="DELETE FROM items WHERE serial_number="+"'"+item.getSerial()+"';";
+        try {
+            st.executeUpdate(delete_query);
+            return true;
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
+    }
+

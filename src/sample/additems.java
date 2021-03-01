@@ -182,7 +182,8 @@ public class additems {
                 else{
                     if(additem.additems(id,fullname,Email,dep,block,dorm,phone,serial,type)){
                         additemstage.close();
-                        dashboard.newdashboard();
+                        items item = new items(serial, "1",type,id,fullname,dep,block,dorm,phone);
+                        dashboard.tableView.getItems().add(item);
                     }
                     else{
                         System.out.println("couldn't register, please try again.");

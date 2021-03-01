@@ -21,10 +21,12 @@ import javax.xml.crypto.Data;
 import javafx.scene.input.MouseEvent;
 
 import java.sql.ResultSet;
+import java.util.Observable;
 
 import static sample.Controller.*;
 
 public class dashboard {
+    public static TableView<items> tableView;
     protected static  VBox vBox;
     protected static  ImageView imageView;
     protected static  Button button;
@@ -44,7 +46,7 @@ public class dashboard {
     protected static  Label label1;
     protected static  Label label2;
     protected static  Label label3;
-    protected static TableView<Data> tableView;
+    protected static TableView<Data> tableView1;
     protected static  TableColumn tableColumn;
     protected static  TableColumn tableColumn0;
     protected static  TableColumn tableColumn1;
@@ -987,7 +989,7 @@ public class dashboard {
          Label label1;
          Label label2;
           Label label3;
-          TableView<items> tableView;
+
           TableColumn<items,String> tableColumn;
           TableColumn<items,String> tableColumn0;
           TableColumn<items,String> tableColumn1;
@@ -1262,7 +1264,7 @@ public class dashboard {
         tableView.getColumns().add(tableColumn6);
         tableView.getColumns().add(tableColumn7);
         tableView.getColumns().add(tableColumn8);
-        tableView.getColumns().add(tableColumn4);
+
 
        // tablevbox.getChildren().add(tableView);
         vBox1.getChildren().add(tableView);
@@ -1291,7 +1293,7 @@ public class dashboard {
                 //tableView.getItems().add(itemclass);
                // tableView.setVisible(true);
             }
-            tableView.setItems(itemlist);
+            tableView.getItems().addAll(itemlist);
         }
         catch(Exception e){
             System.out.println("error_on_table:"+e);
@@ -1312,11 +1314,24 @@ public class dashboard {
 
     private static void onAction (MouseEvent event){
         additems additems = new additems();
+        Controller cont = new Controller();
         if(event.getSource()==additem){
             additems.additem();
         }
         else if (event.getSource()==delete){
-            System.out.println("delete has been clicked");
+            ObservableList<items> itemselected = null;
+            ObservableList<items>allitems=null;
+            int index = tableView.getSelectionModel().getSelectedIndex();
+            items item = tableView.getItems().get(index);
+            allitems=tableView.getItems();
+            itemselected = tableView.getSelectionModel().getSelectedItems();
+            //System.out.println(item.getSerial());
+            if(cont.deleteitems(item)){
+                itemselected.forEach(allitems::remove);
+            }
+            else{
+                System.out.println("deletion failed.");
+            }
         }
 
     }
