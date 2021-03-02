@@ -1396,6 +1396,27 @@ public class dashboard {
             //System.out.println(item.getSerial());
 
         }
+        else if (event.getSource()==checkin){
+            ObservableList<items> itemselected = null;
+            ObservableList<items>allitems=null;
+            int index = tableView.getSelectionModel().getSelectedIndex();
+            items item = tableView.getItems().get(index);
+            allitems=tableView.getItems();
+            itemselected = tableView.getSelectionModel().getSelectedItems();
+            if(item.getStatus()=="Outside school"){
+                if(cont.check_in(item)){
+                    System.out.println("u can checkin now.");
+                    tableView.getItems().removeAll(allitems);
+                    getrefresh();
+                }
+                else{
+                    System.out.println("error, try again later.");
+                }
+            }
+            else if (item.getStatus()=="Inside school"){
+                System.out.println("u can't checkout");
+            }
+        }
 
 
     }
