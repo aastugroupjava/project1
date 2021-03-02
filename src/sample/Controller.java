@@ -130,5 +130,16 @@ public class Controller implements Serializable {
             return false;
         }
     }
+    public boolean checkout(items item){
+        String checkout_query = "UPDATE items SET current_status='0' WHERE serial_number='"+item.getSerial()+"'";
+        try{
+            st.executeUpdate(checkout_query);
+            return true;
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
+
+    }
     }
 

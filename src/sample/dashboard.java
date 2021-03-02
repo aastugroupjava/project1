@@ -26,6 +26,7 @@ import java.util.Observable;
 import static sample.Controller.*;
 
 public class dashboard {
+    public static Scene scene2;
     public static TableView<items> tableView;
     protected static  VBox vBox;
     protected static  ImageView imageView;
@@ -89,6 +90,9 @@ public class dashboard {
     public  static Stage newdashboard = new Stage();
     private static Button additem = new Button();
     private static Button delete = new Button();
+    private static Button checkout = new Button();
+    private static Button edit = new Button();
+    private static Button checkin = new Button();
 
     public static void display(){
         System.out.println("display");
@@ -591,11 +595,11 @@ public class dashboard {
         anchorpane.setPrefHeight(576.0);
         anchorpane.setPrefWidth(1050.0);
         anchorpane.setStyle("-fx-background-color: #02030A;");
-        dashboard.setOnCloseRequest(event ->{
-            event.consume();
-            alertbox close = new alertbox();
-            close.closeconfirmlogin();
-        } );
+//        dashboard.setOnCloseRequest(event ->{
+//            event.consume();
+//            alertbox close = new alertbox();
+//            close.closeconfirmlogin();
+//        } );
 
         AnchorPane.setBottomAnchor(vBox, 0.0);
         AnchorPane.setTopAnchor(vBox, 0.0);
@@ -611,7 +615,7 @@ public class dashboard {
         imageView.setImage(new Image(dashboard.class.getResource("../images/icon123.png").toExternalForm()));
         VBox.setMargin(imageView, new Insets(50.0, 0.0, 10.0, 0.0));
 
-        label.setText(userdata[0][0]);
+        label.setText("label");
         label.setTextFill(Color.valueOf("#bf7600"));
         VBox.setMargin(label, new Insets(0.0, 0.0, 20.0, 0.0));
 
@@ -962,18 +966,17 @@ public class dashboard {
         pnlOverview.getChildren().add(imageView5);
         stackPane.getChildren().add(pnlOverview);
         anchorpane.getChildren().add(stackPane);
-        Scene scene2= new Scene(anchorpane, 400, 400);
-        dashboard.setScene(scene2);
-        dashboard.setTitle("Dashboard");
-        dashboard.show();
-        System.out.println("it works again.");
+        scene2= new Scene(anchorpane, 400, 400);
+//        dashboard.setScene(scene2);
+//        dashboard.setTitle("Dashboard");
+//        dashboard.show();
+//        System.out.println("it works again.");
     }
     public static void newdashboard(){
         System.out.println("newdashboard(after the login page redirection.)");
           VBox vBox;
         ImageView imageView;
          Button button;
-          Button button0;
          Button button1;
           Button button2;
           Button button3;
@@ -989,7 +992,6 @@ public class dashboard {
          Label label1;
          Label label2;
           Label label3;
-
           TableColumn<items,String> tableColumn;
           TableColumn<items,String> tableColumn0;
           TableColumn<items,String> tableColumn1;
@@ -1000,7 +1002,6 @@ public class dashboard {
         TableColumn<items,String> tableColumn6;
         TableColumn<items,String> tableColumn7;
         TableColumn<items,String> tableColumn8;
-
          HBox mainBox;
         vBox = new VBox();
         imageView = new ImageView();
@@ -1064,19 +1065,43 @@ public class dashboard {
         button.setTextFill(Color.valueOf("#bf7600"));
         VBox.setMargin(button, new Insets(0.0, 0.0, 0.0, 60.0));
 
-        additem.setText("Add Item");
-        additem.setAlignment(Pos.CENTER);
+        additem.setText("Add");
+        //additem.setAlignment(Pos.BASELINE_LEFT);
         additem.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
         additem.setTextFill(Color.DARKGREEN);
         additem.setOnMouseClicked(event -> {
             onAction(event);
         });
 
-        delete.setText("Delete Item");
-        delete.setAlignment(Pos.TOP_RIGHT);
+        delete.setText("Delete");
+        //delete.setAlignment(Pos.TOP_RIGHT);
         delete.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
         delete.setTextFill(Color.DARKRED);
         delete.setOnMouseClicked(event -> {
+            onAction(event);
+        });
+
+        checkout.setText("Checkout");
+       // checkout.setAlignment(Pos.TOP_RIGHT);
+        checkout.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
+        checkout.setTextFill(Color.DARKBLUE);
+        checkout.setOnMouseClicked(event -> {
+            onAction(event);
+        });
+
+        checkin.setText("Checkin");
+       // checkin.setAlignment(Pos.CENTER);
+        checkin.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
+        checkin.setTextFill(Color.AZURE);
+        checkin.setOnMouseClicked(event -> {
+            onAction(event);
+        });
+
+        edit.setText("Edit");
+        //edit.setAlignment(Pos.TOP_RIGHT);
+        edit.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
+        edit.setTextFill(Color.DARKCYAN);
+        edit.setOnMouseClicked(event -> {
             onAction(event);
         });
 
@@ -1087,6 +1112,12 @@ public class dashboard {
         button0.setStyle("-fx-background-color: black;");
         button0.setText("Stolen Items");
         button0.setTextFill(Color.valueOf("#bf7600"));
+        button0.setOnMouseClicked(event -> {
+            onAction(event);
+            //dashboard.getScene(scene2);
+            //stolenitemsview();
+        }
+        );
         VBox.setMargin(button0, new Insets(0.0, 0.0, 0.0, 60.0));
 
         VBox.setVgrow(button1, Priority.ALWAYS);
@@ -1253,6 +1284,9 @@ public class dashboard {
         anchorPane0.getChildren().add(label3);
         anchorPane0.getChildren().add(additem);
         anchorPane0.getChildren().add(delete);
+        anchorPane0.getChildren().add(edit);
+        anchorPane0.getChildren().add(checkout);
+        anchorPane0.getChildren().add(checkin);
         vBox2.getChildren().add(anchorPane0);
         vBox1.getChildren().add(vBox2);
         tableView.getColumns().add(tableColumn);
@@ -1333,9 +1367,69 @@ public class dashboard {
                 System.out.println("deletion failed.");
             }
         }
+        else if(event.getSource()==button0){
+            System.out.println("before");
+            stolenitemsview();
+            newdashboard.setScene(scene2);
+            System.out.println("after");
+        }
+        else if(event.getSource()==checkout){
+            ObservableList<items> itemselected = null;
+            ObservableList<items>allitems=null;
+            int index = tableView.getSelectionModel().getSelectedIndex();
+            items item = tableView.getItems().get(index);
+            allitems=tableView.getItems();
+            itemselected = tableView.getSelectionModel().getSelectedItems();
+            if(item.getStatus()=="Outside school"){
+                System.out.println("u can't checkout");
+            }
+            else if (item.getStatus()=="Inside school"){
+                if(cont.checkout(item)){
+                    System.out.println("u can checkout now.");
+                    tableView.getItems().removeAll(allitems);
+                    getrefresh();
+                }
+                else{
+                    System.out.println("error, try again later.");
+                }
+            }
+            //System.out.println(item.getSerial());
+
+        }
+
 
     }
+    private static void getrefresh(){
+        Controller item = new Controller();
+        ResultSet items = item.getitemdata();
+        try{
+            ObservableList<items> itemlist = FXCollections.observableArrayList();
+            while(items.next()){
+                String serial = items.getString("serial_number");
+                String status = items.getString("current_status");
+                String type = items.getString("computer_type");
+                String id = items.getString("ID");
+                String full_name = items.getString("full_name");
+                String dep = items.getString("departement");
+                String block_number = items.getString("block_number");
+                String dorm = items.getString("dorm_room");
+                String phone = items.getString("phone_number");
+//                System.out.println(request);
+//                System.out.println(appending);
+                itemlist.add(new items(serial,status,type,id,full_name,dep,block_number,dorm,phone));
 
+
+                //tableView.getItems().add(itemclass);
+                // tableView.setVisible(true);
+            }
+            tableView.getItems().addAll(itemlist);
+        }
+        catch(Exception e){
+            System.out.println("error_on_table:"+e);
+        }
+
+
+    }
 
 
 }
