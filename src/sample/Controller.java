@@ -79,11 +79,19 @@ public class Controller implements Serializable {
     }
     public boolean signup(String name,String password,String id,String email,String phonenumber){
         String query = "INSERT INTO users VALUES("+"'"+id+"'"+","+"'"+name+"','"+email+"','"+password+"','"+phonenumber+"');";
-        //System.out.println(query);
+        String checker = "SELECT 1 FROM users WHERE ID="+"'"+id+"'"+"&&name="+"'"+name+"'&&email='"+email+"'&&password='"+password+"'&&phone_number='"+phonenumber+"';";
+        System.out.println(checker);
+        ResultSet check = null;
         try {
-            st.executeUpdate(query);
-           // System.out.println(query);
-            return true;
+            check = st.executeQuery(checker);
+            if(check.next()){
+                return false;
+            }
+            else {
+                st.executeUpdate(query);
+                // System.out.println(query);
+                return true;
+            }
         }catch (SQLException e){
             System.out.println("error:"+e);
             return false;

@@ -972,6 +972,7 @@ public class dashboard {
 //        dashboard.show();
 //        System.out.println("it works again.");
     }
+
     public static void newdashboard(){
         System.out.println("newdashboard(after the login page redirection.)");
           VBox vBox;
@@ -1134,7 +1135,7 @@ public class dashboard {
         button2.setContentDisplay(ContentDisplay.CENTER);
         button2.setMnemonicParsing(false);
         button2.setStyle("-fx-background-color: black;");
-        button2.setText("Appending Items");
+        button2.setText("Complain Alerts");
         button2.setTextFill(Color.valueOf("#bf7600"));
         VBox.setMargin(button2, new Insets(0.0, 0.0, 0.0, 60.0));
 
@@ -1396,6 +1397,14 @@ public class dashboard {
             //System.out.println(item.getSerial());
 
         }
+        else if(event.getSource()==edit){
+            ObservableList<items> itemselected = null;
+            ObservableList<items>allitems=null;
+            int index = tableView.getSelectionModel().getSelectedIndex();
+            items item = tableView.getItems().get(index);
+            allitems=tableView.getItems();
+            itemselected = tableView.getSelectionModel().getSelectedItems();
+        }
         else if (event.getSource()==checkin){
             ObservableList<items> itemselected = null;
             ObservableList<items>allitems=null;
@@ -1417,6 +1426,8 @@ public class dashboard {
                 System.out.println("u can't checkout");
             }
         }
+
+
 
 
     }

@@ -11,6 +11,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class alertbox {
     protected static Button button;
@@ -219,6 +220,7 @@ public class alertbox {
 
         Scene scene = new Scene(anchorPane1);
         confirm.setScene(scene);
+        confirm.initStyle(StageStyle.TRANSPARENT);
         confirm.setResizable(false);
         confirm.show();
     }

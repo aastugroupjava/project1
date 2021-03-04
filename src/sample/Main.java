@@ -139,11 +139,12 @@ public class Main extends Application {
         btnSignin.setOnMouseClicked(this::handleClicks);
         btnSignin.setPrefHeight(34.0);
         btnSignin.setPrefWidth(137.0);
-        btnSignin.setStyle("-fx-background-color: #bf7600");
+        btnSignin.setStyle("-fx-background-color:#bf7600");
         btnSignin.setText("Sign in");
         btnSignin.setTextFill(javafx.scene.paint.Color.valueOf("#f7f7f7"));
         btnSignin.setEffect(blend);
-        VBox.setVgrow(btnForgot, javafx.scene.layout.Priority.ALWAYS);
+
+        //VBox.setVgrow(btnForgot, javafx.scene.layout.Priority.ALWAYS);
         btnForgot.setAlignment(javafx.geometry.Pos.CENTER);
         btnForgot.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
         btnForgot.setPrefHeight(23.0);
@@ -162,7 +163,7 @@ public class Main extends Application {
         btnSignup.setText("Sign up");
         btnSignup.setTextFill(javafx.scene.paint.Color.WHITE);
         btnSignup.setOnMouseClicked(this::handleClicks);
-        btnSignup.setEffect(blend0);
+        //btnSignup.setEffect(blend0);
         pane.getChildren().add(label);
         pane.getChildren().add(label0);
         pane.getChildren().add(imageView);
@@ -209,7 +210,6 @@ public class Main extends Application {
 
     public static void main(String[] args) throws SQLException {
         launch(args);
-
     }
 }
 
