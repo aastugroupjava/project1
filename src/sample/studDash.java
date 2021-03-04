@@ -294,7 +294,7 @@ public  class studDash {
 
         tableColumn1.setPrefWidth(76.0);
         tableColumn1.setText("Email");
-        tableColumn1.setCellValueFactory(new PropertyValueFactory<>("Email"));
+        tableColumn1.setCellValueFactory(new PropertyValueFactory<>("email"));
 
         tableColumn2.setPrefWidth(74.0);
         tableColumn2.setText("Department");
@@ -302,11 +302,11 @@ public  class studDash {
 
         tableColumn3.setPrefWidth(76.0);
         tableColumn3.setText("Block_number");
-        tableColumn3.setCellValueFactory(new PropertyValueFactory<>("Block_Number"));
+        tableColumn3.setCellValueFactory(new PropertyValueFactory<>("block_number"));
 
         tableColumn4.setPrefWidth(72.0);
         tableColumn4.setText("Dorm room");
-        tableColumn4.setCellValueFactory(new PropertyValueFactory<>("Dorm_Number"));
+        tableColumn4.setCellValueFactory(new PropertyValueFactory<>("dorm_number"));
 
         tableColumn5.setPrefWidth(72.0);
         tableColumn5.setText("Phone_number");
@@ -353,14 +353,15 @@ public  class studDash {
             ObservableList<stModel> stdlist = FXCollections.observableArrayList();
             while(students.next()){
                 String id = students.getString("ID");
-                String fullName = students.getString("Full_Name");
-                String Email = students.getString("Email");
-                String Department= students.getString("Department");
-                String Bnum = students.getString("Block_number");
+                String fullName = students.getString("full_name");
+                String Email = students.getString("email");
+                String Department= students.getString("departement");
+                String Bnum = students.getString("block_number");
+                String Dormr = students.getString("dorm_room");
                 String phone = students.getString("phone_number");
 //                System.out.println(request);
 //                System.out.println(appending);
-                stdlist.add(new stModel(id,fullName,Email,Department,Bnum,phone));
+                stdlist.add(new stModel(id,fullName,Email,Department,Bnum,Dormr,phone));
 
 
                 //tableView.getItems().add(itemclass);
