@@ -27,7 +27,7 @@ public class Controller implements Serializable {
     public Controller(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/javadbproject","root","");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/javadbproject","root","root123");
             System.out.println("connected to database");
             st = con.createStatement();
             System.out.println("created statement");
@@ -159,5 +159,29 @@ public class Controller implements Serializable {
             return false;
         }
     }
+
+    public ResultSet getstudentdata() {
+        String stu="SELECT * FROM student";
+        try {
+            ResultSet studentList=st.executeQuery(stu);
+            return studentList;
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+
     }
+
+    public boolean deletestudent(stModel student) {
+        String delete_query ="DELETE FROM student WHERE serial_number="+"'"+student.getID()+"';";
+        try {
+            st.executeUpdate(delete_query);
+            return true;
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
+}
 
