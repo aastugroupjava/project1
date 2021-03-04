@@ -13,7 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import jdk.nashorn.api.scripting.ScriptObjectMirror;
+//import jdk.nashorn.api.scripting.ScriptObjectMirror;
 import java.sql.SQLException;
 import java.lang.*;
 
@@ -39,8 +39,8 @@ public class Main extends Application {
     protected Scene login;
     protected Scene Signup;
     protected Label warning;
-    private ScriptObjectMirror EventAll;
-    private ScriptObjectMirror list;
+//    private ScriptObjectMirror EventAll;
+//    private ScriptObjectMirror list;
     public String[][] userdata;
     public String in;
     public int b= 0,c=0,usercount=7;

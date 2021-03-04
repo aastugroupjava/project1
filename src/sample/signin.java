@@ -15,7 +15,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import sun.plugin.com.BeanCustomizer;
+//import sun.plugin.com.BeanCustomizer;
 
 import java.awt.*;
 import java.sql.Connection;

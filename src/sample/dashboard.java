@@ -26,13 +26,14 @@ import java.util.Observable;
 import static sample.Controller.*;
 
 public class dashboard {
+    public static Scene scene;
     public static Scene scene2;
     public static TableView<items> tableView;
     protected static  VBox vBox;
     protected static  ImageView imageView;
     protected static  Button button;
-    protected static  Button button0;
-    protected static  Button button1;
+    public static  Button button0;
+    public static  Button button1;
     protected static  Button button2;
     protected static  Button button3;
     protected static  Button button4;
@@ -978,10 +979,11 @@ public class dashboard {
           VBox vBox;
         ImageView imageView;
          Button button;
-         Button button1;
+        // Button button1;
           Button button2;
           Button button3;
           Button button4;
+          Button button0;
           VBox vBox0;
          VBox vBox1;
           VBox vBox2;
@@ -1128,6 +1130,9 @@ public class dashboard {
         button1.setStyle("-fx-background-color: black;");
         button1.setText("Student List");
         button1.setTextFill(Color.valueOf("#bf7600"));
+        button1.setOnMouseClicked(event->{
+            onAction(event);
+        });
         VBox.setMargin(button1, new Insets(0.0, 0.0, 0.0, 60.0));
 
         VBox.setVgrow(button2, Priority.ALWAYS);
@@ -1334,10 +1339,13 @@ public class dashboard {
             System.out.println("error_on_table:"+e);
         }
 
-        Scene scene = new Scene(mainBox);
+         scene = new Scene(mainBox);
         newdashboard.setScene(scene);
         newdashboard.setResizable(true);
         newdashboard.show();
+        newdashboard.setResizable(false);
+       // newdashboard.setFullScreen(true);
+        newdashboard.setMaximized(true);
         newdashboard.setOnCloseRequest(event ->{
             event.consume();
             alertbox close = new alertbox();
@@ -1350,6 +1358,19 @@ public class dashboard {
     private static void onAction (MouseEvent event){
         additems additems = new additems();
         Controller cont = new Controller();
+        if(event.getSource()==button1){
+            newdashboard.setScene(studDash.student());
+            //newdashboard.setResizable(false);
+            //newdashboard.show();
+           // newdashboard.setMaximized(true);
+//            newdashboard.setOnCloseRequest(ev ->{
+//                ev.consume();
+//                alertbox close = new alertbox();
+//                close.closeconfirmdashboard();
+//            } );
+            newdashboard.setFullScreen(true);
+
+        }
         if(event.getSource()==additem){
             additems.additem();
         }
