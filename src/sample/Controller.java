@@ -31,10 +31,6 @@ public class Controller implements Serializable {
         }catch(Exception e){
             System.out.println("error2:"+e);
         }
-
-
-
-
     }
 
     public void getData() {
