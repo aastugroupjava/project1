@@ -990,7 +990,6 @@ public class dashboard {
         // Button button1;
           Button button2;
           Button button3;
-          Button button4;
           Button button0;
           VBox vBox0;
          VBox vBox1;
@@ -1168,6 +1167,9 @@ public class dashboard {
         button4.setStyle("-fx-background-color: black;");
         button4.setText("Sign-Out");
         button4.setTextFill(Color.valueOf("#bf7600"));
+        button4.setOnMouseClicked(event -> {
+            onAction(event);
+        });
         VBox.setMargin(button4, new Insets(0.0, 0.0, 0.0, 60.0));
 
         HBox.setHgrow(vBox0, Priority.ALWAYS);
@@ -1444,6 +1446,11 @@ public class dashboard {
     private static void onAction (MouseEvent event){
         additems additems = new additems();
         Controller cont = new Controller();
+        if(event.getSource()==button4){
+            System.out.println("signout is clicked");
+            newdashboard.close();
+            Main.window.show();
+        }
         if(event.getSource()==search){
             ObservableList<items> allitems=null;
            ResultSet searched= cont.searchitem(id);
@@ -1469,10 +1476,12 @@ public class dashboard {
            tableView.getItems().add(item);
         }
         if(event.getSource()==button1){
-            newdashboard.setScene(studDash.student());
+            studDash stud = new studDash();
+            newdashboard.setScene(studDash.display());
+            //newdashboard.close();
             //newdashboard.setResizable(false);
             //newdashboard.show();
-           // newdashboard.setMaximized(true);
+            //newdashboard.setMaximized(true);
 //            newdashboard.setOnCloseRequest(ev ->{
 //                ev.consume();
 //                alertbox close = new alertbox();

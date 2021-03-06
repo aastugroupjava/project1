@@ -245,5 +245,16 @@ public class Controller implements Serializable {
             return null;
         }
     }
+    public ResultSet searchstudent(String id){
+        String getstudentquery = "SELECT * FROM student WHERE  ID='"+id+"'";
+        ResultSet searched = null;
+        try{
+            searched = st.executeQuery(getstudentquery);
+            return searched;
+        }catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
 }
 

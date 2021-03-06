@@ -193,6 +193,7 @@ public class alertbox {
         button1.setOnAction(e->{
             confirm.close();
             dashboard.newdashboard.close();
+            studDash.studentdashboard.close();
         });
 
         label1.setAlignment(Pos.CENTER);
