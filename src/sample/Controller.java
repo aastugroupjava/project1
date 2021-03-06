@@ -5,9 +5,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.*;
+import java.util.List;
+import java.util.ResourceBundle;
+
 public class Controller implements Serializable {
     protected Connection con;
-    protected Statement st;
+    protected static Statement st;
     protected ResultSet rt;
     protected ResultSet ct;
     protected ResultSet d;
@@ -173,14 +176,73 @@ public class Controller implements Serializable {
 
     }
 
-    public boolean deletestudent(stModel student) {
-        String delete_query ="DELETE FROM student WHERE serial_number="+"'"+student.getID()+"';";
+    public boolean deletestudent(String ID) {
+        String delete_query ="DELETE FROM student WHERE ID="+"'"+ID+"';";
         try {
             st.executeUpdate(delete_query);
             return true;
         }catch (Exception e){
             System.out.println(e);
             return false;
+        }
+    }
+    public static int itemnumbers(){
+        String count_query = "SELECT COUNT(*) FROM items";
+        int item = 0;
+        ResultSet items = null;
+        try{
+            items = st.executeQuery(count_query);
+            while(items.next()){
+                item = Integer.parseInt(items.getString("COUNT(*)"));
+            }
+            return item;
+        }catch(Exception e){
+            System.out.println(e);
+            return 0;
+        }
+    }
+    public static int stolennumbers(){
+        String count1_query = "SELECT COUNT(*) FROM stolen_items";
+        int item = 0;
+        ResultSet items = null;
+        try{
+            items = st.executeQuery(count1_query);
+            while(items.next()){
+                item = Integer.parseInt(items.getString("COUNT(*)"));
+            }
+            return item;
+        }catch(Exception e){
+            System.out.println(e);
+            return 0;
+        }
+
+    }
+    public  static int complainnumber(){
+        String count2_query = "SELECT COUNT(*) FROM complain_alerts";
+        int item = 0;
+        ResultSet items = null;
+        try{
+            items = st.executeQuery(count2_query);
+            while(items.next()){
+                item = Integer.parseInt(items.getString("COUNT(*)"));
+            }
+            return item;
+        }catch(Exception e){
+            System.out.println(e);
+            return 0;
+        }
+    }
+
+
+    public ResultSet searchitem(String id) {
+        String getitemquery = "SELECT DISTINCT * FROM items JOIN student ON items.student_ID=student.ID && student_ID='"+id+"'";
+        ResultSet searched = null;
+        try{
+            searched = st.executeQuery(getitemquery);
+            return searched;
+        }catch (Exception e){
+            System.out.println(e);
+            return null;
         }
     }
 }

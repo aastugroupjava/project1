@@ -193,7 +193,11 @@ public class Main extends Application {
             password = txtPassword.getText();
             Controller validator = new Controller();
             if(validator.validator(username, password)){
-                dashboard.newdashboard();
+                try {
+                    dashboard.newdashboard();
+                } catch (SQLException e) {
+                    System.out.println(e);
+                }
                 window.close();
             }
             else{

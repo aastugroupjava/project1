@@ -164,7 +164,11 @@ public class signin {
             }
             else {
                 if (signup.signup(username, password, ID,Email,phonenumber)) {
-                    dashboard.newdashboard();
+                    try {
+                        dashboard.newdashboard();
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
                     signin.close();
                 } else {
                     System.out.println("couldn't register.please try again.");

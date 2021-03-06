@@ -3,7 +3,6 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.geometry.Insets;
@@ -21,7 +20,8 @@ import javax.xml.crypto.Data;
 import javafx.scene.input.MouseEvent;
 
 import java.sql.ResultSet;
-import java.util.Observable;
+import java.sql.SQLException;
+import java.util.List;
 
 import static sample.Controller.*;
 
@@ -34,6 +34,7 @@ public class dashboard {
     protected static  Button button;
     public static  Button button0;
     public static  Button button1;
+    public static Button search;
     protected static  Button button2;
     protected static  Button button3;
     protected static  Button button4;
@@ -48,6 +49,7 @@ public class dashboard {
     protected static  Label label1;
     protected static  Label label2;
     protected static  Label label3;
+    private static String id;
     protected static TableView<Data> tableView1;
     protected static  TableColumn tableColumn;
     protected static  TableColumn tableColumn0;
@@ -94,6 +96,11 @@ public class dashboard {
     private static Button checkout = new Button();
     private static Button edit = new Button();
     private static Button checkin = new Button();
+    private static Button reset = new Button();
+    public static ResultSet counter1= null;
+    public static ResultSet counter2= null;
+    public static ResultSet counter3= null;
+    public static int stolen=0,all = 0,complain=0;
 
     public static void display(){
         System.out.println("display");
@@ -544,7 +551,7 @@ public class dashboard {
             close.closeconfirmlogin();
         } );
     }
-    public static void stolenitemsview(){
+    public static Scene stolenitemsview(){
         System.out.println("stolenitemview");
         AnchorPane  anchorpane = new AnchorPane();
         VBox  vBox = new VBox();
@@ -972,9 +979,10 @@ public class dashboard {
 //        dashboard.setTitle("Dashboard");
 //        dashboard.show();
 //        System.out.println("it works again.");
+        return scene2;
     }
 
-    public static void newdashboard(){
+    public static void newdashboard() throws SQLException {
         System.out.println("newdashboard(after the login page redirection.)");
           VBox vBox;
         ImageView imageView;
@@ -1014,7 +1022,7 @@ public class dashboard {
         button2 = new Button();
         button3 = new Button();
         button4 = new Button();
-        Button btnSignup = new Button();
+        search = new Button();
         vBox0 = new VBox();
         vBox1 = new VBox();
         vBox2 = new VBox();
@@ -1037,8 +1045,7 @@ public class dashboard {
         tableColumn6 = new TableColumn<>();
         tableColumn7 = new TableColumn<>();
         tableColumn8 = new TableColumn<>();
-
-
+        Label label5=new Label(),label6=new Label(),label7=new Label();
 
         mainBox = new HBox();
 
@@ -1116,9 +1123,10 @@ public class dashboard {
         button0.setText("Stolen Items");
         button0.setTextFill(Color.valueOf("#bf7600"));
         button0.setOnMouseClicked(event -> {
-            onAction(event);
-            //dashboard.getScene(scene2);
-            //stolenitemsview();
+                    System.out.println("button is clicked");
+                    newdashboard.setScene(stolenitemsview());
+            //onAction(event);
+//
         }
         );
         VBox.setMargin(button0, new Insets(0.0, 0.0, 0.0, 60.0));
@@ -1192,37 +1200,109 @@ public class dashboard {
         textField.setPromptText("search");
         textField.setAlignment(Pos.CENTER);
 
-        btnSignup.setMnemonicParsing(false);
-        btnSignup.setPrefHeight(58.0);
-        btnSignup.setPrefWidth(25.0);
-        btnSignup.setStyle("-fx-background-color: #bf7600");
-        btnSignup.setText("search");
-        btnSignup.setTextFill(javafx.scene.paint.Color.WHITE);
+        search.setMnemonicParsing(false);
+        search.setPrefHeight(58.0);
+        search.setPrefWidth(25.0);
+        search.setStyle("-fx-background-color: #bf7600");
+        search.setText("search");
+        search.setTextFill(javafx.scene.paint.Color.WHITE);
+        search.setOnMouseClicked(event -> {
+            if(textField.equals(null)||textField.getText()==null){
+
+            }
+            else {
+                id = textField.getText();
+                onAction(event);
+                reset.setVisible(true);
+            }
+        });
+
+        reset.setMnemonicParsing(false);
+        reset.setPrefHeight(58.0);
+        reset.setPrefWidth(25.0);
+        reset.setStyle("-fx-background-color: #FF0000");
+        reset.setText("X");
+        reset.setTextFill(javafx.scene.paint.Color.WHITE);
+        reset.setVisible(false);
+        reset.setOnMouseClicked(event -> {
+            ObservableList<items> allitems=tableView.getItems();
+            tableView.getItems().removeAll(allitems);
+            getrefresh();
+            textField.clear();
+            reset.setVisible(false);
+        });
 
         anchorPane0.setPrefHeight(62.0);
         anchorPane0.setPrefWidth(434.0);
         anchorPane0.setSpacing(100);
 
+        all= Controller.itemnumbers();
+        stolen= Controller.stolennumbers();
+        complain=Controller.complainnumber();
 
-        label0.setLayoutX(42.0);
-        label0.setLayoutY(14.0);
-        label0.setText("stolen items number");
-        label0.setTextFill(Color.valueOf("#bf7600"));
 
-        label1.setLayoutX(42.0);
-        label1.setLayoutY(40.0);
-        label1.setText("total items number");
-        label1.setTextFill(Color.valueOf("#bf7600"));
+        label0.setText(String.valueOf(stolen));
+        label0.setTextFill(Color.RED);
+        label0.setFont(new Font("System Bold",26.0));
+        VBox.setVgrow(label0, Priority.ALWAYS);
+        label0.setAlignment(Pos.CENTER);
+        label0.setContentDisplay(ContentDisplay.CENTER);
+        label0.setMnemonicParsing(false);
+        label0.setStyle("-fx-background-color: black;");
+        VBox.setMargin(label0, new Insets(0.0, 0.0, 0.0, 20.0));
 
-        label2.setLayoutX(343.0);
-        label2.setLayoutY(14.0);
-        label2.setText("found items number");
-        label2.setTextFill(Color.valueOf("#bf7600"));
+        label5.setText("Stolen Items");
+        label5.setTextFill(Color.valueOf("#bf7600"));
+        label5.setFont(new Font("System Bold",22.0));
+        VBox.setVgrow(label5, Priority.ALWAYS);
+        label5.setAlignment(Pos.CENTER);
+        label5.setContentDisplay(ContentDisplay.CENTER);
+        label5.setMnemonicParsing(false);
+        label5.setStyle("-fx-background-color: black;");
+        VBox.setMargin(label5, new Insets(0.0, 0.0, 0.0, 20.0));
 
-        label3.setLayoutX(343.0);
-        label3.setLayoutY(40.0);
-        label3.setText("complain alerts");
-        label3.setTextFill(Color.valueOf("#bf7600"));
+
+        label1.setText(String.valueOf(all));
+        label1.setTextFill(Color.valueOf("#008000"));
+        label1.setFont(new Font("System Bold",26.0));
+        VBox.setVgrow(label1, Priority.ALWAYS);
+        label0.setAlignment(Pos.CENTER);
+        label0.setContentDisplay(ContentDisplay.CENTER);
+        label0.setMnemonicParsing(false);
+        label0.setStyle("-fx-background-color: black;");
+        VBox.setMargin(label1, new Insets(0.0, 0.0, 0.0, 20.0));
+
+        label6.setText("All Items");
+        label6.setTextFill(Color.valueOf("#bf7600"));
+        label6.setFont(new Font("System Bold",22.0));
+        VBox.setVgrow(label6, Priority.ALWAYS);
+        label6.setAlignment(Pos.CENTER);
+        label6.setContentDisplay(ContentDisplay.CENTER);
+        label6.setMnemonicParsing(false);
+        label6.setStyle("-fx-background-color: black;");
+        VBox.setMargin(label6, new Insets(0.0, 0.0, 0.0, 20.0));
+
+
+
+        label3.setText(String.valueOf(complain));
+        label3.setTextFill(Color.BLUE);
+        label3.setFont(new Font("System Bold",26.0));
+        VBox.setVgrow(label3, Priority.ALWAYS);
+        label0.setAlignment(Pos.CENTER);
+        label0.setContentDisplay(ContentDisplay.CENTER);
+        label0.setMnemonicParsing(false);
+        label0.setStyle("-fx-background-color: black;");
+        VBox.setMargin(label3, new Insets(0.0, 0.0, 0.0, 20.0));
+
+        label7.setText("Complain Alerts");
+        label7.setTextFill(Color.valueOf("#bf7600"));
+        label7.setFont(new Font("System Bold",22.0));
+        VBox.setVgrow(label7, Priority.ALWAYS);
+        label7.setAlignment(Pos.CENTER);
+        label7.setContentDisplay(ContentDisplay.CENTER);
+        label7.setMnemonicParsing(false);
+        label7.setStyle("-fx-background-color: black;");
+        VBox.setMargin(label7, new Insets(0.0, 0.0, 0.0, 20.0));
 
         VBox.setVgrow(tableView, Priority.ALWAYS);
 //        tableView.setPrefHeight(278.0);
@@ -1273,6 +1353,7 @@ public class dashboard {
 
         //tableColumn5.setStyle("-fx-background-color:black");
         //tableColumn5.setStyle("-fx-text-color:black");
+        vBox.setSpacing(20);
         vBox.getChildren().add(imageView);
         vBox.getChildren().add(button);
         vBox.getChildren().add(button0);
@@ -1280,14 +1361,19 @@ public class dashboard {
         vBox.getChildren().add(button2);
         vBox.getChildren().add(button3);
         vBox.getChildren().add(button4);
+        vBox.getChildren().add(label0);
+        vBox.getChildren().add(label5);
+        vBox.getChildren().add(label1);
+        vBox.getChildren().add(label6);
+        vBox.getChildren().add(label3);
+        vBox.getChildren().add(label7);
         mainBox.getChildren().add(vBox);
         //anchorPane.getChildren().add(label);
-        anchorPane.getChildren().addAll(textField,btnSignup);
+        anchorPane.getChildren().addAll(textField,search,reset);
         vBox2.getChildren().add(anchorPane);
-        anchorPane0.getChildren().add(label0);
-        anchorPane0.getChildren().add(label1);
-        anchorPane0.getChildren().add(label2);
-        anchorPane0.getChildren().add(label3);
+//        anchorPane0.getChildren().add(label0);
+//        anchorPane0.getChildren().add(label1);
+//        anchorPane0.getChildren().add(label3);
         anchorPane0.getChildren().add(additem);
         anchorPane0.getChildren().add(delete);
         anchorPane0.getChildren().add(edit);
@@ -1343,7 +1429,7 @@ public class dashboard {
         newdashboard.setScene(scene);
         newdashboard.setResizable(true);
         newdashboard.show();
-        newdashboard.setResizable(false);
+     //   newdashboard.setResizable(false);
        // newdashboard.setFullScreen(true);
         newdashboard.setMaximized(true);
         newdashboard.setOnCloseRequest(event ->{
@@ -1358,6 +1444,30 @@ public class dashboard {
     private static void onAction (MouseEvent event){
         additems additems = new additems();
         Controller cont = new Controller();
+        if(event.getSource()==search){
+            ObservableList<items> allitems=null;
+           ResultSet searched= cont.searchitem(id);
+           allitems= tableView.getItems();
+           items item=null;
+           try{
+               while (searched.next()){
+                   String serial = searched.getString("serial_number");
+                   String status = searched.getString("current_status");
+                   String type = searched.getString("computer_type");
+                   String ids = searched.getString("ID");
+                   String full_name = searched.getString("full_name");
+                   String dep = searched.getString("departement");
+                   String block_number = searched.getString("block_number");
+                   String dorm = searched.getString("dorm_room");
+                   String phone = searched.getString("phone_number");
+                   item = new items(serial,status,type,ids,full_name,dep,block_number,dorm,phone);
+               }
+           }catch (Exception e){
+               System.out.println(e);
+           }
+           tableView.getItems().removeAll(allitems);
+           tableView.getItems().add(item);
+        }
         if(event.getSource()==button1){
             newdashboard.setScene(studDash.student());
             //newdashboard.setResizable(false);
@@ -1368,7 +1478,7 @@ public class dashboard {
 //                alertbox close = new alertbox();
 //                close.closeconfirmdashboard();
 //            } );
-            newdashboard.setFullScreen(true);
+           // newdashboard.setFullScreen(true);
 
         }
         if(event.getSource()==additem){
@@ -1391,8 +1501,8 @@ public class dashboard {
         }
         else if(event.getSource()==button0){
             System.out.println("before");
-            stolenitemsview();
-            newdashboard.setScene(scene2);
+            //stolenitemsview();
+            newdashboard.setScene(stolenitemsview());
             System.out.println("after");
         }
         else if(event.getSource()==checkout){
@@ -1423,8 +1533,12 @@ public class dashboard {
             ObservableList<items>allitems=null;
             int index = tableView.getSelectionModel().getSelectedIndex();
             items item = tableView.getItems().get(index);
-            allitems=tableView.getItems();
-            itemselected = tableView.getSelectionModel().getSelectedItems();
+            if(cont.deleteitems(item)&&cont.deletestudent(item.getId())) {
+                edititem.edititems(item);
+            }
+            else{
+                System.out.println("couldn't edit");
+            }
         }
         else if (event.getSource()==checkin){
             ObservableList<items> itemselected = null;
@@ -1452,7 +1566,7 @@ public class dashboard {
 
 
     }
-    private static void getrefresh(){
+    public static void getrefresh(){
         Controller item = new Controller();
         ResultSet items = item.getitemdata();
         try{
