@@ -988,7 +988,7 @@ public class dashboard {
         ImageView imageView;
          Button button;
         // Button button1;
-          Button button2;
+
           Button button3;
 
           VBox vBox0;
@@ -1149,6 +1149,9 @@ public class dashboard {
         button2.setStyle("-fx-background-color: black;");
         button2.setText("Complain Alerts");
         button2.setTextFill(Color.valueOf("#bf7600"));
+        button2.setOnMouseClicked(event -> {
+            onAction(event);
+        });
         VBox.setMargin(button2, new Insets(0.0, 0.0, 0.0, 60.0));
 
         VBox.setVgrow(button3, Priority.ALWAYS);
@@ -1446,6 +1449,10 @@ public class dashboard {
     private static void onAction (MouseEvent event){
         additems additems = new additems();
         Controller cont = new Controller();
+        if(event.getSource()==button2){
+            System.out.println("button is clicked");
+            newdashboard.setScene(sample.complain.display());
+        }
         if(event.getSource()==button4){
             System.out.println("signout is clicked");
             newdashboard.close();
@@ -1476,7 +1483,7 @@ public class dashboard {
            tableView.getItems().add(item);
         }
         if(event.getSource()==button1){
-            studDash stud = new studDash();
+
             newdashboard.setScene(studDash.display());
             //newdashboard.close();
             //newdashboard.setResizable(false);
