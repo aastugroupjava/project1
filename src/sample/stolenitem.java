@@ -20,11 +20,11 @@ import javafx.stage.Stage;
 
 import java.sql.ResultSet;
 
-public  class studDash {
-    public static  Scene scenestud;
+public class stolenitem {
+    public static  Scene scenestolen;
     protected static  Button button0;
     protected static Button button;
-    private static TableView<stModel> tableView;
+    private static TableView<stolen_model> tableView;
     private static Button additem = new Button();
     private static Button delete = new Button();
     private static Button checkout = new Button();
@@ -38,7 +38,6 @@ public  class studDash {
 
     public static Scene display()
     {
-        System.out.println("newdashboard(after the login page redirection.)");
         VBox vBox;
         ImageView imageView;
         Button button1;
@@ -60,12 +59,12 @@ public  class studDash {
         Label label6;
         Label label7;
         TableColumn tableColumn;
-        TableColumn<stModel,String> tableColumn0;
-        TableColumn<stModel,String> tableColumn1;
-        TableColumn<stModel,String> tableColumn2;
-        TableColumn<stModel,String> tableColumn3;
-        TableColumn<stModel,String> tableColumn4;
-        TableColumn<stModel,String> tableColumn5;
+        TableColumn<stolen_model,String> tableColumn0;
+        TableColumn<stolen_model,String> tableColumn1;
+        TableColumn<stolen_model,String> tableColumn2;
+        TableColumn<stolen_model,String> tableColumn3;
+        TableColumn<stolen_model,String> tableColumn4;
+        TableColumn<stolen_model,String> tableColumn5;
 
         HBox mainBox;
         vBox = new VBox();
@@ -91,7 +90,7 @@ public  class studDash {
         label5 = new Label();
         label6 = new Label();
         label7 = new Label();
-        tableView = new TableView<stModel>();
+        tableView = new TableView<stolen_model>();
         tableColumn = new TableColumn<>();
         tableColumn0 = new TableColumn<>();
         tableColumn1 = new TableColumn<>();
@@ -265,7 +264,7 @@ public  class studDash {
         reset.setTextFill(javafx.scene.paint.Color.WHITE);
         reset.setVisible(false);
         reset.setOnMouseClicked(event -> {
-            ObservableList<stModel> allitems=tableView.getItems();
+            ObservableList<stolen_model> allitems=tableView.getItems();
             tableView.getItems().removeAll(allitems);
             getrefresh();
             textField.clear();
@@ -354,32 +353,26 @@ public  class studDash {
 
         tableColumn.setPrefWidth(58.0);
         tableColumn.setText("ID");
-        tableColumn.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        tableColumn.setCellValueFactory(new PropertyValueFactory<>("Id_of_item"));
 
 
         tableColumn0.setPrefWidth(76.0);
-        tableColumn0.setText("Full Name");
-        tableColumn0.setCellValueFactory(new PropertyValueFactory<>("Full_Name"));
+        tableColumn0.setText("Full Date");
+        tableColumn0.setCellValueFactory(new PropertyValueFactory<>("found_date"));
 
         tableColumn1.setPrefWidth(76.0);
-        tableColumn1.setText("Email");
-        tableColumn1.setCellValueFactory(new PropertyValueFactory<>("email"));
+        tableColumn1.setText("Found_Gate");
+        tableColumn1.setCellValueFactory(new PropertyValueFactory<>("found_gate"));
 
         tableColumn2.setPrefWidth(74.0);
-        tableColumn2.setText("Department");
-        tableColumn2.setCellValueFactory(new PropertyValueFactory<>("Department"));
+        tableColumn2.setText("Found_Dorm");
+        tableColumn2.setCellValueFactory(new PropertyValueFactory<>("found_dorm"));
 
         tableColumn3.setPrefWidth(76.0);
-        tableColumn3.setText("Block_number");
-        tableColumn3.setCellValueFactory(new PropertyValueFactory<>("block_number"));
+        tableColumn3.setText("Found_Block");
+        tableColumn3.setCellValueFactory(new PropertyValueFactory<>("found_block"));
 
-        tableColumn4.setPrefWidth(72.0);
-        tableColumn4.setText("Dorm room");
-        tableColumn4.setCellValueFactory(new PropertyValueFactory<>("dorm_number"));
 
-        tableColumn5.setPrefWidth(72.0);
-        tableColumn5.setText("Phone_number");
-        tableColumn5.setCellValueFactory(new PropertyValueFactory<>("Phonenumber"));
 
         //tableColumn5.setStyle("-fx-background-color:black");
         //tableColumn5.setStyle("-fx-text-color:black");
@@ -409,8 +402,8 @@ public  class studDash {
         tableView.getColumns().add(tableColumn0);
         tableView.getColumns().add(tableColumn1);
         tableView.getColumns().add(tableColumn2);
-        tableView.getColumns().add(tableColumn4);
-        tableView.getColumns().add(tableColumn5);
+        tableView.getColumns().add(tableColumn3);
+
 
 
 
@@ -420,32 +413,31 @@ public  class studDash {
         mainBox.getChildren().add(vBox0);
 
         Controller item = new Controller();
-        ResultSet students = item.getstudentdata();
+        ResultSet stolen = item.getStolen_item();
         try{
-            ObservableList<stModel> stdlist = FXCollections.observableArrayList();
-            while(students.next()){
-                String id = students.getString("ID");
-                String fullName = students.getString("full_name");
-                String Email = students.getString("email");
-                String Department= students.getString("departement");
-                String Bnum = students.getString("block_number");
-                String Dormr = students.getString("dorm_room");
-                String phone = students.getString("phone_number");
+            ObservableList<stolen_model> stolenlist = FXCollections.observableArrayList();
+            while(stolen.next()){
+                String id = stolen.getString("ID_of_item");
+                String date = stolen.getString("found_date");
+                String gate = stolen.getString("found_gate");
+                String Dormn = stolen.getString("found_dorm");
+                String Bnum = stolen.getString("found_block_number");
+
 //                System.out.println(request);
 //                System.out.println(appending);
-                stdlist.add(new stModel(id,fullName,Email,Department,Bnum,Dormr,phone));
+                stolenlist.add(new stolen_model(id,date,gate,Dormn,Bnum));
 
 
                 //tableView.getItems().add(itemclass);
                 // tableView.setVisible(true);
             }
-            tableView.getItems().addAll(stdlist);
+            tableView.getItems().addAll(stolenlist);
         }
         catch(Exception e){
             System.out.println("error_on_table:"+e);
         }
-        scenestud = new Scene(mainBox);
-        return scenestud;
+        scenestolen = new Scene(mainBox);
+        return scenestolen;
 //        studentdashboard.setScene(scenestud);
 //        studentdashboard.setResizable(true);
 //        studentdashboard.show();
@@ -461,26 +453,25 @@ public  class studDash {
     }
     public static void getrefresh(){
         Controller item = new Controller();
-        ResultSet student = item.getstudentdata();
+        ResultSet stolen = item.getStolen_item();
         try{
-            ObservableList<stModel> itemlist = FXCollections.observableArrayList();
-            while(student.next()){
-                String id = student.getString("ID");
-                String fullName = student.getString("full_name");
-                String Email = student.getString("email");
-                String Department= student.getString("departement");
-                String Bnum = student.getString("block_number");
-                String Dormr = student.getString("dorm_room");
-                String phone = student.getString("phone_number");
+            ObservableList<stolen_model> stolenlist = FXCollections.observableArrayList();
+            while(stolen.next()){
+                String id = stolen.getString("ID_of_item");
+                String date = stolen.getString("found_date");
+                String gate = stolen.getString("found_gate");
+                String Dormn = stolen.getString("found_dorm");
+                String Bnum = stolen.getString("found_block_number");
+
 //                System.out.println(request);
 //                System.out.println(appending);
-                itemlist.add(new stModel(id,fullName,Email,Department,Bnum,Dormr,phone));
+                stolenlist.add(new stolen_model(id,date,gate,Dormn,Bnum));
 
 
                 //tableView.getItems().add(itemclass);
                 // tableView.setVisible(true);
             }
-            tableView.getItems().addAll(itemlist);
+            tableView.getItems().addAll(stolenlist);
         }
         catch(Exception e){
             System.out.println("error_on_table:"+e);
@@ -493,14 +484,14 @@ public  class studDash {
         dashboard dash = new dashboard();
         Controller cont = new Controller();
         if(event.getSource()==delete){
-            ObservableList<stModel> itemselected = null;
-            ObservableList<stModel>allitems=null;
+            ObservableList<stolen_model> itemselected = null;
+            ObservableList<stolen_model>allitems=null;
             int index = tableView.getSelectionModel().getSelectedIndex();
-            stModel item = tableView.getItems().get(index);
+            stolen_model item = tableView.getItems().get(index);
             allitems=tableView.getItems();
             itemselected = tableView.getSelectionModel().getSelectedItems();
             //System.out.println(item.getSerial());
-            if(cont.deletestudent(item.getID())){
+            if(cont.delete_stolen(item.getId_of_item())){
                 itemselected.forEach(allitems::remove);
             }
             else{
@@ -514,25 +505,23 @@ public  class studDash {
             dash.newdashboard.setFullScreen(true);
         }
         if(event.getSource()==search){
-            ObservableList<stModel> allitems=null;
-            ResultSet searched= cont.searchstudent(id);
+            ObservableList<stolen_model> allitems=null;
+            ResultSet searched= cont.searchstolen(id);
             allitems= tableView.getItems();
-            stModel st=null;
+            stolen_model st=null;
             try{
                 while (searched.next()){
-                    String id = searched.getString("ID");
-                    String fullName = searched.getString("full_name");
-                    String Email = searched.getString("email");
-                    String Department= searched.getString("departement");
-                    String Bnum = searched.getString("block_number");
-                    String Dormr = searched.getString("dorm_room");
-                    String phone = searched.getString("phone_number");
-                    st = new stModel(id,fullName,Email,Department,Bnum,Dormr,phone);
+                    String id = searched.getString("ID_of_item");
+                    String date = searched.getString("found_date");
+                    String gate = searched.getString("found_gate");
+                    String Dormn = searched.getString("found_dorm");
+                    String Bnum = searched.getString("found_block_number");
+                    st = new stolen_model(id,date,gate,Dormn,Bnum);
                 }
             }catch (Exception e){
                 System.out.println(e);
             }
-           tableView.getItems().removeAll(allitems);
+            tableView.getItems().removeAll(allitems);
             tableView.getItems().add(st);
         }
 

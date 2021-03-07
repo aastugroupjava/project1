@@ -175,6 +175,28 @@ public class Controller implements Serializable {
         }
 
     }
+    public ResultSet getStolen_item() {
+        String stu="SELECT * FROM `stolen_items` ";
+        try {
+            ResultSet studentList=st.executeQuery(stu);
+            return studentList;
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+
+    }
+    public boolean delete_stolen(String Id){
+        String delete = "DELETE FROM stolen_items WHERE ID_of_item='"+Id+"';";
+        try{
+            st.executeUpdate(delete);
+            return true;
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
 
     public boolean deletestudent(String ID) {
         String delete_query ="DELETE FROM student WHERE ID="+"'"+ID+"';";
@@ -246,10 +268,21 @@ public class Controller implements Serializable {
         }
     }
     public ResultSet searchstudent(String id){
-        String getstudentquery = "SELECT * FROM student WHERE  ID='"+id+"'";
+        String getstudentquery = "SELECT * FROM student WHERE  ID='"+id+"';";
         ResultSet searched = null;
         try{
             searched = st.executeQuery(getstudentquery);
+            return searched;
+        }catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
+    public ResultSet searchstolen (String id){
+        String getstolen = "SELECT * FROM stolen_items WHERE  ID_of_items='"+id+"';";
+        ResultSet searched = null;
+        try{
+            searched = st.executeQuery(getstolen);
             return searched;
         }catch (Exception e){
             System.out.println(e);

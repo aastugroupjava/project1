@@ -990,7 +990,7 @@ public class dashboard {
         // Button button1;
           Button button2;
           Button button3;
-          Button button0;
+
           VBox vBox0;
          VBox vBox1;
           VBox vBox2;
@@ -1123,8 +1123,8 @@ public class dashboard {
         button0.setTextFill(Color.valueOf("#bf7600"));
         button0.setOnMouseClicked(event -> {
                     System.out.println("button is clicked");
-                    newdashboard.setScene(stolenitemsview());
-            //onAction(event);
+
+            onAction(event);
 //
         }
         );
@@ -1508,10 +1508,10 @@ public class dashboard {
                 System.out.println("deletion failed.");
             }
         }
-        else if(event.getSource()==button0){
+         if(event.getSource()==button0){
             System.out.println("before");
             //stolenitemsview();
-            newdashboard.setScene(stolenitemsview());
+            newdashboard.setScene(stolenitem.display());
             System.out.println("after");
         }
         else if(event.getSource()==checkout){
