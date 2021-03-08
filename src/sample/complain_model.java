@@ -7,9 +7,9 @@ public class complain_model {
     private String Item_ID;
     private String Complainer;
     private String Status;
-    private Date Date_of_complain;
+    private String Date_of_complain;
 
-    public complain_model(String comp,String id,String compl,String status,Date date){
+    public complain_model(String comp,String id,String compl,String status,String date){
         this.Complain_number = comp;
         this.Item_ID= id;
         this.Complainer= compl;
@@ -25,7 +25,7 @@ public class complain_model {
         return Complainer;
     }
 
-    public Date getDate_of_complain() {
+    public String getDate_of_complain() {
         return Date_of_complain;
     }
 

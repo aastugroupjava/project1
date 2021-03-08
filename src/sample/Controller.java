@@ -1,10 +1,13 @@
 package sample;
 
+import javafx.scene.control.TextField;
+
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.*;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -320,6 +323,29 @@ public class Controller implements Serializable {
             System.out.println(e);
             return null;
         }
+    }
+
+    public boolean addcomplain(String id, String complainer, String complain_number, int status, String found, String gate, String dorm, String block, String date) {
+        String addcomplain = "INSERT INTO complain_alert VALUES ('"+complain_number+"','"+id+"','"+complainer+"','"+status+"','"+date+"')";
+        String stolen_item = "INSERT INTO `stolen_items` VALUES ('"+id+"','"+found+"','"+gate+"','"+dorm+"','"+block+"')";
+        try{
+            st.executeUpdate(addcomplain);
+            st.executeUpdate(stolen_item);
+            return true;
+        }catch(Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
+    public static boolean addfound(String date, String gate, String dorm, String block,String id) {
+            String query = "UPDATE stolen_items SET found_date='"+date+"',found_gate='"+gate+"',found_dorm='"+dorm+"',found_block_number='"+block+"' WHERE ID_of_item='"+id+"';";
+            try{
+                st.executeUpdate(query);
+                return true;
+            }catch (Exception e){
+                System.out.println(e);
+                return false;
+            }
     }
 }
 

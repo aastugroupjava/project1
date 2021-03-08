@@ -24,7 +24,7 @@ public class stolenitem {
     public static  Scene scenestolen;
     protected static  Button button0;
     protected static Button button;
-    private static TableView<stolen_model> tableView;
+    public static TableView<stolen_model> tableView;
     private static Button additem = new Button();
     private static Button delete = new Button();
     private static Button checkout = new Button();
@@ -471,6 +471,8 @@ public class stolenitem {
                 //tableView.getItems().add(itemclass);
                 // tableView.setVisible(true);
             }
+            tableView.getItems().addAll(stolenlist);
+            tableView.getItems().removeAll(stolenlist);
             tableView.getItems().addAll(stolenlist);
         }
         catch(Exception e){

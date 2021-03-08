@@ -25,10 +25,10 @@ public  class complain {
     public static  Scene scenecomplain;
     protected static  Button button0;
     protected static Button button;
-    private static TableView<complain_model> tableView;
+    public static TableView<complain_model> tableView;
     private static Button additem = new Button();
     private static Button delete = new Button();
-    private static Button checkout = new Button();
+    private static Button status = new Button();
     private static Button edit = new Button();
     private static Button checkin = new Button();
     public  static Stage newdashboardd = new Stage();
@@ -63,7 +63,7 @@ public  class complain {
         TableColumn<complain_model,String> tableColumn0;
         TableColumn<complain_model,String> tableColumn1;
         TableColumn<complain_model,String> tableColumn2;
-        TableColumn<complain_model,Date> tableColumn3;
+        TableColumn<complain_model,String> tableColumn3;
 
         HBox mainBox;
         vBox = new VBox();
@@ -155,6 +155,15 @@ public  class complain {
         edit.setOnMouseClicked(event -> {
             onAction(event);
         });
+
+        status.setText("Found");
+        //edit.setAlignment(Pos.TOP_RIGHT);
+        status.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
+        status.setTextFill(Color.BLUE);
+        status.setOnMouseClicked(event -> {
+            onAction(event);
+        });
+
 
         VBox.setVgrow(button0, Priority.ALWAYS);
         button0.setAlignment(Pos.CENTER);
@@ -392,7 +401,7 @@ public  class complain {
         anchorPane.getChildren().addAll(textField,search,reset);
         vBox2.getChildren().add(anchorPane);
 
-        anchorPane0.getChildren().addAll(additem,edit,delete);
+        anchorPane0.getChildren().addAll(additem,edit,delete,status);
 
         vBox2.getChildren().add(anchorPane0);
         vBox1.getChildren().add(vBox2);
@@ -419,7 +428,7 @@ public  class complain {
                 String item_id = complain.getString("item_ID");
                 String complainer = complain.getString("complainer");
                 String status = String.valueOf(complain.getInt("status"));
-                Date date = complain.getDate("date_of_complain");
+                String date = complain.getString("date_of_complain");
 //                System.out.println(request);
 //                System.out.println(appending);
                 stdlist.add(new complain_model(complain_number,item_id,complainer,status,date));
@@ -458,7 +467,7 @@ public  class complain {
                 String item_id = complain.getString("item_ID");
                 String complainer = complain.getString("complainer");
                 String status = String.valueOf(complain.getInt("status"));
-                Date date = complain.getDate("date_of_complain");
+                String date = complain.getString("date_of_complain");
 //                System.out.println(request);
 //                System.out.println(appending);
                 itemlist.add(new complain_model(complain_number,item_id,complainer,status,date));
@@ -467,6 +476,8 @@ public  class complain {
                 //tableView.getItems().add(itemclass);
                 // tableView.setVisible(true);
             }
+            tableView.getItems().addAll(itemlist);
+            tableView.getItems().removeAll(itemlist);
             tableView.getItems().addAll(itemlist);
         }
         catch(Exception e){
@@ -479,6 +490,28 @@ public  class complain {
     private static void onAction (MouseEvent event){
         dashboard dash = new dashboard();
         Controller cont = new Controller();
+        if(event.getSource()==status){
+            int index = tableView.getSelectionModel().getSelectedIndex();
+            complain_model item = tableView.getItems().get(index);
+            found.found(item);
+            sample.stolenitem.getrefresh();
+            getrefresh();
+        }
+        if(event.getSource()==edit){
+            ObservableList<complain_model> itemselected = null;
+            ObservableList<complain_model>allitems=null;
+            int index = tableView.getSelectionModel().getSelectedIndex();
+            complain_model item = tableView.getItems().get(index);
+            if(cont.deletecomplain(item.getComplain_number())&&cont.delete_stolen(item.getItem_ID())) {
+                editcomplain.editcomplain(item);
+            }
+            else{
+                System.out.println("couldn't edit");
+            }
+        }
+        if(event.getSource()==additem){
+            addcomplain.addcomplain();
+        }
         if(event.getSource()==delete){
             ObservableList<complain_model> itemselected = null;
             ObservableList<complain_model>allitems=null;
@@ -511,7 +544,7 @@ public  class complain {
                     String item_id = searched.getString("item_ID");
                     String complainer = searched.getString("complainer");
                     String status = String.valueOf(searched.getInt("status"));
-                    Date date = searched.getDate("date_of_complain");
+                    String date = searched.getString("date_of_complain");
                     st = new complain_model(complain_number,item_id,complainer,status,date);
                 }
             }catch (Exception e){

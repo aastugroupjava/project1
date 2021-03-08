@@ -1079,7 +1079,11 @@ public class dashboard {
         additem.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
         additem.setTextFill(Color.DARKGREEN);
         additem.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
 
         delete.setText("Delete");
@@ -1087,7 +1091,11 @@ public class dashboard {
         delete.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
         delete.setTextFill(Color.DARKRED);
         delete.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
 
         checkout.setText("Checkout");
@@ -1095,7 +1103,11 @@ public class dashboard {
         checkout.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
         checkout.setTextFill(Color.DARKBLUE);
         checkout.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
 
         checkin.setText("Checkin");
@@ -1103,7 +1115,11 @@ public class dashboard {
         checkin.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
         checkin.setTextFill(Color.AZURE);
         checkin.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
 
         edit.setText("Edit");
@@ -1111,7 +1127,11 @@ public class dashboard {
         edit.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
         edit.setTextFill(Color.DARKCYAN);
         edit.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
 
         VBox.setVgrow(button0, Priority.ALWAYS);
@@ -1124,7 +1144,11 @@ public class dashboard {
         button0.setOnMouseClicked(event -> {
                     System.out.println("button is clicked");
 
-            onAction(event);
+                    try {
+                        onAction(event);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 //
         }
         );
@@ -1138,7 +1162,11 @@ public class dashboard {
         button1.setText("Student List");
         button1.setTextFill(Color.valueOf("#bf7600"));
         button1.setOnMouseClicked(event->{
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
         VBox.setMargin(button1, new Insets(0.0, 0.0, 0.0, 60.0));
 
@@ -1150,7 +1178,11 @@ public class dashboard {
         button2.setText("Complain Alerts");
         button2.setTextFill(Color.valueOf("#bf7600"));
         button2.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
         VBox.setMargin(button2, new Insets(0.0, 0.0, 0.0, 60.0));
 
@@ -1171,7 +1203,11 @@ public class dashboard {
         button4.setText("Sign-Out");
         button4.setTextFill(Color.valueOf("#bf7600"));
         button4.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
         VBox.setMargin(button4, new Insets(0.0, 0.0, 0.0, 60.0));
 
@@ -1217,7 +1253,11 @@ public class dashboard {
             }
             else {
                 id = textField.getText();
-                onAction(event);
+                try {
+                    onAction(event);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 reset.setVisible(true);
             }
         });
@@ -1446,7 +1486,7 @@ public class dashboard {
     }
 
 
-    private static void onAction (MouseEvent event){
+    private static void onAction (MouseEvent event) throws Exception{
         additems additems = new additems();
         Controller cont = new Controller();
         if(event.getSource()==button2){
@@ -1528,17 +1568,21 @@ public class dashboard {
             items item = tableView.getItems().get(index);
             allitems=tableView.getItems();
             itemselected = tableView.getSelectionModel().getSelectedItems();
-            if(item.getStatus()=="Outside school"){
-                System.out.println("u can't checkout");
+            ResultSet search = cont.searchcomplain(item.getSerial());
+            if(search.next()){
+                System.out.println("this computer is reported to be stolen!");
             }
-            else if (item.getStatus()=="Inside school"){
-                if(cont.checkout(item)){
-                    System.out.println("u can checkout now.");
-                    tableView.getItems().removeAll(allitems);
-                    getrefresh();
-                }
-                else{
-                    System.out.println("error, try again later.");
+            else {
+                if (item.getStatus() == "Outside school") {
+                    System.out.println("u can't checkout");
+                } else if (item.getStatus() == "Inside school") {
+                    if (cont.checkout(item)) {
+                        System.out.println("u can checkout now.");
+                        tableView.getItems().removeAll(allitems);
+                        getrefresh();
+                    } else {
+                        System.out.println("error, try again later.");
+                    }
                 }
             }
             //System.out.println(item.getSerial());
@@ -1563,18 +1607,22 @@ public class dashboard {
             items item = tableView.getItems().get(index);
             allitems=tableView.getItems();
             itemselected = tableView.getSelectionModel().getSelectedItems();
-            if(item.getStatus()=="Outside school"){
-                if(cont.check_in(item)){
-                    System.out.println("u can checkin now.");
-                    tableView.getItems().removeAll(allitems);
-                    getrefresh();
-                }
-                else{
-                    System.out.println("error, try again later.");
-                }
+            ResultSet search = cont.searchcomplain(item.getSerial());
+            if(search.next()){
+                    System.out.println("this computer is  reported to be stolen!");
             }
-            else if (item.getStatus()=="Inside school"){
-                System.out.println("u can't checkout");
+            else {
+                if (item.getStatus() == "Outside school") {
+                    if (cont.check_in(item)) {
+                        System.out.println("u can checkin now.");
+                        tableView.getItems().removeAll(allitems);
+                        getrefresh();
+                    } else {
+                        System.out.println("error, try again later.");
+                    }
+                } else if (item.getStatus() == "Inside school") {
+                    System.out.println("u can't checkout");
+                }
             }
         }
 
