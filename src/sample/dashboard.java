@@ -1,6 +1,8 @@
 package sample;
 
 
+import de.jensd.fx.glyphs.GlyphsDude;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconName;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
@@ -15,7 +17,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import javax.swing.text.GlyphView;
 import javax.xml.crypto.Data;
 import javafx.scene.input.MouseEvent;
 
@@ -620,8 +625,8 @@ public class dashboard {
         imageView.setFitWidth(67.0);
         imageView.setPickOnBounds(true);
         imageView.setPreserveRatio(true);
-        imageView.setImage(new Image(dashboard.class.getResource("../images/icon123.png").toExternalForm()));
         VBox.setMargin(imageView, new Insets(50.0, 0.0, 10.0, 0.0));
+        imageView.setImage(new Image(dashboard.class.getResource("../images/icon123.png").toExternalForm()));
 
         label.setText("label");
         label.setTextFill(Color.valueOf("#bf7600"));
@@ -1014,7 +1019,8 @@ public class dashboard {
         TableColumn<items,String> tableColumn8;
          HBox mainBox;
         vBox = new VBox();
-        imageView = new ImageView();
+        imageView = new ImageView("images/icon123.png");
+        //Text icon = GlyphsDude.createIcon(FontAwesomeIconName.LIST_ALT,"10px");
         button = new Button();
         button0 = new Button();
         button1 = new Button();
@@ -1048,6 +1054,8 @@ public class dashboard {
 
         mainBox = new HBox();
 
+
+
         mainBox.setMaxHeight(Region.USE_PREF_SIZE);
         mainBox.setMaxWidth(Region.USE_PREF_SIZE);
         mainBox.setMinHeight(Region.USE_PREF_SIZE);
@@ -1060,24 +1068,29 @@ public class dashboard {
         vBox.setSpacing(15.0);
         vBox.setStyle("-fx-background-color: black;");
 
-        imageView.setFitHeight(124.0);
-        imageView.setFitWidth(167.0);
-        imageView.setImage(new Image(dashboard.class.getResource("").toExternalForm()));
+        imageView.setFitHeight(73.0);
+        imageView.setFitWidth(67.0);
+        imageView.setPickOnBounds(true);
+        imageView.setPreserveRatio(true);
+        VBox.setMargin(imageView, new Insets(50.0, 50.0, 10.0, 70.0));
 
 
         VBox.setVgrow(button, Priority.ALWAYS);
         button.setAlignment(Pos.CENTER);
         button.setContentDisplay(ContentDisplay.CENTER);
         button.setMnemonicParsing(false);
-        button.setStyle("-fx-background-color: black;");
+        button.setStyle("-fx-background-color: black;-fx-text-fill:#bf7600");
         button.setText("All Items");
+        button.setGraphic(new ImageView("images/icons8_Home_32px.png"));
+        button.setContentDisplay(ContentDisplay.LEFT);
         button.setTextFill(Color.valueOf("#bf7600"));
-        VBox.setMargin(button, new Insets(0.0, 0.0, 0.0, 60.0));
+        VBox.setMargin(button, new Insets(0.0, 0.0, 0.0, 30.0));
 
-        additem.setText("Add");
+        //additem.setText("Add");
         //additem.setAlignment(Pos.BASELINE_LEFT);
-        additem.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
+        additem.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 25;");
         additem.setTextFill(Color.DARKGREEN);
+        additem.setGraphic(GlyphsDude.createIcon(FontAwesomeIconName.USER_PLUS,"30px"));
         additem.setOnMouseClicked(event -> {
             try {
                 onAction(event);
@@ -1086,9 +1099,10 @@ public class dashboard {
             }
         });
 
-        delete.setText("Delete");
+        //delete.setText("Delete");
         //delete.setAlignment(Pos.TOP_RIGHT);
-        delete.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
+        delete.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 10;");
+        delete.setGraphic(GlyphsDude.createIcon(FontAwesomeIconName.TRASH,"30px"));
         delete.setTextFill(Color.DARKRED);
         delete.setOnMouseClicked(event -> {
             try {
@@ -1098,10 +1112,11 @@ public class dashboard {
             }
         });
 
-        checkout.setText("Checkout");
+        //checkout.setText("Checkout");
        // checkout.setAlignment(Pos.TOP_RIGHT);
-        checkout.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
+        checkout.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 10;");
         checkout.setTextFill(Color.DARKBLUE);
+        checkout.setGraphic(GlyphsDude.createIcon(FontAwesomeIconName.SIGN_OUT,"30px"));
         checkout.setOnMouseClicked(event -> {
             try {
                 onAction(event);
@@ -1110,9 +1125,10 @@ public class dashboard {
             }
         });
 
-        checkin.setText("Checkin");
+       // checkin.setText("Checkin");
        // checkin.setAlignment(Pos.CENTER);
-        checkin.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
+        checkin.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 10;");
+        checkin.setGraphic(GlyphsDude.createIcon(FontAwesomeIconName.SIGN_IN,"30px"));
         checkin.setTextFill(Color.AZURE);
         checkin.setOnMouseClicked(event -> {
             try {
@@ -1122,10 +1138,11 @@ public class dashboard {
             }
         });
 
-        edit.setText("Edit");
+        //edit.setText("Edit");
         //edit.setAlignment(Pos.TOP_RIGHT);
-        edit.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
+        edit.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 10;");
         edit.setTextFill(Color.DARKCYAN);
+        edit.setGraphic(GlyphsDude.createIcon(FontAwesomeIconName.EDIT,"30px"));
         edit.setOnMouseClicked(event -> {
             try {
                 onAction(event);
@@ -1140,6 +1157,8 @@ public class dashboard {
         button0.setMnemonicParsing(false);
         button0.setStyle("-fx-background-color: black;");
         button0.setText("Stolen Items");
+        button0.setGraphic(new ImageView("images/icons8_Slider__32px.png"));
+        button0.setContentDisplay(ContentDisplay.LEFT);
         button0.setTextFill(Color.valueOf("#bf7600"));
         button0.setOnMouseClicked(event -> {
                     System.out.println("button is clicked");
@@ -1152,7 +1171,7 @@ public class dashboard {
 //
         }
         );
-        VBox.setMargin(button0, new Insets(0.0, 0.0, 0.0, 60.0));
+        VBox.setMargin(button0, new Insets(0.0, 0.0, 0.0, 30.0));
 
         VBox.setVgrow(button1, Priority.ALWAYS);
         button1.setAlignment(Pos.CENTER);
@@ -1160,6 +1179,8 @@ public class dashboard {
         button1.setMnemonicParsing(false);
         button1.setStyle("-fx-background-color: black;");
         button1.setText("Student List");
+        button1.setGraphic(new ImageView("images/icons8_Open_Envelope_32px.png"));
+        button1.setContentDisplay(ContentDisplay.LEFT);
         button1.setTextFill(Color.valueOf("#bf7600"));
         button1.setOnMouseClicked(event->{
             try {
@@ -1168,7 +1189,7 @@ public class dashboard {
                 e.printStackTrace();
             }
         });
-        VBox.setMargin(button1, new Insets(0.0, 0.0, 0.0, 60.0));
+        VBox.setMargin(button1, new Insets(0.0, 0.0, 0.0, 30.0));
 
         VBox.setVgrow(button2, Priority.ALWAYS);
         button2.setAlignment(Pos.CENTER);
@@ -1176,6 +1197,8 @@ public class dashboard {
         button2.setMnemonicParsing(false);
         button2.setStyle("-fx-background-color: black;");
         button2.setText("Complain Alerts");
+        button2.setGraphic(new ImageView("images/icons8_Box_32px.png"));
+        button2.setContentDisplay(ContentDisplay.LEFT);
         button2.setTextFill(Color.valueOf("#bf7600"));
         button2.setOnMouseClicked(event -> {
             try {
@@ -1184,16 +1207,9 @@ public class dashboard {
                 e.printStackTrace();
             }
         });
-        VBox.setMargin(button2, new Insets(0.0, 0.0, 0.0, 60.0));
+        VBox.setMargin(button2, new Insets(0.0, 0.0, 0.0, 30.0));
 
-        VBox.setVgrow(button3, Priority.ALWAYS);
-        button3.setAlignment(Pos.CENTER);
-        button3.setContentDisplay(ContentDisplay.CENTER);
-        button3.setMnemonicParsing(false);
-        button3.setStyle("-fx-background-color: black;");
-        button3.setText("Setting");
-        button3.setTextFill(Color.valueOf("#bf7600"));
-        VBox.setMargin(button3, new Insets(0.0, 0.0, 0.0, 60.0));
+
 
         VBox.setVgrow(button4, Priority.ALWAYS);
         button4.setAlignment(Pos.CENTER);
@@ -1201,6 +1217,8 @@ public class dashboard {
         button4.setMnemonicParsing(false);
         button4.setStyle("-fx-background-color: black;");
         button4.setText("Sign-Out");
+        button4.setGraphic(new ImageView("images/icons8_Sign_Out_32px.png"));
+        button4.setContentDisplay(ContentDisplay.LEFT);
         button4.setTextFill(Color.valueOf("#bf7600"));
         button4.setOnMouseClicked(event -> {
             try {
@@ -1209,7 +1227,7 @@ public class dashboard {
                 e.printStackTrace();
             }
         });
-        VBox.setMargin(button4, new Insets(0.0, 0.0, 0.0, 60.0));
+        VBox.setMargin(button4, new Insets(0.0, 0.0, 0.0, 30.0));
 
         HBox.setHgrow(vBox0, Priority.ALWAYS);
         vBox0.setPrefHeight(296.0);
@@ -1245,7 +1263,8 @@ public class dashboard {
         search.setPrefHeight(58.0);
         search.setPrefWidth(25.0);
         search.setStyle("-fx-background-color: #bf7600");
-        search.setText("search");
+        //search.setText("search");
+        search.setGraphic(GlyphsDude.createIcon(FontAwesomeIconName.SEARCH,"20px"));
         search.setTextFill(javafx.scene.paint.Color.WHITE);
         search.setOnMouseClicked(event -> {
             if(textField.equals(null)||textField.getText()==null){
@@ -1401,10 +1420,10 @@ public class dashboard {
         vBox.setSpacing(20);
         vBox.getChildren().add(imageView);
         vBox.getChildren().add(button);
+       // vBox.getChildren().add(icon);
         vBox.getChildren().add(button0);
         vBox.getChildren().add(button1);
         vBox.getChildren().add(button2);
-        vBox.getChildren().add(button3);
         vBox.getChildren().add(button4);
         vBox.getChildren().add(label0);
         vBox.getChildren().add(label5);
