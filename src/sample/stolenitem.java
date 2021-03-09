@@ -37,15 +37,16 @@ public class stolenitem {
     private static Button search=new Button(),reset=new Button();
     private static String id;
     public static Stage studentdashboard = new Stage();
+    private static HBox mainBox;
+    private static Button button1;
+    private static Button button2;
+    private static Button button4;
 
     public static Scene display()
     {
         VBox vBox;
         ImageView imageView;
-        Button button1;
-        Button button2;
-        Button button3;
-        Button button4;
+
         VBox vBox0;
         VBox vBox1;
         VBox vBox2;
@@ -68,14 +69,13 @@ public class stolenitem {
         TableColumn<stolen_model,String> tableColumn4;
         TableColumn<stolen_model,String> tableColumn5;
 
-        HBox mainBox;
+
         vBox = new VBox();
         imageView = new ImageView("images/icon123.png");
         button = new Button();
         button0 = new Button();
         button1 = new Button();
         button2 = new Button();
-        button3 = new Button();
         button4 = new Button();
         Button btnSignup = new Button();
         vBox0 = new VBox();
@@ -191,6 +191,9 @@ public class stolenitem {
         button1.setGraphic(new ImageView("images/icons8_Open_Envelope_32px.png"));
         button1.setContentDisplay(ContentDisplay.LEFT);
         button1.setTextFill(Color.valueOf("#bf7600"));
+        button1.setOnMouseClicked(event -> {
+            onAction(event);
+        });
         VBox.setMargin(button1, new Insets(0.0, 0.0, 0.0, 30.0));
 
         VBox.setVgrow(button2, Priority.ALWAYS);
@@ -202,6 +205,9 @@ public class stolenitem {
         button2.setGraphic(new ImageView("images/icons8_Box_32px.png"));
         button2.setContentDisplay(ContentDisplay.LEFT);
         button2.setTextFill(Color.valueOf("#bf7600"));
+        button2.setOnMouseClicked(event -> {
+            onAction(event);
+        });
         VBox.setMargin(button2, new Insets(0.0, 0.0, 0.0, 30.0));
 
 
@@ -215,6 +221,9 @@ public class stolenitem {
         button4.setGraphic(new ImageView("images/icons8_Sign_Out_32px.png"));
         button4.setContentDisplay(ContentDisplay.LEFT);
         button4.setTextFill(Color.valueOf("#bf7600"));
+        button4.setOnMouseClicked(event -> {
+            onAction(event);
+        });
         VBox.setMargin(button4, new Insets(0.0, 0.0, 0.0, 30.0));
 
         HBox.setHgrow(vBox0, Priority.ALWAYS);
@@ -509,10 +518,23 @@ public class stolenitem {
             }
         }
         if(event.getSource()==button){
-            System.out.println("it is clicked fam.");
+            System.out.println("all items is clicked");
             dash.newdashboard.setScene(dash.scene);
             dash.newdashboard.show();
-            dash.newdashboard.setFullScreen(true);
+           // dash.newdashboard.setFullScreen(true);
+        }
+        if(event.getSource()==button0){
+            System.out.println("nothing to do.");
+        }
+        if(event.getSource()==button1){
+            dashboard.newdashboard.setScene(studDash.display());
+        }
+        if(event.getSource()==button2){
+            dashboard.newdashboard.setScene(sample.complain.display());
+        }
+        if(event.getSource()==button4){
+            dashboard.newdashboard.close();
+            Main.window.show();
         }
         if(event.getSource()==search){
             ObservableList<stolen_model> allitems=null;

@@ -37,16 +37,15 @@ public  class studDash {
     private static Button search=new Button(),reset=new Button();
     private static String id;
     public static Stage studentdashboard = new Stage();
+    private static Button button1;
+    private static Button button2;
+    private static Button button4;
 
     public static Scene display()
     {
         System.out.println("newdashboard(after the login page redirection.)");
         VBox vBox;
         ImageView imageView;
-        Button button1;
-        Button button2;
-        Button button3;
-        Button button4;
         VBox vBox0;
         VBox vBox1;
         VBox vBox2;
@@ -76,7 +75,6 @@ public  class studDash {
         button0 = new Button();
         button1 = new Button();
         button2 = new Button();
-        button3 = new Button();
         button4 = new Button();
         Button btnSignup = new Button();
         vBox0 = new VBox();
@@ -192,6 +190,9 @@ public  class studDash {
         button1.setGraphic(new ImageView("images/icons8_Open_Envelope_32px.png"));
         button1.setContentDisplay(ContentDisplay.LEFT);
         button1.setTextFill(Color.valueOf("#bf7600"));
+        button1.setOnMouseClicked(event -> {
+            onAction(event);
+        });
         VBox.setMargin(button1, new Insets(0.0, 0.0, 0.0, 30.0));
 
         VBox.setVgrow(button2, Priority.ALWAYS);
@@ -203,6 +204,9 @@ public  class studDash {
         button2.setGraphic(new ImageView("images/icons8_Box_32px.png"));
         button2.setContentDisplay(ContentDisplay.LEFT);
         button2.setTextFill(Color.valueOf("#bf7600"));
+        button2.setOnMouseClicked(event -> {
+            onAction(event);
+        });
         VBox.setMargin(button2, new Insets(0.0, 0.0, 0.0, 30.0));
 
 
@@ -215,6 +219,9 @@ public  class studDash {
         button4.setGraphic(new ImageView("images/icons8_Sign_Out_32px.png"));
         button4.setContentDisplay(ContentDisplay.LEFT);
         button4.setTextFill(Color.valueOf("#bf7600"));
+        button4.setOnMouseClicked(event -> {
+            onAction(event);
+        });
         VBox.setMargin(button4, new Insets(0.0, 0.0, 0.0, 30.0));
 
         HBox.setHgrow(vBox0, Priority.ALWAYS);
@@ -499,6 +506,19 @@ public  class studDash {
     private static void onAction (MouseEvent event){
         dashboard dash = new dashboard();
         Controller cont = new Controller();
+        if(event.getSource()==button0){
+            dash.newdashboard.setScene(stolenitem.display());
+        }
+        if(event.getSource()==button1){
+            dash.newdashboard.setScene(studDash.display());
+        }
+        if(event.getSource()==button2){
+            dash.newdashboard.setScene(sample.complain.display());
+        }
+        if(event.getSource()==button4){
+            dashboard.newdashboard.close();
+            Main.window.show();
+        }
         if(event.getSource()==delete){
             ObservableList<stModel> itemselected = null;
             ObservableList<stModel>allitems=null;
@@ -515,10 +535,10 @@ public  class studDash {
             }
         }
         if(event.getSource()==button){
-            System.out.println("it is clicked fam.");
+            System.out.println("all items is clicked.");
             dash.newdashboard.setScene(dash.scene);
             dash.newdashboard.show();
-            dash.newdashboard.setFullScreen(true);
+           // dash.newdashboard.setFullScreen(true);
         }
         if(event.getSource()==search){
             ObservableList<stModel> allitems=null;

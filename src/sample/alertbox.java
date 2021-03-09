@@ -112,6 +112,7 @@ public class alertbox {
 
         Scene scene = new Scene(anchorPane1);
         confirm.setScene(scene);
+        confirm.initStyle(StageStyle.TRANSPARENT);
         confirm.setResizable(false);
         confirm.show();
     }

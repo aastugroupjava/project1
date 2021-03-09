@@ -45,8 +45,10 @@ public class signin {
     protected  static Stage signin;
     private static Button go_back;
     private static ImageView imageview;
+    private static Label warning;
 
     public static void display(){
+        warning = new Label();
         signin =new Stage();
         imageview = new ImageView();
         go_back = new Button();
@@ -103,10 +105,14 @@ public class signin {
 
         vBox.setAlignment(Pos.CENTER);
         vBox.setLayoutX(310.0);
-        vBox.setLayoutY(136.0);
+        vBox.setLayoutY(65.0);
         vBox.setPrefHeight(199.0);
         vBox.setPrefWidth(275.0);
         vBox.setSpacing(20.0);
+
+        warning.setTextFill(Color.RED);
+        warning.setText("Fill all the Forms please!");
+        warning.setVisible(false);
 
         txtUsername.setAlignment(Pos.CENTER);
         txtUsername.setPrefHeight(48.0);
@@ -160,7 +166,7 @@ public class signin {
             System.out.println(username);
             Controller signup = new Controller();
             if(username.equals("") || password.equals("") || ID.equals("")||Email.equals("")||phonenumber.equals("")) {
-                System.out.println("fill all the forms");
+                warning.setVisible(true);
             }
             else {
                 if (signup.signup(username, password, ID,Email,phonenumber)) {
@@ -185,9 +191,11 @@ public class signin {
             signin.close();
             window.show();
         });
+        go_back.setEffect(blend);
 
         pane.getChildren().addAll(imageview,label,label0);
         anchorPane.getChildren().add(pane);
+        vBox.getChildren().add(warning);
         vBox.getChildren().add(txtID);
         vBox.getChildren().add(txtUsername);
         vBox.getChildren().add(email);
@@ -195,6 +203,7 @@ public class signin {
         vBox.getChildren().add(phone_number);
         vBox.getChildren().add(separator);
         vBox.getChildren().add(btnSignup);
+        vBox.getChildren().add(go_back);
         anchorPane.getChildren().add(vBox);
 
 

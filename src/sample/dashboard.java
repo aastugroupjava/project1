@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import javax.swing.text.GlyphView;
 import javax.xml.crypto.Data;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.StageStyle;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -1491,8 +1492,10 @@ public class dashboard {
 
          scene = new Scene(mainBox);
         newdashboard.setScene(scene);
+
         newdashboard.setResizable(true);
         newdashboard.show();
+       // newdashboard.initStyle(StageStyle.TRANSPARENT);
      //   newdashboard.setResizable(false);
        // newdashboard.setFullScreen(true);
         newdashboard.setMaximized(true);
@@ -1577,7 +1580,10 @@ public class dashboard {
          if(event.getSource()==button0){
             System.out.println("before");
             //stolenitemsview();
+             //stolenitem.display();
+           //  newdashboard.setMaximized(true);
             newdashboard.setScene(stolenitem.display());
+
             System.out.println("after");
         }
         else if(event.getSource()==checkout){

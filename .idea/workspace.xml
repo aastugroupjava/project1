@@ -3,14 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="c192ffe0-6769-463e-884f-347704326f10" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/login/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/login/sample/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/login/sample/alertbox.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/login/sample/alertbox.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/login/sample/dashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/login/sample/dashboard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/login/sample/forgetpassword.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/login/sample/forgetpassword.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/login/sample/sign_in.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/login/sample/sign_in.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/login/sample/signin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/login/sample/signin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/alertbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/alertbox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/complain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/complain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/dashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/forgetpassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/forgetpassword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/signin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/signin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/stolenitem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/stolenitem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/studDash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/studDash.java" afterDir="false" />
     </list>
@@ -436,7 +433,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615193974316</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="update on the add item form and controller.">
+      <created>1615239749927</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1615239749927</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -494,30 +498,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="168" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1536.824@0.0.1536.824" timestamp="1615187120521" />
-    <state x="455" y="8" key="CommitChangelistDialog2" timestamp="1615193973009">
+    <state x="455" y="8" key="CommitChangelistDialog2" timestamp="1615239748349">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="455" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1615193973009" />
+    <state x="455" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1615239748349" />
     <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1615187136930">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1615187136930" />
-    <state width="1537" height="180" key="GridCell.Tab.0.bottom" timestamp="1615239266839">
+    <state width="1537" height="180" key="GridCell.Tab.0.bottom" timestamp="1615296409365">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="180" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1615239266839" />
-    <state width="1537" height="180" key="GridCell.Tab.0.center" timestamp="1615239266839">
+    <state width="1537" height="180" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1615296409365" />
+    <state width="1537" height="180" key="GridCell.Tab.0.center" timestamp="1615296409364">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="180" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1615239266839" />
-    <state width="1537" height="180" key="GridCell.Tab.0.left" timestamp="1615239266839">
+    <state width="1537" height="180" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1615296409364" />
+    <state width="1537" height="180" key="GridCell.Tab.0.left" timestamp="1615296409364">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="180" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1615239266839" />
-    <state width="1537" height="180" key="GridCell.Tab.0.right" timestamp="1615239266839">
+    <state width="1537" height="180" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1615296409364" />
+    <state width="1537" height="180" key="GridCell.Tab.0.right" timestamp="1615296409365">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="180" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1615239266839" />
+    <state width="1537" height="180" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1615296409365" />
     <state x="147" y="71" key="MergeDialog" timestamp="1614861234795">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -530,18 +534,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1615187141021" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1615193980402">
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1615239756811">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1615193980402" />
-    <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1615237097098">
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1615239756811" />
+    <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1615296429211">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1615237097098" />
-    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1615239729492">
+    <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1615296429211" />
+    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1615296433941">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1615239729492" />
+    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1615296433941" />
     <state x="550" y="126" key="git4idea.branch.GitSmartOperationDialog" timestamp="1614978820988">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

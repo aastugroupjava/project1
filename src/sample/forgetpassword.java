@@ -32,9 +32,11 @@ public class forgetpassword {
     private static  AnchorPane anchorPane;
     private static Button go_back;
     private static ImageView imageview;
+    private static Label labelforget;
 
     public static void display(){
         Stage forgetpassword = new Stage();
+        labelforget= new Label();
         imageview = new ImageView();
         pane = new Pane();
         label = new Label();
@@ -92,6 +94,9 @@ public class forgetpassword {
         vBox.setPrefWidth(275.0);
         vBox.setSpacing(20.0);
 
+        labelforget.setTextFill(Color.WHITE);
+        labelforget.setText("Enter your phone number");
+
         txtUsername.setAlignment(javafx.geometry.Pos.CENTER);
         txtUsername.setPrefHeight(48.0);
         txtUsername.setPrefWidth(275.0);
@@ -127,6 +132,7 @@ public class forgetpassword {
 
         pane.getChildren().addAll(imageview,label,label0);
         anchorPane.getChildren().add(pane);
+        vBox.getChildren().add(labelforget);
         vBox.getChildren().add(txtUsername);
         vBox.getChildren().add(separator);
         vBox.getChildren().add(btnFindPassword);
