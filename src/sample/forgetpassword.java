@@ -14,13 +14,13 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import sun.plugin.com.BeanCustomizer;
+//import sun.plugin.com.BeanCustomizer;
 
 import java.awt.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 public class forgetpassword {
-
+    private static Stage window = Main.window;
     private static  Pane pane;
     private static  Label label;
     private static   Label label0;
@@ -30,11 +30,14 @@ public class forgetpassword {
     private static   Button btnFindPassword;
     private static   Blend blend;
     private static  AnchorPane anchorPane;
+    private static Button go_back;
+    private static ImageView imageview;
+    private static Label labelforget;
 
     public static void display(){
         Stage forgetpassword = new Stage();
-
-
+        labelforget= new Label();
+        imageview = new ImageView();
         pane = new Pane();
         label = new Label();
         label0 = new Label();
@@ -44,6 +47,7 @@ public class forgetpassword {
         btnFindPassword = new Button();
         blend = new Blend();
         anchorPane = new AnchorPane();
+        go_back = new Button();
 
         anchorPane.setMaxHeight(Region.USE_PREF_SIZE);
         anchorPane.setMaxWidth(Region.USE_PREF_SIZE);
@@ -57,6 +61,13 @@ public class forgetpassword {
         pane.setPrefHeight(490.0);
         pane.setPrefWidth(227.0);
         pane.setStyle("-fx-background-color: black;");
+
+        imageview.setFitHeight(170.0);
+        imageview.setFitWidth(150.0);
+        imageview.setLayoutX(35.0);
+        imageview.setLayoutY(105.0);
+        imageview.setImage(new Image(forgetpassword.class.getResource("/images/photo_2020-09-24_19-38-11.jpg").toExternalForm()));
+
 
         label.setAlignment(javafx.geometry.Pos.CENTER);
         label.setLayoutX(27.0);
@@ -83,10 +94,13 @@ public class forgetpassword {
         vBox.setPrefWidth(275.0);
         vBox.setSpacing(20.0);
 
+        labelforget.setTextFill(Color.WHITE);
+        labelforget.setText("Enter your phone number");
+
         txtUsername.setAlignment(javafx.geometry.Pos.CENTER);
         txtUsername.setPrefHeight(48.0);
         txtUsername.setPrefWidth(275.0);
-        txtUsername.setPromptText("Enter security word");
+        txtUsername.setPromptText("Enter your phone number");
         txtUsername.setStyle("-fx-background-color: black;");
 
         separator.setPrefHeight(7.0);
@@ -104,16 +118,25 @@ public class forgetpassword {
             Controller Forgetpassword =new Controller();
             String password = Forgetpassword.forgetpassword(security);
             alertbox.passwordrecovery(password);
-
         });
         btnFindPassword.setEffect(blend);
 
-        pane.getChildren().add(label);
-        pane.getChildren().add(label0);
+        go_back.setMnemonicParsing(false);
+        go_back.setStyle("-fx-background-color:black");
+        go_back.setText("Go back.");
+        go_back.setTextFill(Color.WHITE);
+        go_back.setOnAction(event -> {
+            forgetpassword.close();
+            window.show();
+        });
+
+        pane.getChildren().addAll(imageview,label,label0);
         anchorPane.getChildren().add(pane);
+        vBox.getChildren().add(labelforget);
         vBox.getChildren().add(txtUsername);
         vBox.getChildren().add(separator);
         vBox.getChildren().add(btnFindPassword);
+        vBox.getChildren().add(go_back);
         anchorPane.getChildren().add(vBox);
 
 

@@ -6,15 +6,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class alertbox {
     protected static Button button;
     protected static Label label;
-    protected static AnchorPane anchorPane;
+    protected static VBox anchorPane;
     protected static Button button1;
     protected static Label label1;
     protected static Button button0;
@@ -24,26 +26,23 @@ public class alertbox {
     protected static AnchorPane anchorPane1;
     protected static AnchorPane anchorPane12;
 
-    public static void passwordrecovery(String password){
+    public static  void passwordrecovery(String password){
         Stage ok = new Stage();
         button = new Button();
         label = new Label();
-        anchorPane = new AnchorPane();
+        anchorPane = new VBox();
         ok.initModality(Modality.APPLICATION_MODAL);
 
-        anchorPane.setMaxHeight(Region.USE_PREF_SIZE);
-        anchorPane.setMaxWidth(Region.USE_PREF_SIZE);
-        anchorPane.setMinHeight(Region.USE_PREF_SIZE);
-        anchorPane.setMinWidth(Region.USE_PREF_SIZE);
-        anchorPane.setPrefHeight(164.0);
-        anchorPane.setPrefWidth(218.0);
         anchorPane.setStyle("-fx-background-color: #262626;");
+        anchorPane.setAlignment(Pos.CENTER);
+        anchorPane.setSpacing(25);
 
         button.setLayoutX(93.0);
         button.setLayoutY(114.0);
         button.setMnemonicParsing(false);
         button.setStyle("-fx-background-color: #bf7600;");
         button.setText("OK");
+        button.setAlignment(javafx.geometry.Pos.CENTER);
         button.setOnAction(event -> {
                 ok.close();
         });
@@ -51,13 +50,10 @@ public class alertbox {
         label.setAlignment(javafx.geometry.Pos.CENTER);
         label.setLayoutX(27.0);
         label.setLayoutY(47.0);
-        label.setPrefHeight(25.0);
-        label.setPrefWidth(177.0);
         label.setText("Your password is: "+password);
         label.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
         label.setFont(new Font("Times New Roman", 14.0));
-        anchorPane.getChildren().add(button);
-        anchorPane.getChildren().add(label);
+        anchorPane.getChildren().addAll(label,button);
 
         Scene scene = new Scene(anchorPane);
         ok.setScene(scene);
@@ -65,7 +61,7 @@ public class alertbox {
         ok.show();
 
     }
-    public static void closeconfirm(){
+    public static void closeconfirmlogin(){
         Stage confirm = new Stage();
         button1 = new Button();
         label1 = new Label();
@@ -88,7 +84,7 @@ public class alertbox {
         button1.setOnAction(e->{
             Main.window.close();
             confirm.close();
-            dashboard.dashboard.close();
+            //dashboard.dashboard.close();
         });
 
         label1.setAlignment(Pos.CENTER);
@@ -116,6 +112,7 @@ public class alertbox {
 
         Scene scene = new Scene(anchorPane1);
         confirm.setScene(scene);
+        confirm.initStyle(StageStyle.TRANSPARENT);
         confirm.setResizable(false);
         confirm.show();
     }
@@ -174,4 +171,59 @@ public class alertbox {
         signout.show();
     }
 
+    public void closeconfirmdashboard() {
+        Stage confirm = new Stage();
+        button1 = new Button();
+        label1 = new Label();
+        button0 = new Button();
+        anchorPane1 = new AnchorPane();
+        confirm.initModality(Modality.APPLICATION_MODAL);
+        anchorPane1.setMaxHeight(Region.USE_PREF_SIZE);
+        anchorPane1.setMaxWidth(Region.USE_PREF_SIZE);
+        anchorPane1.setMinHeight(Region.USE_PREF_SIZE);
+        anchorPane1.setMinWidth(Region.USE_PREF_SIZE);
+        anchorPane1.setPrefHeight(200.0);
+        anchorPane1.setPrefWidth(250.0);
+        anchorPane1.setStyle("-fx-background-color: #262626;");
+
+        button1.setLayoutX(56.0);
+        button1.setLayoutY(115.0);
+        button1.setMnemonicParsing(false);
+        button1.setStyle("-fx-background-color: #800000;");
+        button1.setText("Confirm");
+        button1.setOnAction(e->{
+            confirm.close();
+            dashboard.newdashboard.close();
+            studDash.studentdashboard.close();
+        });
+
+        label1.setAlignment(Pos.CENTER);
+        label1.setLayoutX(10.0);
+        label1.setLayoutY(47.0);
+        label1.setPrefHeight(25.0);
+        label1.setPrefWidth(250.0);
+        label1.setText("Are you sure you want to quit?:(");
+        label1.setTextFill(Color.valueOf("#fffdfd"));
+        label1.setFont(new Font("Times New Roman", 14.0));
+
+        button0.setLayoutX(149.0);
+        button0.setLayoutY(115.0);
+        button0.setMnemonicParsing(false);
+        button0.setStyle("-fx-background-color: #bf7600;");
+        button0.setText("Cancel");
+        button0.setOnAction(event -> {
+            confirm.close();
+        });
+
+        anchorPane1.getChildren().add(button1);
+        anchorPane1.getChildren().add(label1);
+        anchorPane1.getChildren().add(button0);
+
+
+        Scene scene = new Scene(anchorPane1);
+        confirm.setScene(scene);
+        confirm.initStyle(StageStyle.TRANSPARENT);
+        confirm.setResizable(false);
+        confirm.show();
+    }
 }

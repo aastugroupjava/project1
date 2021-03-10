@@ -1,12 +1,19 @@
 package sample;
+
+import javafx.scene.control.TextField;
+
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.*;
+import java.util.Date;
+import java.util.List;
+import java.util.ResourceBundle;
+
 public class Controller implements Serializable {
     protected Connection con;
-    protected Statement st;
+    protected static Statement st;
     protected ResultSet rt;
     protected ResultSet ct;
     protected ResultSet d;
@@ -26,77 +33,26 @@ public class Controller implements Serializable {
     public Controller(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/aastu_inventory","root","");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/javadbproject","root","");
+            System.out.println("connected to database");
             st = con.createStatement();
+            System.out.println("created statement");
         }catch(Exception e){
             System.out.println("error2:"+e);
         }
     }
 
-    public void getData() {
-       try{
-           String query ="SELECT * FROM users";
-           String counter ="SELECT COUNT(username) FROM users";
-           String query1= "SELECT * FROM data";
-           String countuser = "SELECT COUNT(request) FROM data";
-           String query3= "SELECT * FROM stolen_item";
-           String countstolen = "SELECT COUNT(status) FROM stolen_item";
-           //System.out.println("hellow");
-           ct = st.executeQuery(counter);
-           //System.out.println("hellow");
-           while(ct.next()) {
-               count = ct.getInt("count(username)");
-           }
-           //System.out.println(count);
-           rt = st.executeQuery(query);
-           //System.out.println("list from db");
-            int i=0;
-           Controller.userdata = new String[count][3];
-           while (rt.next()){
-               //userdata[i][2] = new String();
-              Controller.userdata[i][0]= rt.getString("username");
-              Controller.userdata[i][1]=rt.getString("passwords");
-              Controller.userdata[i][2]=rt.getString("security");
-              i++;
-           }
-           d = st.executeQuery(countuser);
-           while(d.next()){
-               requestcounter=d.getInt("count(request)");
-           }
-           Controller.data = new String[requestcounter][6];
-           d = st.executeQuery(query1);
-           i=0;
-           while(d.next()){
-               Controller.data[i][0]=d.getString("request");
-               Controller.data[i][1]= String.valueOf(d.getInt("appending"));
-               Controller.data[i][2]= String.valueOf(d.getInt("approved"));
-               Controller.data[i][3]= String.valueOf(d.getInt("denied"));
-               Controller.data[i][4]=d.getString("full_name");
-               Controller.data[i][5]=d.getString("block_number");
-//               System.out.println(data[i][2]);
-//               System.out.println(data[i][1]);
-               i++;
-           }
-           stolen_item = st.executeQuery(countstolen);
-           while (stolen_item.next()){
-               counterstolen = stolen_item.getInt("count(status)");
-           }
-           stolen_item = st.executeQuery(query3);
-           Controller.stolen_items= new String[counterstolen][4];
-           i=0;
-           while(stolen_item.next()){
-               Controller.stolen_items[i][0]=stolen_item.getString("stolen_item");
-               Controller.stolen_items[i][1]= String.valueOf(stolen_item.getInt("status"));
-               Controller.stolen_items[i][2]=stolen_item.getString("reported_by");
-               Controller.stolen_items[i][3]=stolen_item.getString("reported_by_address");
-               i++;
-           }
-
-
+    public ResultSet getitemdata() {
+       String getitemquery = "SELECT DISTINCT * FROM items JOIN  student ON items.student_ID=student.ID;";
+       //String getstudentquery = "SELECT * FROM student";
+       ResultSet items = null;
+       try {
+           items = st.executeQuery(getitemquery);
+           return items;
        }catch (Exception e){
-           System.out.println("error1:"+e);
+           System.out.println("error_of_getitemdata:"+e);
+           return null;
        }
-
     }
     public void user(String username, String password, String security){
 
@@ -113,40 +69,283 @@ public class Controller implements Serializable {
 
     }
     public boolean validator(String username,String password){
-
-        for(int i=0;i<Controller.count;i++){
-            if(username.equals(Controller.userdata[i][0]) && password.equals(Controller.userdata[i][1])){
+        String login_query = "SELECT 1 FROM users where name='"+username+"'&&"+"password='"+password+"';";
+        System.out.println(login_query);
+        ResultSet checker=null;
+        try{
+            checker = st.executeQuery(login_query);
+            if(checker.next()){
+                return true;
+            }else
+                return false;
+        }catch(Exception e){
+            System.out.println("error_on_validator:"+e);
+            return false;
+        }
+    }
+    public boolean signup(String name,String password,String id,String email,String phonenumber){
+        String query = "INSERT INTO users VALUES("+"'"+id+"'"+","+"'"+name+"','"+email+"','"+password+"','"+phonenumber+"');";
+        String checker = "SELECT 1 FROM users WHERE ID="+"'"+id+"'"+"&&name="+"'"+name+"'&&email='"+email+"'&&password='"+password+"'&&phone_number='"+phonenumber+"';";
+        System.out.println(checker);
+        ResultSet check = null;
+        try {
+            check = st.executeQuery(checker);
+            if(check.next()){
+                return false;
+            }
+            else {
+                st.executeUpdate(query);
+                // System.out.println(query);
                 return true;
             }
-            else{
-                continue;
-            }
-        }
-        return false;
-    }
-    public boolean signup(String username,String password,String security){
-        String query = "INSERT INTO users VALUES("+"'"+username+"'"+","+"'"+password+"','"+security+"')";
-        //System.out.println(query);
-        try {
-            st.executeUpdate(query);
-           // System.out.println(query);
-            return true;
         }catch (SQLException e){
             System.out.println("error:"+e);
             return false;
         }
     }
     public String forgetpassword(String security){
-        String password ="can't find your username";
-        for(int i=0;i<count;i++){
-        if(security.equals(userdata[i][2])) {
-            password = userdata[i][1];
-            return password;
+        String forget_password_query = "SELECT password FROM users where phone_number='"+security+"';";
+        ResultSet checker=null;
+        try{
+            checker = st.executeQuery(forget_password_query);
+            if(checker.next()){
+                return checker.getString("password");
+            }
+            else{
+                return "ur account doesn't exist. please create an account.";
+            }
+        }catch (Exception e){
+            System.out.println("error_on_forgetpassword:"+e);
+            return e.toString();
         }
-        else
-            continue;
-        }
-        return password;
     }
 
+    public boolean additems(String id, String fullname, String email, String dep, String block, String dorm, String phone, String serial, String type) {
+        String add_query_to_student = "INSERT INTO student VALUES("+"'"+id+"'"+","+"'"+fullname+"','"+email+"','"+dep+"','"+block+"','"+dorm+"','"+phone+"');";
+        String add_query_to_items = "INSERT INTO items VALUES("+"'"+serial+"', '1' ,"+"'"+type+"','"+id+"');";
+        System.out.println(add_query_to_items);
+        try{
+            st.executeUpdate(add_query_to_items);
+            st.executeUpdate(add_query_to_student);
+            return true;
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    public boolean deleteitems(items item) {
+        String delete_query ="DELETE FROM items WHERE serial_number="+"'"+item.getSerial()+"';";
+        try {
+            st.executeUpdate(delete_query);
+            return true;
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
+    public boolean checkout(items item){
+        String checkout_query = "UPDATE items SET current_status='0' WHERE serial_number='"+item.getSerial()+"';";
+        try{
+            st.executeUpdate(checkout_query);
+            return true;
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
+
+    }
+    public boolean check_in(items item){
+        String checkin_query= "UPDATE items SET current_status='1' WHERE serial_number='"+item.getSerial()+"';";
+        try{
+            st.executeUpdate(checkin_query);
+            return true;
+        }catch(Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    public ResultSet getstudentdata() {
+        String stu="SELECT * FROM student";
+        try {
+            ResultSet studentList=st.executeQuery(stu);
+            return studentList;
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+
+    }
+    public ResultSet getcomplaindata(){
+        String stu="SELECT * FROM complain_alert";
+        try {
+            ResultSet studentList=st.executeQuery(stu);
+            return studentList;
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
+    public ResultSet getStolen_item() {
+        String stu="SELECT * FROM `stolen_items` ";
+        try {
+            ResultSet studentList=st.executeQuery(stu);
+            return studentList;
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+
+    }
+    public boolean delete_stolen(String Id){
+        String delete = "DELETE FROM stolen_items WHERE ID_of_item='"+Id+"';";
+        try{
+            st.executeUpdate(delete);
+            return true;
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    public boolean deletestudent(String ID) {
+        String delete_query ="DELETE FROM student WHERE ID="+"'"+ID+"';";
+        try {
+            st.executeUpdate(delete_query);
+            return true;
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
+    public boolean deletecomplain(String ID){
+        String delete_query ="DELETE FROM complain_alert WHERE complain_number="+"'"+ID+"';";
+        try {
+            st.executeUpdate(delete_query);
+            return true;
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
+    public static int itemnumbers(){
+        String count_query = "SELECT COUNT(*) FROM items";
+        int item = 0;
+        ResultSet items = null;
+        try{
+            items = st.executeQuery(count_query);
+            while(items.next()){
+                item = Integer.parseInt(items.getString("COUNT(*)"));
+            }
+            return item;
+        }catch(Exception e){
+            System.out.println(e);
+            return 0;
+        }
+    }
+    public static int stolennumbers(){
+        String count1_query = "SELECT COUNT(*) FROM stolen_items";
+        int item = 0;
+        ResultSet items = null;
+        try{
+            items = st.executeQuery(count1_query);
+            while(items.next()){
+                item = Integer.parseInt(items.getString("COUNT(*)"));
+            }
+            return item;
+        }catch(Exception e){
+            System.out.println(e);
+            return 0;
+        }
+
+    }
+    public  static int complainnumber(){
+        String count2_query = "SELECT COUNT(*) FROM complain_alerts";
+        int item = 0;
+        ResultSet items = null;
+        try{
+            items = st.executeQuery(count2_query);
+            while(items.next()){
+                item = Integer.parseInt(items.getString("COUNT(*)"));
+            }
+            return item;
+        }catch(Exception e){
+            System.out.println(e);
+            return 0;
+        }
+    }
+
+
+    public ResultSet searchitem(String id) {
+        String getitemquery = "SELECT DISTINCT * FROM items JOIN student ON items.student_ID=student.ID && student_ID='"+id+"'";
+        ResultSet searched = null;
+        try{
+            searched = st.executeQuery(getitemquery);
+            return searched;
+        }catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
+    public ResultSet searchstudent(String id){
+        String getstudentquery = "SELECT * FROM student WHERE  ID='"+id+"';";
+        ResultSet searched = null;
+        try{
+            searched = st.executeQuery(getstudentquery);
+            return searched;
+        }catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
+    public ResultSet searchstolen (String id){
+        String getstolen = "SELECT * FROM stolen_items WHERE  ID_of_items='"+id+"';";
+        ResultSet searched = null;
+        try{
+            searched = st.executeQuery(getstolen);
+            return searched;
+        }catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
+    public ResultSet searchcomplain (String id){
+        String getstolen = "SELECT * FROM complain_alert WHERE item_ID='"+id+"';";
+        ResultSet searched = null;
+        try{
+            searched = st.executeQuery(getstolen);
+            return searched;
+        }catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    public boolean addcomplain(String id, String complainer, String complain_number, int status, String found, String gate, String dorm, String block, String date) {
+        String addcomplain = "INSERT INTO complain_alert VALUES ('"+complain_number+"','"+id+"','"+complainer+"','"+status+"','"+date+"')";
+        String stolen_item = "INSERT INTO `stolen_items` VALUES ('"+id+"','"+found+"','"+gate+"','"+dorm+"','"+block+"')";
+        try{
+            st.executeUpdate(addcomplain);
+            st.executeUpdate(stolen_item);
+            return true;
+        }catch(Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
+    public static boolean addfound(String date, String gate, String dorm, String block,String id) {
+            String query = "UPDATE stolen_items SET found_date='"+date+"',found_gate='"+gate+"',found_dorm='"+dorm+"',found_block_number='"+block+"' WHERE ID_of_item='"+id+"';";
+            try{
+                st.executeUpdate(query);
+                return true;
+            }catch (Exception e){
+                System.out.println(e);
+                return false;
+            }
+    }
 }
+
