@@ -13,12 +13,23 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import sample.Chat.Server;
 //import jdk.nashorn.api.scripting.ScriptObjectMirror;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.sql.SQLException;
 import java.lang.*;
+import java.util.Scanner;
 
 
 public class Main extends Application {
+    private static Socket connection;
+    private static ObjectInputStream input;
+    private static ObjectOutputStream output;
     protected String username= null;
     protected String password= null;
     protected  Pane pane;
@@ -212,8 +223,32 @@ public class Main extends Application {
         }
     }
 
-    public static void main(String[] args) throws SQLException {
-        launch(args);
+    public static void main(String[] args) throws Exception {
+        ObjectOutputStream output = null;
+        ObjectInputStream input = null;
+        try{
+            connection = new Socket("localhost",6789);
+            output =new ObjectOutputStream(connection.getOutputStream());
+            input = new ObjectInputStream(connection.getInputStream());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        while(true){
+
+           // System.out.println("hello");
+            //System.out.println((String)input.readObject()+"x");
+                System.out.println("enter ur message");
+                Scanner in = new Scanner(System.in);
+                String msg = in.nextLine();
+                try {
+                    output.writeObject("main-client: " + msg);
+                    System.out.println((String) input.readObject());
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+
+        }
+        //launch(args);
     }
 }
 
