@@ -3,12 +3,13 @@ import java.io.*;
 import java.net.*;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
 public class Server {
-
+    public static List<Serverworker> serverworkers;
 
 
     public static void main(String[] args) throws SQLException {
@@ -20,6 +21,7 @@ public class Server {
                 Socket clientsocket = server.accept();
                 Serverworker worker = new Serverworker(clientsocket);
                 worker.start();
+                serverworkers.add(worker);
                 System.out.println("New connection created.");
             }
         }catch (Exception e){

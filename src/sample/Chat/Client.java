@@ -1,8 +1,6 @@
 package sample.Chat;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
@@ -11,12 +9,14 @@ public class Client {
     private static ObjectOutputStream output;
     private static ObjectInputStream input;
     public static void main(String[] args)throws Exception{
-        ObjectOutputStream output = null;
-        ObjectInputStream input = null;
+        OutputStream output = null;
+        InputStream input = null;
+        BufferedReader reader= null;
         try{
             connection = new Socket("localhost",6789);
             output =new ObjectOutputStream(connection.getOutputStream());
             input = new ObjectInputStream(connection.getInputStream());
+            reader = new BufferedReader(new InputStreamReader(input));
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -25,9 +25,9 @@ public class Client {
                 Scanner in = new Scanner(System.in);
                 String msg = in.nextLine();
                 try {
-                    output.writeObject("client-2: " + msg);
+                    output.write(msg.getBytes());
                     output.flush();
-                    System.out.println((String) input.readObject());
+                    System.out.println((String) reader.readLine());
                 } catch (Exception e) {
                     System.out.println(e);
                 }

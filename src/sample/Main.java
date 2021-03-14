@@ -15,10 +15,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import sample.Chat.Server;
 //import jdk.nashorn.api.scripting.ScriptObjectMirror;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.sql.SQLException;
@@ -224,12 +221,15 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) throws Exception {
-        ObjectOutputStream output = null;
-        ObjectInputStream input = null;
+       // launch(args);
+        OutputStream output = null;
+        InputStream input = null;
+        BufferedReader reader=null;
         try{
             connection = new Socket("localhost",6789);
-            output =new ObjectOutputStream(connection.getOutputStream());
-            input = new ObjectInputStream(connection.getInputStream());
+            output =connection.getOutputStream();
+            input = connection.getInputStream();
+            reader = new BufferedReader(new InputStreamReader(input));
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -241,14 +241,14 @@ public class Main extends Application {
                 Scanner in = new Scanner(System.in);
                 String msg = in.nextLine();
                 try {
-                    output.writeObject("main-client: " + msg);
-                    System.out.println((String) input.readObject());
+                    output.write(msg.getBytes());
+                    System.out.println((String) reader.readLine());
                 } catch (Exception e) {
                     System.out.println(e);
                 }
 
         }
-        //launch(args);
+
     }
 }
 

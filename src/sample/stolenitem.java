@@ -46,7 +46,7 @@ public class stolenitem {
     {
         VBox vBox;
         ImageView imageView;
-
+        Button button3;
         VBox vBox0;
         VBox vBox1;
         VBox vBox2;
@@ -75,6 +75,7 @@ public class stolenitem {
         button = new Button();
         button0 = new Button();
         button1 = new Button();
+        button3 = new Button();
         button2 = new Button();
         button4 = new Button();
         Button btnSignup = new Button();
@@ -138,6 +139,21 @@ public class stolenitem {
             onAction(event);
         });
         VBox.setMargin(button, new Insets(0.0, 0.0, 0.0, 30.0));
+
+        VBox.setVgrow(button3, Priority.ALWAYS);
+        button3.setAlignment(Pos.CENTER);
+        button3.setContentDisplay(ContentDisplay.CENTER);
+        button3.setMnemonicParsing(false);
+        button3.setStyle("-fx-background-color: black;-fx-text-fill:#bf7600");
+        button3.setText("Chat");
+        button3.setGraphic(new ImageView("images/icons8_Xbox_Menu_32px.png"));
+        button3.setContentDisplay(ContentDisplay.LEFT);
+        button3.setTextFill(Color.valueOf("#bf7600"));
+        button3.setOnMouseClicked(event -> {
+            System.out.println("chat button is clicked.");
+        });
+        VBox.setMargin(button3, new Insets(0.0, 0.0, 0.0, 30.0));
+
 
         additem.setText("Add");
         //additem.setAlignment(Pos.BASELINE_LEFT);
@@ -399,6 +415,7 @@ public class stolenitem {
         vBox.getChildren().add(button0);
         vBox.getChildren().add(button1);
         vBox.getChildren().add(button2);
+        vBox.getChildren().add(button3);
         vBox.getChildren().add(button4);
         vBox.getChildren().add(label0);
         vBox.getChildren().add(label5);
