@@ -2,19 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c192ffe0-6769-463e-884f-347704326f10" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sample/Chat/client2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/chatgui.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Chat/Servermain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Chat/client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/MessageListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/login/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/login/sample/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/login/sample/dashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/login/sample/dashboard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Chat/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Chat/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Chat/Client.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Chat/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Chat/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Chat/Serverworker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Chat/Serverworker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Chat/client2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Chat/client2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/complain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/complain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/dashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/stolenitem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/stolenitem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/studDash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/studDash.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/chatgui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/chatgui.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +167,7 @@
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="sample.Chat.*" />
+          <option name="PATTERN" value="sample.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -206,13 +204,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Server (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="sample.Chat.Server" />
       <module name="login" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="sample.Chat.*" />
+          <option name="PATTERN" value="sample.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -226,13 +224,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="client2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sample.Chat.client2" />
+    <configuration name="client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sample.Chat.client" />
       <module name="login" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="sample.Chat.*" />
+          <option name="PATTERN" value="sample.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -240,13 +238,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="sign_in" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sigin.sign_in" />
+    <configuration name="client2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sample.Chat.client2" />
       <module name="login" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="sigin.*" />
+          <option name="PATTERN" value="sample.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -300,11 +298,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.client2" />
+        <item itemvalue="Application.client" />
         <item itemvalue="Application.Server (1)" />
         <item itemvalue="Application.Client" />
-        <item itemvalue="Application.client2" />
         <item itemvalue="Application.signin" />
-        <item itemvalue="Application.sign_in" />
       </list>
     </recent_temporary>
   </component>
@@ -486,7 +484,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615654265268</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Last update on the Phase1 of the project. Added icons and routes.">
+      <created>1615723956372</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1615723956372</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -529,10 +534,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1613982360518" />
-    <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1615578741583">
+    <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1615814053299">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1615578741583" />
+    <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1615814053299" />
     <state x="599" y="124" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1613293393037">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -545,30 +550,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="168" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1536.824@0.0.1536.824" timestamp="1615187120521" />
-    <state x="455" y="8" key="CommitChangelistDialog2" timestamp="1615654263871">
+    <state x="455" y="8" key="CommitChangelistDialog2" timestamp="1615723954853">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="455" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1615654263871" />
+    <state x="455" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1615723954853" />
     <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1615579191185">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1615579191185" />
-    <state width="1537" height="153" key="GridCell.Tab.0.bottom" timestamp="1615723800348">
+    <state width="766" height="154" key="GridCell.Tab.0.bottom" timestamp="1615816426847">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="153" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1615723800348" />
-    <state width="1537" height="153" key="GridCell.Tab.0.center" timestamp="1615723800348">
+    <state width="766" height="154" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1615816426847" />
+    <state width="766" height="154" key="GridCell.Tab.0.center" timestamp="1615816426847">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="153" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1615723800348" />
-    <state width="1537" height="153" key="GridCell.Tab.0.left" timestamp="1615723800348">
+    <state width="766" height="154" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1615816426847" />
+    <state width="766" height="154" key="GridCell.Tab.0.left" timestamp="1615816426847">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="153" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1615723800348" />
-    <state width="1537" height="153" key="GridCell.Tab.0.right" timestamp="1615723800348">
+    <state width="766" height="154" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1615816426847" />
+    <state width="766" height="154" key="GridCell.Tab.0.right" timestamp="1615816426847">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="153" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1615723800348" />
+    <state width="766" height="154" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1615816426847" />
     <state width="765" height="262" key="GridCell.Tab.1.bottom" timestamp="1615654373886">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -597,18 +602,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1615187141021" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1615654338822">
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1615723960899">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1615654338822" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1615723960899" />
     <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1615723911603">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1615723911603" />
-    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1615723913448">
+    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1615818270252">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1615723913448" />
+    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1615818270252" />
     <state x="550" y="126" key="git4idea.branch.GitSmartOperationDialog" timestamp="1614978820988">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

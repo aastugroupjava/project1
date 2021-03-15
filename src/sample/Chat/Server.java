@@ -9,27 +9,13 @@ import java.util.concurrent.Executors;
 
 
 public class Server {
-    public static List<Serverworker> serverworkers;
 
 
     public static void main(String[] args) throws SQLException {
         int port = 6789;
-        try{
-            ServerSocket server = new ServerSocket(port,100);
-            while (true){
-                System.out.println("waiting for client to connect...");
-                Socket clientsocket = server.accept();
-                Serverworker worker = new Serverworker(clientsocket);
-                worker.start();
-                serverworkers.add(worker);
-                System.out.println("New connection created.");
-            }
-        }catch (Exception e){
-            System.out.println(e);
-        }
+        Servermain servermain = new Servermain(port);
+        servermain.start();
     }
-
-
 
 
 }

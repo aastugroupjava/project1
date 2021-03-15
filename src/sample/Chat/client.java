@@ -5,9 +5,8 @@ import sample.MessageListener;
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-public class client2 {
+public class client {
 
     private final String servername;
     private final int serverport;
@@ -18,47 +17,18 @@ public class client2 {
     private static ArrayList<MessageListener> messagelisteners = new ArrayList<>();
 
 
-    public client2(String servername, int serverport){
+    public client(String servername, int serverport){
         this.servername = servername;
         this.serverport = serverport;
     }
-    public static void main(String[] args)throws Exception {
-        client2 client2 = new client2("127.0.0.1",6789);
-        client2.addMessageListener(new MessageListener() {
-            @Override
-            public void readMessage(String msg) {
-                System.out.println(msg);
-            }
-        });
-        if(!client2.connect()){
-            System.out.println("connection failed");
-        }
-        else{
-            System.out.println("connection created");
-            //client.msg("hello");
-            startMessageWriter();
-            startMessageReader();
-//            while(true){
-//                System.out.println("enter ur message");
-//                Scanner in = new Scanner(System.in);
-//                String msg = in.nextLine();
-//                try {
-//                    client.msg(msg);
-//                   // System.out.println((String) reader.readLine());
-//                } catch (Exception e) {
-//                    System.out.println("error here:"+e);
-//                }
-//            }
 
-        }
-    }
 
-    private static void startMessageWriter() {
+    public static void startMessageWriter(String msg) {
         Thread t = new Thread(){
             @Override
             public void run() {
                 try{
-                    writeMessageLoop();
+                    writeMessageLoop(msg);
                 }catch (Exception e){
                     System.out.println(e);
                 }
@@ -67,21 +37,16 @@ public class client2 {
         t.start();
     }
 
-    private static void writeMessageLoop() throws IOException {
+    private static void writeMessageLoop(String msg) throws IOException {
         try{
-            while(true) {
-                System.out.println("enter ur message");
-                Scanner read = new Scanner(System.in);
-                String msg = read.nextLine();
-                msg(msg);
-            }
+               msg(msg);
         }catch (Exception e){
             System.out.println(e);
             socket.close();
         }
     }
 
-    private static void startMessageReader() {
+    public static void startMessageReader() {
         Thread t = new Thread(){
             @Override
             public void run() {
@@ -96,7 +61,7 @@ public class client2 {
     }
 
 
-     boolean connect() {
+   public boolean connect() {
         try {
             this.socket = new Socket(servername,serverport);
             this.output = socket.getOutputStream();
@@ -117,7 +82,7 @@ public class client2 {
             }
         }catch (Exception e){
             System.out.println(e);
-           socket.close();
+            socket.close();
         }
     }
 
@@ -129,16 +94,15 @@ public class client2 {
 
     public static void msg(String msg)  {
         try {
-            output.write(("client2: "+msg+"\n").getBytes());
+            output.write(("client: "+msg+"\n").getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public static void addMessageListener(MessageListener listener){
+    public void addMessageListener(MessageListener listener){
         messagelisteners.add(listener);
     }
     public void writeMessageListener(MessageListener listener){
         messagelisteners.remove(listener);
     }
 }
-

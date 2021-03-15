@@ -9,34 +9,51 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class Serverworker extends Thread {
-    static Socket clientSocket;
-   public static InputStream input=null;
-   public static OutputStream output=null;
-    public Serverworker(Socket connection) throws Exception {
+   private final Socket clientSocket;
+    private final Servermain server;
+    private OutputStream output;
+
+    public Serverworker(Servermain server, Socket connection) throws Exception {
+        this.server = server;
         this.clientSocket = connection;
     }
+    @Override
     public void run() {
         try{
-            handleclientsocket(clientSocket);
+          handleclientsocket();
         }catch (Exception e){
             System.out.println("error is here:"+e);
         }
     }
-    private void handleclientsocket(Socket clientsocket) throws Exception {
-        this.output = clientsocket.getOutputStream();
-        this.input = clientsocket.getInputStream();
+    private void handleclientsocket() throws IOException, InterruptedException {
+        this.output = clientSocket.getOutputStream();
+        InputStream input = clientSocket.getInputStream();
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(input));
         String line;
-
-       while((line= (String) reader.readLine())!="quit"){
-            String msg = line;
+        while((line=reader.readLine())!=null){
             System.out.println(line);
-            for(Serverworker worker:Server.serverworkers){
-                output.write(msg.getBytes());
+            if("quit".equalsIgnoreCase(line)){
+                break;
+            }
+            else {
+                List<Serverworker> workers = server.getWorkers();
+                for(Serverworker worker:workers){
+                    worker.send(line+"\n");
+                }
+               // String msg = "You typed: " + line + "\n";
+              //  output.write(msg.getBytes());
             }
         }
-        System.out.println("connection got closed");
-        clientsocket.close();
+
+        System.out.println("connected to a client.");
+        clientSocket.close();
+
     }
+
+    private void send(String msg) throws IOException {
+       this.output.write(msg.getBytes());
+    }
+
 
 }
