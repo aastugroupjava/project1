@@ -219,7 +219,8 @@ public class dashboard {
         button3.setContentDisplay(ContentDisplay.LEFT);
         button3.setTextFill(Color.valueOf("#bf7600"));
         button3.setOnMouseClicked(event -> {
-            System.out.println("chat button is clicked.");
+            chatgui chat = new chatgui();
+            chat.display();
         });
         VBox.setMargin(button3, new Insets(0.0, 0.0, 0.0, 30.0));
 
