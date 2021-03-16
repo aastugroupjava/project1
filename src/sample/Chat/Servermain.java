@@ -1,7 +1,11 @@
 package sample.Chat;
 
+import sample.Rmiimplementor;
+
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.util.ArrayList;
 import java.util.List;
 

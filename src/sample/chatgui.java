@@ -15,6 +15,7 @@ import sample.Chat.client;
 
 //import java.awt.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,6 +81,11 @@ public class chatgui {
         chatstage.setOnCloseRequest(event -> {
             event.consume();
             chatstage.close();
+            try {
+                client.closesocket();
+            } catch (IOException e) {
+                System.out.println(e);
+            }
         });
         chatstage.setTitle("chat");
         chatstage.setResizable(false);

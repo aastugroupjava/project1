@@ -10,13 +10,19 @@ import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import sample.Chat.client;
 
 import java.awt.event.MouseEvent;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.Random;
 
 
 public class addcomplain{
+    private static sample.Chat.client client = new client("localhost",6789);
     public static void addcomplain(){
         TextField ID = new TextField();
         TextField complainer = new TextField();
@@ -61,6 +67,12 @@ public class addcomplain{
         submit.setTextFill(Color.DARKGREEN);
         submit.setOnMouseClicked(event -> {
             // System.out.println("submit button is clicked.");
+            try {
+               RmiInterface  remote = (RmiInterface) Naming.lookup("rmi://localhost:7000/notification");
+               client.startMessageWriter(remote.echo());
+            } catch (Exception e) {
+                System.out.println("rmi error:"+e);
+            }
             Controller addcomplain = new Controller();
             String id = ID.getText();
             String Complainer= complainer.getText();

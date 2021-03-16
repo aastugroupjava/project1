@@ -1,17 +1,22 @@
 package sample.Chat;
 
+import sample.RmiInterface;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class Serverworker extends Thread {
-   private final Socket clientSocket;
+    private final Socket clientSocket;
     private final Servermain server;
     private OutputStream output;
+
 
     public Serverworker(Servermain server, Socket connection) throws Exception {
         this.server = server;
@@ -46,7 +51,7 @@ public class Serverworker extends Thread {
             }
         }
 
-        System.out.println("connected to a client.");
+        System.out.println("Disconnected a client.");
         clientSocket.close();
 
     }
@@ -55,5 +60,8 @@ public class Serverworker extends Thread {
        this.output.write(msg.getBytes());
     }
 
+    public List<Serverworker> getServer(){
+        return server.getWorkers();
+    }
 
 }

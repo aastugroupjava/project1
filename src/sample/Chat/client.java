@@ -16,6 +16,9 @@ public class client {
     private static BufferedReader reader;
     private static ArrayList<MessageListener> messagelisteners = new ArrayList<>();
 
+    public static void closesocket() throws IOException {
+        socket.close();
+    }
 
     public client(String servername, int serverport){
         this.servername = servername;
@@ -37,7 +40,7 @@ public class client {
         t.start();
     }
 
-    private static void writeMessageLoop(String msg) throws IOException {
+    public static void writeMessageLoop(String msg) throws IOException {
         try{
                msg(msg);
         }catch (Exception e){
@@ -94,7 +97,7 @@ public class client {
 
     public static void msg(String msg)  {
         try {
-            output.write(("client: "+msg+"\n").getBytes());
+            output.write((msg+"\n").getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
