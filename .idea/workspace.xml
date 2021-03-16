@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c192ffe0-6769-463e-884f-347704326f10" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/login/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/login/sample/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/chatgui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/chatgui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/dashboard.java" afterDir="false" />
-    </list>
+    <list default="true" id="c192ffe0-6769-463e-884f-347704326f10" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -294,7 +289,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Server (1)" />
         <item itemvalue="Application.client2" />
         <item itemvalue="Application.client" />
         <item itemvalue="Application.Client" />
@@ -494,7 +488,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615818288076</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Last update on the Phase1 of the project. Added icons and routes.">
+      <created>1615838369579</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1615838369579</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -553,30 +554,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="168" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1536.824@0.0.1536.824" timestamp="1615187120521" />
-    <state x="455" y="8" key="CommitChangelistDialog2" timestamp="1615818286210">
+    <state x="455" y="8" key="CommitChangelistDialog2" timestamp="1615838368486">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="455" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1615818286210" />
+    <state x="455" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1615838368486" />
     <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1615579191185">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1615579191185" />
-    <state width="767" height="154" key="GridCell.Tab.0.bottom" timestamp="1615830424148">
+    <state width="767" height="154" key="GridCell.Tab.0.bottom" timestamp="1615838400881">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="767" height="154" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1615830424148" />
-    <state width="767" height="154" key="GridCell.Tab.0.center" timestamp="1615830424148">
+    <state width="767" height="154" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1615838400881" />
+    <state width="767" height="154" key="GridCell.Tab.0.center" timestamp="1615838400881">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="767" height="154" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1615830424148" />
-    <state width="767" height="154" key="GridCell.Tab.0.left" timestamp="1615830424148">
+    <state width="767" height="154" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1615838400881" />
+    <state width="767" height="154" key="GridCell.Tab.0.left" timestamp="1615838400881">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="767" height="154" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1615830424148" />
-    <state width="767" height="154" key="GridCell.Tab.0.right" timestamp="1615830424148">
+    <state width="767" height="154" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1615838400881" />
+    <state width="767" height="154" key="GridCell.Tab.0.right" timestamp="1615838400881">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="767" height="154" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1615830424148" />
+    <state width="767" height="154" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1615838400881" />
     <state width="768" height="154" key="GridCell.Tab.1.bottom" timestamp="1615828358934">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -609,18 +610,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="618" y="329" key="VCS.ChangelistChooser/0.0.1536.824@0.0.1536.824" timestamp="1615818296686" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1615818304261">
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1615838375524">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1615818304261" />
-    <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1615723911603">
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1615838375524" />
+    <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1615915171287">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1615723911603" />
-    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1615838355788">
+    <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1615915171287" />
+    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1615915175073">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1615838355788" />
+    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1615915175073" />
     <state x="550" y="126" key="git4idea.branch.GitSmartOperationDialog" timestamp="1614978820988">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
