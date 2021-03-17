@@ -110,7 +110,7 @@ public class dashboard {
 
 
 
-    public static void newdashboard() throws SQLException {
+    public static void newdashboard() throws Exception {
         System.out.println("newdashboard(after the login page redirection.)");
           VBox vBox;
         ImageView imageView;
@@ -206,7 +206,7 @@ public class dashboard {
         button.setText("All Items");
         button.setGraphic(new ImageView("images/icons8_Home_32px.png"));
         button.setContentDisplay(ContentDisplay.LEFT);
-        button.setTextFill(Color.valueOf("#bf7600"));
+        //button.setTextFill(Color.valueOf("#bf7600"));
         VBox.setMargin(button, new Insets(0.0, 0.0, 0.0, 30.0));
 
         VBox.setVgrow(button3, Priority.ALWAYS);
@@ -405,8 +405,9 @@ public class dashboard {
         search.setGraphic(GlyphsDude.createIcon(FontAwesomeIconName.SEARCH,"20px"));
         search.setTextFill(javafx.scene.paint.Color.WHITE);
         search.setOnMouseClicked(event -> {
-            if(textField.equals(null)||textField.getText()==null){
-
+            String line = textField.getText();
+            if(line.equals("")){
+                System.out.println("do nothing");
             }
             else {
                 id = textField.getText();
@@ -707,6 +708,7 @@ public class dashboard {
             allitems=tableView.getItems();
             itemselected = tableView.getSelectionModel().getSelectedItems();
             //System.out.println(item.getSerial());
+            //Controller cont = new Controller();
             if(cont.deleteitems(item)){
                 itemselected.forEach(allitems::remove);
             }

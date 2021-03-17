@@ -60,8 +60,6 @@ public class Serverworker extends Thread {
        this.output.write(msg.getBytes());
     }
 
-    public List<Serverworker> getServer(){
-        return server.getWorkers();
-    }
+
 
 }

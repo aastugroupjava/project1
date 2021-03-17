@@ -99,7 +99,7 @@ public class signin {
         label0.setLayoutY(365.0);
         label0.setPrefHeight(23.0);
         label0.setPrefWidth(205.0);
-        label0.setText("  Manage your inventory here.");
+        label0.setText("  Manage your inventory here!");
         label0.setTextFill(Color.valueOf("#bd7400"));
         label0.setFont(new Font("Segoe UI", 12.0));
 
@@ -147,7 +147,7 @@ public class signin {
 
         separator.setPrefHeight(7.0);
         separator.setPrefWidth(275.0);
-        separator.setStyle("-fx-background-color: ");
+        separator.setStyle("-fx-background-color: transparent;");
 
 
 
@@ -163,7 +163,6 @@ public class signin {
             ID = txtID.getText();
             Email = email.getText();
             phonenumber = phone_number.getText();
-            System.out.println(username);
             Controller signup = new Controller();
             if(username.equals("") || password.equals("") || ID.equals("")||Email.equals("")||phonenumber.equals("")) {
                 warning.setVisible(true);
@@ -173,15 +172,18 @@ public class signin {
                     try {
                         dashboard.newdashboard();
                     } catch (SQLException ex) {
+                        System.out.println(ex);
+                    } catch (Exception ex) {
                         ex.printStackTrace();
                     }
+                    //it is the sign-up stage.
                     signin.close();
                 } else {
                     System.out.println("couldn't register.please try again.");
                 }
             }
         });
-        btnSignup.setEffect(blend);
+        //btnSignup.setEffect(blend);
 
         go_back.setMnemonicParsing(false);
         go_back.setStyle("-fx-background-color:black");

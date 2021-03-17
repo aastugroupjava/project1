@@ -1,6 +1,5 @@
 package sample;
-import javafx.application.Application;
-import javafx.geometry.Pos;
+
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -9,16 +8,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.effect.Blend;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-//import sun.plugin.com.BeanCustomizer;
 
-import java.awt.*;
-import java.sql.Connection;
-import java.sql.SQLException;
 public class forgetpassword {
     private static Stage window = Main.window;
     private static  Pane pane;
@@ -57,8 +51,9 @@ public class forgetpassword {
         anchorPane.setPrefWidth(696.0);
         anchorPane.setStyle("-fx-background-color: #262626;");
 
-        pane.setLayoutX(-2.0);
-        pane.setPrefHeight(490.0);
+        pane.setLayoutX(0.0);
+        pane.setLayoutY(0.0);
+        pane.setPrefHeight(510.0);
         pane.setPrefWidth(227.0);
         pane.setStyle("-fx-background-color: black;");
 
@@ -83,7 +78,7 @@ public class forgetpassword {
         label0.setLayoutY(376.0);
         label0.setPrefHeight(23.0);
         label0.setPrefWidth(205.0);
-        label0.setText("Manage your inventory here.");
+        label0.setText("Manage your inventory here!");
         label0.setTextFill(javafx.scene.paint.Color.valueOf("#bd7400"));
         label0.setFont(new Font("Segoe UI", 12.0));
 
@@ -130,14 +125,16 @@ public class forgetpassword {
             window.show();
         });
 
-        pane.getChildren().addAll(imageview,label,label0);
+        pane.getChildren().add(label);
+        pane.getChildren().add(imageview);
+        pane.getChildren().add(label0);
         anchorPane.getChildren().add(pane);
         vBox.getChildren().add(labelforget);
         vBox.getChildren().add(txtUsername);
         vBox.getChildren().add(separator);
         vBox.getChildren().add(btnFindPassword);
         vBox.getChildren().add(go_back);
-        anchorPane.getChildren().add(vBox);
+        anchorPane.getChildren().addAll(vBox);
 
 
         Scene scene = new Scene(anchorPane);

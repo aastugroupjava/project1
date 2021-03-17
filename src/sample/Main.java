@@ -160,9 +160,11 @@ public class Main extends Application {
         btnForgot.setTextFill(javafx.scene.paint.Color.valueOf("#2868dd"));
         btnForgot.setFont(new Font("Segoe UI", 12.0));
         btnForgot.setOnMouseClicked(this::handleClicks);
+
         separator.setPrefHeight(7.0);
         separator.setPrefWidth(275.0);
         separator.setStyle("-fx-background-color: ");
+
         btnSignup.setMnemonicParsing(false);
         btnSignup.setPrefHeight(58.0);
         btnSignup.setPrefWidth(275.0);
@@ -204,6 +206,8 @@ public class Main extends Application {
                     dashboard.newdashboard();
                 } catch (SQLException e) {
                     System.out.println(e);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
                 window.close();
             }

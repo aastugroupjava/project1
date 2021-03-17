@@ -70,7 +70,6 @@ public class Controller implements Serializable {
     }
     public boolean validator(String username,String password){
         String login_query = "SELECT 1 FROM users where name='"+username+"'&&"+"password='"+password+"';";
-        System.out.println(login_query);
         ResultSet checker=null;
         try{
             checker = st.executeQuery(login_query);
@@ -86,7 +85,6 @@ public class Controller implements Serializable {
     public boolean signup(String name,String password,String id,String email,String phonenumber){
         String query = "INSERT INTO users VALUES("+"'"+id+"'"+","+"'"+name+"','"+email+"','"+password+"','"+phonenumber+"');";
         String checker = "SELECT 1 FROM users WHERE ID="+"'"+id+"'"+"&&name="+"'"+name+"'&&email='"+email+"'&&password='"+password+"'&&phone_number='"+phonenumber+"';";
-        System.out.println(checker);
         ResultSet check = null;
         try {
             check = st.executeQuery(checker);
@@ -95,7 +93,6 @@ public class Controller implements Serializable {
             }
             else {
                 st.executeUpdate(query);
-                // System.out.println(query);
                 return true;
             }
         }catch (SQLException e){
@@ -103,8 +100,8 @@ public class Controller implements Serializable {
             return false;
         }
     }
-    public String forgetpassword(String security){
-        String forget_password_query = "SELECT password FROM users where phone_number='"+security+"';";
+    public String forgetpassword(String phonenumber){
+        String forget_password_query = "SELECT password FROM users where phone_number='"+phonenumber+"';";
         ResultSet checker=null;
         try{
             checker = st.executeQuery(forget_password_query);
