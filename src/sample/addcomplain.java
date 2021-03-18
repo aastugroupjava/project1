@@ -66,13 +66,6 @@ public class addcomplain{
         submit.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
         submit.setTextFill(Color.DARKGREEN);
         submit.setOnMouseClicked(event -> {
-            // System.out.println("submit button is clicked.");
-            try {
-               RmiInterface  remote = (RmiInterface) Naming.lookup("rmi://localhost:7000/notification");
-               client.startMessageWriter(remote.echo());
-            } catch (Exception e) {
-                System.out.println("rmi error:"+e);
-            }
             Controller addcomplain = new Controller();
             String id = ID.getText();
             String Complainer= complainer.getText();
@@ -89,16 +82,25 @@ public class addcomplain{
                 System.out.println("fill all the forms");
             }
             else{
-                if(addcomplain.addcomplain(id,Complainer,complain_number,status,found,gate,dorm,block,String.valueOf(date))){
-                    addcomplainstage.close();
-                    complain_model complain = new complain_model(complain_number,id,Complainer,String.valueOf(status),String.valueOf(date));
-                    sample.complain.tableView.getItems().add(complain);
+                if(addcomplain.searchpossibleitem(id)) {
+                    if (addcomplain.addcomplain(id, Complainer, complain_number, status, found, gate, dorm, block, String.valueOf(date))) {
+                        addcomplainstage.close();
+                        complain_model complain = new complain_model(complain_number, id, Complainer, String.valueOf(status), String.valueOf(date));
+                        sample.complain.tableView.getItems().add(complain);
+                        try {
+                            RmiInterface  remote = (RmiInterface) Naming.lookup("rmi://localhost:7000/notification");
+                            client.startMessageWriter(remote.echo());
+                        } catch (Exception e) {
+                            System.out.println("rmi error:"+e);
+                        }
+                    } else {
+                        System.out.println("couldn't register, please try again.");
+                    }
                 }
                 else{
-                    System.out.println("couldn't register, please try again.");
+                    System.out.println("there is no item registered with this serial number.");
                 }
             }
-
         });
 
 

@@ -276,9 +276,22 @@ public class Controller implements Serializable {
         }
     }
 
+    public boolean searchpossibleitem(String id) {
+        String getitemquery = "SELECT DISTINCT * FROM items JOIN student ON items.student_ID=student.ID && item.serial_number='"+id+"'";
+        ResultSet searched = null;
+        try{
+            searched = st.executeQuery(getitemquery);
+            if(searched.next())
+                return true;
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
+        return false;
+    }
 
     public ResultSet searchitem(String id) {
-        String getitemquery = "SELECT DISTINCT * FROM items JOIN student ON items.student_ID=student.ID && student_ID='"+id+"'";
+        String getitemquery = "SELECT DISTINCT * FROM items JOIN student ON items.student_ID=student.ID && student.ID='"+id+"'";
         ResultSet searched = null;
         try{
             searched = st.executeQuery(getitemquery);
