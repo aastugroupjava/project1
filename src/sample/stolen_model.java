@@ -1,6 +1,8 @@
 package sample;
 
-public class stolen_model {
+import javafx.collections.ObservableArray;
+
+public class stolen_model  {
     private String Id_of_item;
     private String found_date;
     private String found_gate;

@@ -277,7 +277,7 @@ public class Controller implements Serializable {
     }
 
     public boolean searchpossibleitem(String id) {
-        String getitemquery = "SELECT DISTINCT * FROM items JOIN student ON items.student_ID=student.ID && item.serial_number='"+id+"'";
+        String getitemquery = "SELECT DISTINCT * FROM items JOIN student ON items.student_ID=student.ID && items.serial_number='"+id+"'";
         ResultSet searched = null;
         try{
             searched = st.executeQuery(getitemquery);
@@ -313,7 +313,7 @@ public class Controller implements Serializable {
         }
     }
     public ResultSet searchstolen (String id){
-        String getstolen = "SELECT * FROM stolen_items WHERE  ID_of_items='"+id+"';";
+        String getstolen = "SELECT * FROM stolen_items WHERE  ID_of_item='"+id+"';";
         ResultSet searched = null;
         try{
             searched = st.executeQuery(getstolen);

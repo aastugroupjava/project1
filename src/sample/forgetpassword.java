@@ -109,9 +109,9 @@ public class forgetpassword {
         btnFindPassword.setText("Check.");
         btnFindPassword.setTextFill(javafx.scene.paint.Color.WHITE);
         btnFindPassword.setOnAction(e ->{
-            String security = txtUsername.getText();
+            String phonenumber = txtUsername.getText();
             Controller Forgetpassword =new Controller();
-            String password = Forgetpassword.forgetpassword(security);
+            String password = Forgetpassword.forgetpassword(phonenumber);
             alertbox.passwordrecovery(password);
         });
         btnFindPassword.setEffect(blend);

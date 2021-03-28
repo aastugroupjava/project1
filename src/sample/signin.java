@@ -147,7 +147,7 @@ public class signin {
 
         separator.setPrefHeight(7.0);
         separator.setPrefWidth(275.0);
-        separator.setStyle("-fx-background-color: transparent;");
+        separator.setStyle("-fx-background-color: transparent");
 
 
 
@@ -171,8 +171,6 @@ public class signin {
                 if (signup.signup(username, password, ID,Email,phonenumber)) {
                     try {
                         dashboard.newdashboard();
-                    } catch (SQLException ex) {
-                        System.out.println(ex);
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
