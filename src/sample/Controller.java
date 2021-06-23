@@ -3,6 +3,8 @@ package sample;
 import javafx.scene.control.TextField;
 
 import java.io.Serializable;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -11,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class Controller implements Serializable {
+public class Controller extends UnicastRemoteObject implements Serializable,ControllerInterface {
     protected Connection con;
     protected static Statement st;
     protected ResultSet rt;
@@ -30,7 +32,7 @@ public class Controller implements Serializable {
     private String pass;
     private String secure;
 
-    public Controller(){
+    public Controller() throws RemoteException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/javadbproject","root","");
@@ -347,7 +349,8 @@ public class Controller implements Serializable {
             return false;
         }
     }
-    public static boolean addfound(String date, String gate, String dorm, String block,String id) {
+    //i removed the static tag.
+    public boolean addfound(String date, String gate, String dorm, String block,String id) {
             String query = "UPDATE stolen_items SET found_date='"+date+"',found_gate='"+gate+"',found_dorm='"+dorm+"',found_block_number='"+block+"' WHERE ID_of_item='"+id+"';";
             try{
                 st.executeUpdate(query);

@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c192ffe0-6769-463e-884f-347704326f10" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sample/security.policy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/ControllerInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/login/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/login/sample/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/login/sample/alertbox.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/login/sample/alertbox.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/login/sample/dashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/login/sample/dashboard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/login/sample/forgetpassword.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/login/sample/forgetpassword.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/login/sample/sign_in.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/login/sample/sign_in.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/login/sample/signin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/login/sample/signin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,9 +62,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Interface" />
         <option value="Class" />
         <option value="policy" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -138,7 +132,7 @@
       <recent name="sample.Chat" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.client2">
+  <component name="RunManager" selected="Application.Server">
     <configuration default="true" type="Applet" factoryName="Applet">
       <module name="" />
       <option name="MAIN_CLASS_NAME" />
@@ -308,8 +302,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.client2" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.client2" />
         <item itemvalue="Application.client" />
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.signin" />
@@ -557,7 +551,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616931096373</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Last update and commit on RMI Server multi-thread....">
+      <created>1623816373895</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1623816373895</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -621,34 +622,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1615915470078" />
-    <state x="499" y="168" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1615187120521">
+    <state x="455" y="8" key="CommitChangelistDialog2" timestamp="1623816372057">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="168" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1536.824@0.0.1536.824" timestamp="1615187120521" />
-    <state x="455" y="8" key="CommitChangelistDialog2" timestamp="1616931094903">
+    <state x="455" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1623816372057" />
+    <state width="1537" height="89" key="GridCell.Tab.0.bottom" timestamp="1623853980072">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="455" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1616931094903" />
-    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1615579191185">
+    <state width="1537" height="89" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1623853980072" />
+    <state width="1537" height="89" key="GridCell.Tab.0.center" timestamp="1623853980071">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1615579191185" />
-    <state width="1522" height="426" key="GridCell.Tab.0.bottom" timestamp="1623813854909">
+    <state width="1537" height="89" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1623853980071" />
+    <state width="1537" height="89" key="GridCell.Tab.0.left" timestamp="1623853980071">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1522" height="426" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1623813854909" />
-    <state width="1522" height="426" key="GridCell.Tab.0.center" timestamp="1623813854909">
+    <state width="1537" height="89" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1623853980071" />
+    <state width="1537" height="89" key="GridCell.Tab.0.right" timestamp="1623853980072">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1522" height="426" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1623813854909" />
-    <state width="1522" height="426" key="GridCell.Tab.0.left" timestamp="1623813854909">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1522" height="426" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1623813854909" />
-    <state width="1522" height="426" key="GridCell.Tab.0.right" timestamp="1623813854909">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1522" height="426" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1623813854909" />
+    <state width="1537" height="89" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1623853980072" />
     <state width="768" height="154" key="GridCell.Tab.1.bottom" timestamp="1615828358934">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -673,22 +666,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="618" y="329" key="VCS.ChangelistChooser/0.0.1536.824@0.0.1536.824" timestamp="1615818296686" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1616931103610">
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1623816380186">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1616931103610" />
-    <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1623813901771">
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1623816380186" />
+    <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1624416412579">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1623813901771" />
+    <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1624416412579" />
     <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1623816364200">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1623816364200" />
-    <state x="209" y="67" key="new project wizard" timestamp="1623396129347">
+    <state x="209" y="67" key="new project wizard" timestamp="1624366475210">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="209" y="67" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1623396129347" />
+    <state x="209" y="67" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1624366475210" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1616045963862">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
