@@ -1,4 +1,4 @@
-package sample;
+package sample.Client;
 
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -12,6 +12,11 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 
 public class forgetpassword {
     private static Stage window = Main.window;
@@ -110,7 +115,17 @@ public class forgetpassword {
         btnFindPassword.setTextFill(javafx.scene.paint.Color.WHITE);
         btnFindPassword.setOnAction(e ->{
             String phonenumber = txtUsername.getText();
-            Controller Forgetpassword =new Controller();
+            //Controller Forgetpassword =new Controller();
+            ControllerInterface Forgetpassword= null;
+            try {
+                Forgetpassword = (ControllerInterface) Naming.lookup("rmi://192.168.0.2/controller");
+            } catch (NotBoundException ex) {
+                ex.printStackTrace();
+            } catch (MalformedURLException ex) {
+                ex.printStackTrace();
+            } catch (RemoteException ex) {
+                ex.printStackTrace();
+            }
             String password = Forgetpassword.forgetpassword(phonenumber);
             alertbox.passwordrecovery(password);
         });

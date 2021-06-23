@@ -1,4 +1,4 @@
-package sample;
+package sample.Client;
 
 import javafx.collections.ObservableArray;
 

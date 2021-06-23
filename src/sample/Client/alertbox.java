@@ -1,4 +1,4 @@
-package sample;
+package sample.Client;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -12,6 +12,8 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import sample.studDash;
 
 public class alertbox {
     protected static Button button;

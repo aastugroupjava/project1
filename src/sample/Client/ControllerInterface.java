@@ -1,4 +1,6 @@
-package sample;
+package sample.Client;
+import sample.Client.items;
+
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.ResultSet;

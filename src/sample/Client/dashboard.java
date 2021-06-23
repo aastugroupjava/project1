@@ -1,4 +1,4 @@
-package sample;
+package sample.Client;
 
 
 import de.jensd.fx.glyphs.GlyphsDude;
@@ -24,12 +24,18 @@ import javax.swing.text.GlyphView;
 import javax.xml.crypto.Data;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.StageStyle;
+import sample.edititem;
+import sample.stolenitem;
+import sample.studDash;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import static sample.Controller.*;
 
 public class dashboard {
     public static Scene scene;
@@ -93,8 +99,8 @@ public class dashboard {
     protected static  VBox pnItems;
     protected static  ImageView imageView5;
     protected static  DropShadow dropShadow;
-    protected static Controller controller;
-    protected static Stage dashboard;
+    protected static ControllerInterface controller;
+    public static Stage dashboard;
     private static HBox hBox;
     public  static Stage newdashboard = new Stage();
     private static Button additem = new Button();
@@ -430,7 +436,15 @@ public class dashboard {
         reset.setOnMouseClicked(event -> {
             ObservableList<items> allitems=tableView.getItems();
             tableView.getItems().removeAll(allitems);
-            getrefresh();
+            try {
+                getrefresh();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
             textField.clear();
             reset.setVisible(false);
         });
@@ -439,9 +453,9 @@ public class dashboard {
         anchorPane0.setPrefWidth(434.0);
         anchorPane0.setSpacing(100);
 
-        all= Controller.itemnumbers();
-        stolen= Controller.stolennumbers();
-        complain=Controller.complainnumber();
+//        all= Controller.itemnumbers();
+//        stolen= Controller.stolennumbers();
+//        complain=Controller.complainnumber();
 
 
         label0.setText(String.valueOf(stolen));
@@ -600,7 +614,8 @@ public class dashboard {
         vBox0.getChildren().add(vBox1);
         mainBox.getChildren().add(vBox0);
 
-        Controller item = new Controller();
+       // Controller item = new Controller();
+        ControllerInterface item = (ControllerInterface) Naming.lookup("rmi://192.168.0.2/controller");
         ResultSet items = item.getitemdata();
         try{
             ObservableList<items> itemlist = FXCollections.observableArrayList();
@@ -648,10 +663,11 @@ public class dashboard {
 
     private static void onAction (MouseEvent event) throws Exception{
         additems additems = new additems();
-        Controller cont = new Controller();
+        //Controller cont = new Controller();
+        ControllerInterface cont = (ControllerInterface) Naming.lookup("rmi://192.168.0.2/controller");
         if(event.getSource()==button2){
             System.out.println("button is clicked");
-            newdashboard.setScene(sample.complain.display());
+            newdashboard.setScene(sample.Client.complain.display());
         }
         if(event.getSource()==button4){
             System.out.println("signout is clicked");
@@ -794,8 +810,9 @@ public class dashboard {
 
 
     }
-    public static void getrefresh(){
-        Controller item = new Controller();
+    public static void getrefresh() throws RemoteException, NotBoundException, MalformedURLException {
+        //Controller item = new Controller();
+        ControllerInterface item = (ControllerInterface) Naming.lookup("rmi://192.168.0.2/controller");
         ResultSet items = item.getitemdata();
         try{
             ObservableList<items> itemlist = FXCollections.observableArrayList();

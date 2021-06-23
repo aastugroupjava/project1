@@ -1,4 +1,4 @@
-package sample;
+package sample.Client;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -18,6 +18,10 @@ import javafx.stage.Stage;
 //import sun.plugin.com.BeanCustomizer;
 
 import java.awt.*;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -163,7 +167,17 @@ public class signin {
             ID = txtID.getText();
             Email = email.getText();
             phonenumber = phone_number.getText();
-            Controller signup = new Controller();
+            //Controller signup = new Controller();
+            ControllerInterface signup = null;
+            try {
+                signup = (ControllerInterface) Naming.lookup("rmi://192.168.0.2/controller");
+            } catch (NotBoundException ex) {
+                ex.printStackTrace();
+            } catch (MalformedURLException ex) {
+                ex.printStackTrace();
+            } catch (RemoteException ex) {
+                ex.printStackTrace();
+            }
             if(username.equals("") || password.equals("") || ID.equals("")||Email.equals("")||phonenumber.equals("")) {
                 warning.setVisible(true);
             }

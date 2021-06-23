@@ -1,4 +1,4 @@
-package sample;
+package sample.Client;
 import javafx.application.Application;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;

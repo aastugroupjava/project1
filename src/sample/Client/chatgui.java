@@ -1,4 +1,4 @@
-package sample;
+package sample.Client;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import sample.Chat.client;
+import sample.MessageListener;
 
 //import java.awt.*;
 

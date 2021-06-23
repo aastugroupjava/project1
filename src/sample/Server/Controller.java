@@ -1,6 +1,8 @@
-package sample;
+package sample.Server;
 
 import javafx.scene.control.TextField;
+import sample.Server.items;
+
 
 import java.io.Serializable;
 import java.rmi.RemoteException;

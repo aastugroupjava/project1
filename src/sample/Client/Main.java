@@ -1,4 +1,4 @@
-package sample;
+package sample.Client;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -13,10 +13,16 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import sample.*;
 import sample.Chat.client;
+import sample.signin;
 //import jdk.nashorn.api.scripting.ScriptObjectMirror;
 import java.io.*;
+import java.net.MalformedURLException;
 import java.net.Socket;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.lang.*;
 
@@ -143,7 +149,17 @@ public class Main extends Application {
 
         btnSignin.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
         btnSignin.setMnemonicParsing(false);
-        btnSignin.setOnMouseClicked(this::handleClicks);
+        btnSignin.setOnMouseClicked(mouseEvent -> {
+            try {
+                handleClicks(mouseEvent);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+        });
         btnSignin.setPrefHeight(34.0);
         btnSignin.setPrefWidth(137.0);
         btnSignin.setStyle("-fx-background-color:#bf7600");
@@ -159,7 +175,17 @@ public class Main extends Application {
         btnForgot.setText("Forgot Password");
         btnForgot.setTextFill(javafx.scene.paint.Color.valueOf("#2868dd"));
         btnForgot.setFont(new Font("Segoe UI", 12.0));
-        btnForgot.setOnMouseClicked(this::handleClicks);
+        btnForgot.setOnMouseClicked(mouseEvent -> {
+            try {
+                handleClicks(mouseEvent);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+        });
 
         separator.setPrefHeight(7.0);
         separator.setPrefWidth(275.0);
@@ -171,7 +197,17 @@ public class Main extends Application {
         btnSignup.setStyle("-fx-background-color: #bf7600");
         btnSignup.setText("Sign up");
         btnSignup.setTextFill(javafx.scene.paint.Color.WHITE);
-        btnSignup.setOnMouseClicked(this::handleClicks);
+        btnSignup.setOnMouseClicked(mouseEvent -> {
+            try {
+                handleClicks(mouseEvent);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+        });
         //btnSignup.setEffect(blend0);
         pane.getChildren().add(label);
         pane.getChildren().add(label0);
@@ -192,7 +228,7 @@ public class Main extends Application {
     }
 
 
-    public void handleClicks(MouseEvent mouseEvent)  {
+    public void handleClicks(MouseEvent mouseEvent) throws RemoteException, NotBoundException, MalformedURLException {
         if (mouseEvent.getSource() == btnSignup) {
             signin.display();
             window.close();
@@ -200,7 +236,7 @@ public class Main extends Application {
         if (mouseEvent.getSource() == btnSignin) {
             username = txtUsername.getText();
             password = txtPassword.getText();
-            Controller validator = new Controller();
+            ControllerInterface validator = (ControllerInterface) Naming.lookup("rmi://192.168.0.2/controller");
             if(validator.validator(username, password)){
                 try {
                     dashboard.newdashboard();

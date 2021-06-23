@@ -1,4 +1,4 @@
-package sample;
+package sample.Client;
 import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.application.Application;
@@ -11,6 +11,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import sample.Chat.client;
+import sample.ControllerInterface;
+import sample.RmiInterface;
+import sample.complain_model;
 
 import java.awt.event.MouseEvent;
 import java.net.MalformedURLException;
@@ -35,23 +38,23 @@ public class addcomplain{
 
         //Id label and field.
 
-        IDlabel.setAlignment(javafx.geometry.Pos.CENTER);
+        IDlabel.setAlignment(Pos.CENTER);
         IDlabel.setText("Item ID:");
         IDlabel.setStyle("-fx-background-color:#262626");
         IDlabel.setTextFill(Color.WHITE);
 
-        ID.setAlignment(javafx.geometry.Pos.CENTER);
+        ID.setAlignment(Pos.CENTER);
         ID.setPrefHeight(48.0);
         ID.setPrefWidth(50.0);
         ID.setPromptText("Item ID");
         ID.setStyle("-fx-background-color:gray");
 
-        complainerlabel.setAlignment(javafx.geometry.Pos.CENTER);
+        complainerlabel.setAlignment(Pos.CENTER);
         complainerlabel.setText("Complainer name:");
         complainerlabel.setStyle("-fx-background-color:#262626");
         complainerlabel.setTextFill(Color.WHITE);
 
-        complainer.setAlignment(javafx.geometry.Pos.CENTER);
+        complainer.setAlignment(Pos.CENTER);
         complainer.setPrefHeight(48.0);
         complainer.setPrefWidth(50.0);
         complainer.setPromptText("Complainer name");
@@ -61,12 +64,21 @@ public class addcomplain{
 
         //submit button
         submit.setText("Add Complain");
-        submit.setAlignment(javafx.geometry.Pos.CENTER);
+        submit.setAlignment(Pos.CENTER);
         submit.setPrefWidth(250.0);
         submit.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
         submit.setTextFill(Color.DARKGREEN);
         submit.setOnMouseClicked(event -> {
-            Controller addcomplain = new Controller();
+            ControllerInterface addcomplain = null;
+            try {
+                addcomplain = (ControllerInterface) Naming.lookup("rmi://192.168.0.2/controller");
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
             String id = ID.getText();
             String Complainer= complainer.getText();
             Random rand = new Random();
@@ -86,9 +98,9 @@ public class addcomplain{
                     if (addcomplain.addcomplain(id, Complainer, complain_number, status, found, gate, dorm, block, String.valueOf(date))) {
                         addcomplainstage.close();
                         complain_model complain = new complain_model(complain_number, id, Complainer, String.valueOf(status), String.valueOf(date));
-                        sample.complain.tableView.getItems().add(complain);
+                        sample.Client.complain.tableView.getItems().add(complain);
                         try {
-                            RmiInterface  remote = (RmiInterface) Naming.lookup("rmi://localhost:7000/notification");
+                            RmiInterface remote = (RmiInterface) Naming.lookup("rmi://localhost:7000/notification");
                             client.startMessageWriter(remote.echo());
                         } catch (Exception e) {
                             System.out.println("rmi error:"+e);

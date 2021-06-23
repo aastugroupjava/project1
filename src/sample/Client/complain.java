@@ -1,4 +1,4 @@
-package sample;
+package sample.Client;
 
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconName;
@@ -19,17 +19,28 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import sample.*;
+import sample.Server.Controller;
+import sample.complain_model;
+import sample.editcomplain;
+import sample.found;
+import sample.stolenitem;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.sql.ResultSet;
+import java.util.Date;
 
-public  class studDash {
-    public static  Scene scenestud;
+public  class complain {
+    public static  Scene scenecomplain;
     protected static  Button button0;
     protected static Button button;
-    private static TableView<stModel> tableView;
+    public static TableView<complain_model> tableView;
     private static Button additem = new Button();
     private static Button delete = new Button();
-    private static Button checkout = new Button();
+    private static Button status = new Button();
     private static Button edit = new Button();
     private static Button checkin = new Button();
     public  static Stage newdashboardd = new Stage();
@@ -40,17 +51,14 @@ public  class studDash {
     private static Button button1;
     private static Button button2;
     private static Button button4;
-
-    public static Scene display()
-    {
-        System.out.println("newdashboard(after the login page redirection.)");
+    public static Scene display() throws RemoteException, NotBoundException, MalformedURLException {
+        Button button3;
         VBox vBox;
         ImageView imageView;
         VBox vBox0;
         VBox vBox1;
         VBox vBox2;
         HBox anchorPane;
-        Button button3;
         Label label;
         TextField textField;
         HBox anchorPane0;
@@ -62,12 +70,10 @@ public  class studDash {
         Label label6;
         Label label7;
         TableColumn tableColumn;
-        TableColumn<stModel,String> tableColumn0;
-        TableColumn<stModel,String> tableColumn1;
-        TableColumn<stModel,String> tableColumn2;
-        TableColumn<stModel,String> tableColumn3;
-        TableColumn<stModel,String> tableColumn4;
-        TableColumn<stModel,String> tableColumn5;
+        TableColumn<complain_model,String> tableColumn0;
+        TableColumn<complain_model,String> tableColumn1;
+        TableColumn<complain_model,String> tableColumn2;
+        TableColumn<complain_model,String> tableColumn3;
 
         HBox mainBox;
         vBox = new VBox();
@@ -93,14 +99,13 @@ public  class studDash {
         label5 = new Label();
         label6 = new Label();
         label7 = new Label();
-        tableView = new TableView<stModel>();
+        tableView = new TableView<complain_model>();
         tableColumn = new TableColumn<>();
         tableColumn0 = new TableColumn<>();
         tableColumn1 = new TableColumn<>();
         tableColumn2 = new TableColumn<>();
         tableColumn3 = new TableColumn<>();
-        tableColumn4 = new TableColumn<>();
-        tableColumn5 = new TableColumn<>();
+
 
 
 
@@ -136,7 +141,15 @@ public  class studDash {
         button.setContentDisplay(ContentDisplay.LEFT);
         button.setTextFill(Color.valueOf("#bf7600"));
         button.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         });
         VBox.setMargin(button, new Insets(0.0, 0.0, 0.0, 30.0));
 
@@ -156,12 +169,21 @@ public  class studDash {
         VBox.setMargin(button3, new Insets(0.0, 0.0, 0.0, 30.0));
 
 
-        additem.setText("Add");
+        //additem.setText("Add");
         //additem.setAlignment(Pos.BASELINE_LEFT);
         additem.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
+        additem.setGraphic(GlyphsDude.createIcon(FontAwesomeIconName.USER_PLUS,"30px"));
         additem.setTextFill(Color.DARKGREEN);
         additem.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         });
 
         //delete.setText("Delete");
@@ -170,17 +192,52 @@ public  class studDash {
         delete.setGraphic(GlyphsDude.createIcon(FontAwesomeIconName.TRASH,"30px"));
         delete.setTextFill(Color.DARKRED);
         delete.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         });
 
 
-        edit.setText("Edit");
+       // edit.setText("Edit");
         //edit.setAlignment(Pos.TOP_RIGHT);
         edit.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
+        edit.setGraphic(GlyphsDude.createIcon(FontAwesomeIconName.EDIT,"30px"));
         edit.setTextFill(Color.DARKCYAN);
         edit.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         });
+
+        //status.setText("Found");
+        //edit.setAlignment(Pos.TOP_RIGHT);
+        status.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
+        status.setGraphic(GlyphsDude.createIcon(FontAwesomeIconName.LAPTOP,"30px"));
+        status.setTextFill(Color.BLUE);
+        status.setOnMouseClicked(event -> {
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+        });
+
 
         VBox.setVgrow(button0, Priority.ALWAYS);
         button0.setAlignment(Pos.CENTER);
@@ -192,8 +249,16 @@ public  class studDash {
         button0.setContentDisplay(ContentDisplay.LEFT);
         button0.setTextFill(Color.valueOf("#bf7600"));
         button0.setOnMouseClicked(event -> {
-                    onAction(event);
-                    //dashboard.getScene(scene2);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            //dashboard.getScene(scene2);
                     //stolenitemsview();
                 }
         );
@@ -209,7 +274,15 @@ public  class studDash {
         button1.setContentDisplay(ContentDisplay.LEFT);
         button1.setTextFill(Color.valueOf("#bf7600"));
         button1.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         });
         VBox.setMargin(button1, new Insets(0.0, 0.0, 0.0, 30.0));
 
@@ -223,7 +296,15 @@ public  class studDash {
         button2.setContentDisplay(ContentDisplay.LEFT);
         button2.setTextFill(Color.valueOf("#bf7600"));
         button2.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         });
         VBox.setMargin(button2, new Insets(0.0, 0.0, 0.0, 30.0));
 
@@ -238,7 +319,15 @@ public  class studDash {
         button4.setContentDisplay(ContentDisplay.LEFT);
         button4.setTextFill(Color.valueOf("#bf7600"));
         button4.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         });
         VBox.setMargin(button4, new Insets(0.0, 0.0, 0.0, 30.0));
 
@@ -277,15 +366,23 @@ public  class studDash {
         search.setPrefWidth(25.0);
         search.setStyle("-fx-background-color: #bf7600");
         //search.setText("search");
-        search.setGraphic(GlyphsDude.createIcon(FontAwesomeIconName.SEARCH,"20px"));
         search.setTextFill(javafx.scene.paint.Color.WHITE);
+        search.setGraphic(GlyphsDude.createIcon(FontAwesomeIconName.SEARCH,"20px"));
         search.setOnMouseClicked(event -> {
             if(textField.equals(null)||textField.getText()==null){
                 System.out.println("do nothing.");
             }
             else {
                 id = textField.getText();
-                onAction(event);
+                try {
+                    onAction(event);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                } catch (NotBoundException e) {
+                    e.printStackTrace();
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
                 reset.setVisible(true);
             }
         });
@@ -298,9 +395,17 @@ public  class studDash {
         reset.setTextFill(javafx.scene.paint.Color.WHITE);
         reset.setVisible(false);
         reset.setOnMouseClicked(event -> {
-            ObservableList<stModel> allitems=tableView.getItems();
+            ObservableList<complain_model> allitems=tableView.getItems();
             tableView.getItems().removeAll(allitems);
-            getrefresh();
+            try {
+                getrefresh();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
             textField.clear();
             reset.setVisible(false);
         });
@@ -386,33 +491,27 @@ public  class studDash {
 
 
         tableColumn.setPrefWidth(58.0);
-        tableColumn.setText("ID");
-        tableColumn.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        tableColumn.setText("Complain Number");
+        tableColumn.setCellValueFactory(new PropertyValueFactory<>("Complain_number"));
 
 
         tableColumn0.setPrefWidth(76.0);
-        tableColumn0.setText("Full Name");
-        tableColumn0.setCellValueFactory(new PropertyValueFactory<>("Full_Name"));
+        tableColumn0.setText("Id");
+        tableColumn0.setCellValueFactory(new PropertyValueFactory<>("Item_ID"));
 
         tableColumn1.setPrefWidth(76.0);
-        tableColumn1.setText("Email");
-        tableColumn1.setCellValueFactory(new PropertyValueFactory<>("email"));
+        tableColumn1.setText("Complainer");
+        tableColumn1.setCellValueFactory(new PropertyValueFactory<>("Complainer"));
 
         tableColumn2.setPrefWidth(74.0);
-        tableColumn2.setText("Department");
-        tableColumn2.setCellValueFactory(new PropertyValueFactory<>("Department"));
+        tableColumn2.setText("Status");
+        tableColumn2.setCellValueFactory(new PropertyValueFactory<>("Status"));
 
         tableColumn3.setPrefWidth(76.0);
-        tableColumn3.setText("Block_number");
-        tableColumn3.setCellValueFactory(new PropertyValueFactory<>("block_number"));
+        tableColumn3.setText("Date of complain");
+        tableColumn3.setCellValueFactory(new PropertyValueFactory<>("Date_of_complain"));
 
-        tableColumn4.setPrefWidth(72.0);
-        tableColumn4.setText("Dorm room");
-        tableColumn4.setCellValueFactory(new PropertyValueFactory<>("dorm_number"));
 
-        tableColumn5.setPrefWidth(72.0);
-        tableColumn5.setText("Phone_number");
-        tableColumn5.setCellValueFactory(new PropertyValueFactory<>("Phonenumber"));
 
         //tableColumn5.setStyle("-fx-background-color:black");
         //tableColumn5.setStyle("-fx-text-color:black");
@@ -434,7 +533,7 @@ public  class studDash {
         anchorPane.getChildren().addAll(textField,search,reset);
         vBox2.getChildren().add(anchorPane);
 
-        anchorPane0.getChildren().add(delete);
+        anchorPane0.getChildren().addAll(additem,edit,delete,status);
 
         vBox2.getChildren().add(anchorPane0);
         vBox1.getChildren().add(vBox2);
@@ -442,8 +541,8 @@ public  class studDash {
         tableView.getColumns().add(tableColumn0);
         tableView.getColumns().add(tableColumn1);
         tableView.getColumns().add(tableColumn2);
-        tableView.getColumns().add(tableColumn4);
-        tableView.getColumns().add(tableColumn5);
+        tableView.getColumns().add(tableColumn3);
+
 
 
 
@@ -452,21 +551,20 @@ public  class studDash {
         vBox0.getChildren().add(vBox1);
         mainBox.getChildren().add(vBox0);
 
-        Controller item = new Controller();
-        ResultSet students = item.getstudentdata();
+        //Controller item = new Controller();
+        ControllerInterface item= (ControllerInterface) Naming.lookup("rmi://192.168.0.2/controller");
+        ResultSet complain = item.getcomplaindata();
         try{
-            ObservableList<stModel> stdlist = FXCollections.observableArrayList();
-            while(students.next()){
-                String id = students.getString("ID");
-                String fullName = students.getString("full_name");
-                String Email = students.getString("email");
-                String Department= students.getString("departement");
-                String Bnum = students.getString("block_number");
-                String Dormr = students.getString("dorm_room");
-                String phone = students.getString("phone_number");
+            ObservableList<complain_model> stdlist = FXCollections.observableArrayList();
+            while(complain.next()){
+                String complain_number = complain.getString("complain_number");
+                String item_id = complain.getString("item_ID");
+                String complainer = complain.getString("complainer");
+                String status = String.valueOf(complain.getInt("status"));
+                String date = complain.getString("date_of_complain");
 //                System.out.println(request);
 //                System.out.println(appending);
-                stdlist.add(new stModel(id,fullName,Email,Department,Bnum,Dormr,phone));
+                stdlist.add(new complain_model(complain_number,item_id,complainer,status,date));
 
 
                 //tableView.getItems().add(itemclass);
@@ -477,8 +575,8 @@ public  class studDash {
         catch(Exception e){
             System.out.println("error_on_table:"+e);
         }
-        scenestud = new Scene(mainBox);
-        return scenestud;
+        scenecomplain= new Scene(mainBox);
+        return scenecomplain;
 //        studentdashboard.setScene(scenestud);
 //        studentdashboard.setResizable(true);
 //        studentdashboard.show();
@@ -492,27 +590,28 @@ public  class studDash {
 
 
     }
-    public static void getrefresh(){
-        Controller item = new Controller();
-        ResultSet student = item.getstudentdata();
+    public static void getrefresh() throws RemoteException, NotBoundException, MalformedURLException {
+        //Controller item = new Controller();
+        ControllerInterface item = (ControllerInterface) Naming.lookup("rmi://192.168.0.2/controller");
+        ResultSet complain = item.getcomplaindata();
         try{
-            ObservableList<stModel> itemlist = FXCollections.observableArrayList();
-            while(student.next()){
-                String id = student.getString("ID");
-                String fullName = student.getString("full_name");
-                String Email = student.getString("email");
-                String Department= student.getString("departement");
-                String Bnum = student.getString("block_number");
-                String Dormr = student.getString("dorm_room");
-                String phone = student.getString("phone_number");
+            ObservableList<complain_model> itemlist = FXCollections.observableArrayList();
+            while(complain.next()){
+                String complain_number = complain.getString("complain_number");
+                String item_id = complain.getString("item_ID");
+                String complainer = complain.getString("complainer");
+                String status = String.valueOf(complain.getInt("status"));
+                String date = complain.getString("date_of_complain");
 //                System.out.println(request);
 //                System.out.println(appending);
-                itemlist.add(new stModel(id,fullName,Email,Department,Bnum,Dormr,phone));
+                itemlist.add(new complain_model(complain_number,item_id,complainer,status,date));
 
 
                 //tableView.getItems().add(itemclass);
                 // tableView.setVisible(true);
             }
+            tableView.getItems().addAll(itemlist);
+            tableView.getItems().removeAll(itemlist);
             tableView.getItems().addAll(itemlist);
         }
         catch(Exception e){
@@ -522,31 +621,53 @@ public  class studDash {
 
     }
 
-    private static void onAction (MouseEvent event){
+    private static void onAction (MouseEvent event) throws RemoteException, NotBoundException, MalformedURLException {
         dashboard dash = new dashboard();
-        Controller cont = new Controller();
+        ControllerInterface cont = (ControllerInterface) Naming.lookup("rmi://192.168.0.2/controller");
         if(event.getSource()==button0){
             dash.newdashboard.setScene(stolenitem.display());
         }
         if(event.getSource()==button1){
-            dash.newdashboard.setScene(studDash.display());
+            dash.newdashboard.setScene(sample.studDash.display());
         }
         if(event.getSource()==button2){
-            dash.newdashboard.setScene(sample.complain.display());
+            System.out.println("do nothing");
         }
         if(event.getSource()==button4){
-            dashboard.newdashboard.close();
+            dash.newdashboard.close();
             Main.window.show();
         }
-        if(event.getSource()==delete){
-            ObservableList<stModel> itemselected = null;
-            ObservableList<stModel>allitems=null;
+        if(event.getSource()==status){
             int index = tableView.getSelectionModel().getSelectedIndex();
-            stModel item = tableView.getItems().get(index);
+            complain_model item = tableView.getItems().get(index);
+            found.found(item);
+            sample.stolenitem.getrefresh();
+            getrefresh();
+        }
+        if(event.getSource()==edit){
+            ObservableList<complain_model> itemselected = null;
+            ObservableList<complain_model>allitems=null;
+            int index = tableView.getSelectionModel().getSelectedIndex();
+            complain_model item = tableView.getItems().get(index);
+            if(cont.deletecomplain(item.getComplain_number())&&cont.delete_stolen(item.getItem_ID())) {
+                editcomplain.editcomplain(item);
+            }
+            else{
+                System.out.println("couldn't edit");
+            }
+        }
+        if(event.getSource()==additem){
+            addcomplain.addcomplain();
+        }
+        if(event.getSource()==delete){
+            ObservableList<complain_model> itemselected = null;
+            ObservableList<complain_model>allitems=null;
+            int index = tableView.getSelectionModel().getSelectedIndex();
+            complain_model item = tableView.getItems().get(index);
             allitems=tableView.getItems();
             itemselected = tableView.getSelectionModel().getSelectedItems();
             //System.out.println(item.getSerial());
-            if(cont.deletestudent(item.getID())){
+            if(cont.deletecomplain(item.getComplain_number())){
                 itemselected.forEach(allitems::remove);
             }
             else{
@@ -554,31 +675,29 @@ public  class studDash {
             }
         }
         if(event.getSource()==button){
-            System.out.println("all items is clicked.");
+            System.out.println("it is clicked fam.");
             dash.newdashboard.setScene(dash.scene);
             dash.newdashboard.show();
            // dash.newdashboard.setFullScreen(true);
         }
         if(event.getSource()==search){
-            ObservableList<stModel> allitems=null;
-            ResultSet searched= cont.searchstudent(id);
+            ObservableList<complain_model> allitems=null;
+            ResultSet searched= cont.searchcomplain(id);
             allitems= tableView.getItems();
-            stModel st=null;
+            complain_model st=null;
             try{
                 while (searched.next()){
-                    String id = searched.getString("ID");
-                    String fullName = searched.getString("full_name");
-                    String Email = searched.getString("email");
-                    String Department= searched.getString("departement");
-                    String Bnum = searched.getString("block_number");
-                    String Dormr = searched.getString("dorm_room");
-                    String phone = searched.getString("phone_number");
-                    st = new stModel(id,fullName,Email,Department,Bnum,Dormr,phone);
+                    String complain_number =searched.getString("complain_number");
+                    String item_id = searched.getString("item_ID");
+                    String complainer = searched.getString("complainer");
+                    String status = String.valueOf(searched.getInt("status"));
+                    String date = searched.getString("date_of_complain");
+                    st = new complain_model(complain_number,item_id,complainer,status,date);
                 }
             }catch (Exception e){
                 System.out.println(e);
             }
-           tableView.getItems().removeAll(allitems);
+            tableView.getItems().removeAll(allitems);
             tableView.getItems().add(st);
         }
 
@@ -589,3 +708,4 @@ public  class studDash {
     }
 
 }
+

@@ -1,4 +1,4 @@
-package sample;
+package sample.Client;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.*;
@@ -13,12 +13,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import java.awt.event.MouseEvent;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.Random;
 
 
 public class found{
-    public static void found(complain_model complainitem){
+    public static void found(sample.complain_model complainitem){
         TextField found = new TextField();
         TextField gate = new TextField();
         TextField dorm = new TextField();
@@ -78,8 +82,18 @@ public class found{
         submit.setTextFill(Color.DARKGREEN);
         submit.setOnMouseClicked(event -> {
             // System.out.println("submit button is clicked.");
-            Controller foundct = new Controller();
-           // String founded = found.getText();
+            //Controller foundct = new Controller();
+            ControllerInterface foundct= null;
+            try {
+                foundct = (ControllerInterface) Naming.lookup("rmi://192.168.0.2/controller");
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+            // String founded = found.getText();
             String gated= gate.getText();
             String dormed = dorm.getText();
             String blocked = block.getText();

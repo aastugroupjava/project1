@@ -1,9 +1,8 @@
-package sample;
+package sample.Client;
 
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconName;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -21,13 +20,17 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.sql.ResultSet;
 
-public class stolenitem {
-    public static  Scene scenestolen;
+public  class studDash {
+    public static  Scene scenestud;
     protected static  Button button0;
     protected static Button button;
-    public static TableView<stolen_model> tableView;
+    private static TableView<stModel> tableView;
     private static Button additem = new Button();
     private static Button delete = new Button();
     private static Button checkout = new Button();
@@ -38,20 +41,19 @@ public class stolenitem {
     private static Button search=new Button(),reset=new Button();
     private static String id;
     public static Stage studentdashboard = new Stage();
-    private static HBox mainBox;
     private static Button button1;
     private static Button button2;
     private static Button button4;
 
-    public static Scene display()
-    {
+    public static Scene display() throws RemoteException, NotBoundException, MalformedURLException {
+        System.out.println("newdashboard(after the login page redirection.)");
         VBox vBox;
         ImageView imageView;
-        Button button3;
         VBox vBox0;
         VBox vBox1;
         VBox vBox2;
         HBox anchorPane;
+        Button button3;
         Label label;
         TextField textField;
         HBox anchorPane0;
@@ -63,21 +65,21 @@ public class stolenitem {
         Label label6;
         Label label7;
         TableColumn tableColumn;
-        TableColumn<stolen_model,String> tableColumn0;
-        TableColumn<stolen_model,String> tableColumn1;
-        TableColumn<stolen_model,String> tableColumn2;
-        TableColumn<stolen_model,String> tableColumn3;
-        TableColumn<stolen_model,String> tableColumn4;
-        TableColumn<stolen_model,String> tableColumn5;
+        TableColumn<stModel,String> tableColumn0;
+        TableColumn<stModel,String> tableColumn1;
+        TableColumn<stModel,String> tableColumn2;
+        TableColumn<stModel,String> tableColumn3;
+        TableColumn<stModel,String> tableColumn4;
+        TableColumn<stModel,String> tableColumn5;
 
-
+        HBox mainBox;
         vBox = new VBox();
         imageView = new ImageView("images/icon123.png");
         button = new Button();
         button0 = new Button();
         button1 = new Button();
-        button3 = new Button();
         button2 = new Button();
+        button3 = new Button();
         button4 = new Button();
         Button btnSignup = new Button();
         vBox0 = new VBox();
@@ -94,7 +96,7 @@ public class stolenitem {
         label5 = new Label();
         label6 = new Label();
         label7 = new Label();
-        tableView = new TableView<stolen_model>();
+        tableView = new TableView<stModel>();
         tableColumn = new TableColumn<>();
         tableColumn0 = new TableColumn<>();
         tableColumn1 = new TableColumn<>();
@@ -137,7 +139,15 @@ public class stolenitem {
         button.setContentDisplay(ContentDisplay.LEFT);
         button.setTextFill(Color.valueOf("#bf7600"));
         button.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         });
         VBox.setMargin(button, new Insets(0.0, 0.0, 0.0, 30.0));
 
@@ -162,7 +172,15 @@ public class stolenitem {
         additem.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
         additem.setTextFill(Color.DARKGREEN);
         additem.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         });
 
         //delete.setText("Delete");
@@ -171,7 +189,15 @@ public class stolenitem {
         delete.setGraphic(GlyphsDude.createIcon(FontAwesomeIconName.TRASH,"30px"));
         delete.setTextFill(Color.DARKRED);
         delete.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         });
 
 
@@ -180,7 +206,15 @@ public class stolenitem {
         edit.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
         edit.setTextFill(Color.DARKCYAN);
         edit.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         });
 
         VBox.setVgrow(button0, Priority.ALWAYS);
@@ -193,8 +227,16 @@ public class stolenitem {
         button0.setContentDisplay(ContentDisplay.LEFT);
         button0.setTextFill(Color.valueOf("#bf7600"));
         button0.setOnMouseClicked(event -> {
-                    onAction(event);
-                    //dashboard.getScene(scene2);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            //dashboard.getScene(scene2);
                     //stolenitemsview();
                 }
         );
@@ -210,7 +252,15 @@ public class stolenitem {
         button1.setContentDisplay(ContentDisplay.LEFT);
         button1.setTextFill(Color.valueOf("#bf7600"));
         button1.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         });
         VBox.setMargin(button1, new Insets(0.0, 0.0, 0.0, 30.0));
 
@@ -224,10 +274,17 @@ public class stolenitem {
         button2.setContentDisplay(ContentDisplay.LEFT);
         button2.setTextFill(Color.valueOf("#bf7600"));
         button2.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         });
         VBox.setMargin(button2, new Insets(0.0, 0.0, 0.0, 30.0));
-
 
 
         VBox.setVgrow(button4, Priority.ALWAYS);
@@ -240,7 +297,15 @@ public class stolenitem {
         button4.setContentDisplay(ContentDisplay.LEFT);
         button4.setTextFill(Color.valueOf("#bf7600"));
         button4.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         });
         VBox.setMargin(button4, new Insets(0.0, 0.0, 0.0, 30.0));
 
@@ -287,7 +352,15 @@ public class stolenitem {
             }
             else {
                 id = textField.getText();
-                onAction(event);
+                try {
+                    onAction(event);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                } catch (NotBoundException e) {
+                    e.printStackTrace();
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
                 reset.setVisible(true);
             }
         });
@@ -300,9 +373,17 @@ public class stolenitem {
         reset.setTextFill(javafx.scene.paint.Color.WHITE);
         reset.setVisible(false);
         reset.setOnMouseClicked(event -> {
-            ObservableList<stolen_model> allitems=tableView.getItems();
+            ObservableList<stModel> allitems=tableView.getItems();
             tableView.getItems().removeAll(allitems);
-            getrefresh();
+            try {
+                getrefresh();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
             textField.clear();
             reset.setVisible(false);
         });
@@ -312,9 +393,9 @@ public class stolenitem {
         anchorPane0.setPrefWidth(434.0);
         anchorPane0.setSpacing(100);
 
-        all= Controller.itemnumbers();
-        stolen= Controller.stolennumbers();
-        complain=Controller.complainnumber();
+//        all= Controller.itemnumbers();
+//        stolen= Controller.stolennumbers();
+//        complain=Controller.complainnumber();
 
         label0.setText(String.valueOf(stolen));
         label0.setTextFill(Color.RED);
@@ -389,26 +470,32 @@ public class stolenitem {
 
         tableColumn.setPrefWidth(58.0);
         tableColumn.setText("ID");
-        tableColumn.setCellValueFactory(new PropertyValueFactory<>("Id_of_item"));
+        tableColumn.setCellValueFactory(new PropertyValueFactory<>("ID"));
 
 
         tableColumn0.setPrefWidth(76.0);
-        tableColumn0.setText("Full Date");
-        tableColumn0.setCellValueFactory(new PropertyValueFactory<>("found_date"));
+        tableColumn0.setText("Full Name");
+        tableColumn0.setCellValueFactory(new PropertyValueFactory<>("Full_Name"));
 
         tableColumn1.setPrefWidth(76.0);
-        tableColumn1.setText("Found_Gate");
-        tableColumn1.setCellValueFactory(new PropertyValueFactory<>("found_gate"));
+        tableColumn1.setText("Email");
+        tableColumn1.setCellValueFactory(new PropertyValueFactory<>("email"));
 
         tableColumn2.setPrefWidth(74.0);
-        tableColumn2.setText("Found_Dorm");
-        tableColumn2.setCellValueFactory(new PropertyValueFactory<>("found_dorm"));
+        tableColumn2.setText("Department");
+        tableColumn2.setCellValueFactory(new PropertyValueFactory<>("Department"));
 
         tableColumn3.setPrefWidth(76.0);
-        tableColumn3.setText("Found_Block");
-        tableColumn3.setCellValueFactory(new PropertyValueFactory<>("found_block"));
+        tableColumn3.setText("Block_number");
+        tableColumn3.setCellValueFactory(new PropertyValueFactory<>("block_number"));
 
+        tableColumn4.setPrefWidth(72.0);
+        tableColumn4.setText("Dorm room");
+        tableColumn4.setCellValueFactory(new PropertyValueFactory<>("dorm_number"));
 
+        tableColumn5.setPrefWidth(72.0);
+        tableColumn5.setText("Phone_number");
+        tableColumn5.setCellValueFactory(new PropertyValueFactory<>("Phonenumber"));
 
         //tableColumn5.setStyle("-fx-background-color:black");
         //tableColumn5.setStyle("-fx-text-color:black");
@@ -438,8 +525,8 @@ public class stolenitem {
         tableView.getColumns().add(tableColumn0);
         tableView.getColumns().add(tableColumn1);
         tableView.getColumns().add(tableColumn2);
-        tableView.getColumns().add(tableColumn3);
-
+        tableView.getColumns().add(tableColumn4);
+        tableView.getColumns().add(tableColumn5);
 
 
 
@@ -448,32 +535,34 @@ public class stolenitem {
         vBox0.getChildren().add(vBox1);
         mainBox.getChildren().add(vBox0);
 
-        Controller item = new Controller();
-        ResultSet stolen = item.getStolen_item();
+        //Controller item = new Controller();
+        ControllerInterface item = (ControllerInterface) Naming.lookup("rmi://192.168.0.2/controller");
+        ResultSet students = item.getstudentdata();
         try{
-            ObservableList<stolen_model> stolenlist = FXCollections.observableArrayList();
-            while(stolen.next()){
-                String id = stolen.getString("ID_of_item");
-                String date = stolen.getString("found_date");
-                String gate = stolen.getString("found_gate");
-                String Dormn = stolen.getString("found_dorm");
-                String Bnum = stolen.getString("found_block_number");
-
+            ObservableList<stModel> stdlist = FXCollections.observableArrayList();
+            while(students.next()){
+                String id = students.getString("ID");
+                String fullName = students.getString("full_name");
+                String Email = students.getString("email");
+                String Department= students.getString("departement");
+                String Bnum = students.getString("block_number");
+                String Dormr = students.getString("dorm_room");
+                String phone = students.getString("phone_number");
 //                System.out.println(request);
 //                System.out.println(appending);
-                stolenlist.add(new stolen_model(id,date,gate,Dormn,Bnum));
+                stdlist.add(new stModel(id,fullName,Email,Department,Bnum,Dormr,phone));
 
 
                 //tableView.getItems().add(itemclass);
                 // tableView.setVisible(true);
             }
-            tableView.getItems().addAll(stolenlist);
+            tableView.getItems().addAll(stdlist);
         }
         catch(Exception e){
             System.out.println("error_on_table:"+e);
         }
-        scenestolen = new Scene(mainBox);
-        return scenestolen;
+        scenestud = new Scene(mainBox);
+        return scenestud;
 //        studentdashboard.setScene(scenestud);
 //        studentdashboard.setResizable(true);
 //        studentdashboard.show();
@@ -487,29 +576,29 @@ public class stolenitem {
 
 
     }
-    public static void getrefresh(){
-        Controller item = new Controller();
-        ResultSet stolen = item.getStolen_item();
+    public static void getrefresh() throws RemoteException, NotBoundException, MalformedURLException {
+        //Controller item = new Controller();
+        ControllerInterface item = (ControllerInterface) Naming.lookup("rmi://192.168.0.2/controller");
+        ResultSet student = item.getstudentdata();
         try{
-            ObservableList<stolen_model> stolenlist = FXCollections.observableArrayList();
-            while(stolen.next()){
-                String id = stolen.getString("ID_of_item");
-                String date = stolen.getString("found_date");
-                String gate = stolen.getString("found_gate");
-                String Dormn = stolen.getString("found_dorm");
-                String Bnum = stolen.getString("found_block_number");
-
+            ObservableList<stModel> itemlist = FXCollections.observableArrayList();
+            while(student.next()){
+                String id = student.getString("ID");
+                String fullName = student.getString("full_name");
+                String Email = student.getString("email");
+                String Department= student.getString("departement");
+                String Bnum = student.getString("block_number");
+                String Dormr = student.getString("dorm_room");
+                String phone = student.getString("phone_number");
 //                System.out.println(request);
 //                System.out.println(appending);
-                stolenlist.add(new stolen_model(id,date,gate,Dormn,Bnum));
+                itemlist.add(new stModel(id,fullName,Email,Department,Bnum,Dormr,phone));
 
 
                 //tableView.getItems().add(itemclass);
                 // tableView.setVisible(true);
             }
-            tableView.getItems().addAll(stolenlist);
-            tableView.getItems().removeAll(stolenlist);
-            tableView.getItems().addAll(stolenlist);
+            tableView.getItems().addAll(itemlist);
         }
         catch(Exception e){
             System.out.println("error_on_table:"+e);
@@ -518,18 +607,32 @@ public class stolenitem {
 
     }
 
-    private static void onAction (MouseEvent event){
+    private static void onAction (MouseEvent event) throws RemoteException, NotBoundException, MalformedURLException {
         dashboard dash = new dashboard();
-        Controller cont = new Controller();
+        //Controller cont = new Controller();
+        ControllerInterface cont = (ControllerInterface) Naming.lookup("rmi://192.168.0.2/controller");
+        if(event.getSource()==button0){
+            dash.newdashboard.setScene(stolenitem.display());
+        }
+        if(event.getSource()==button1){
+            dash.newdashboard.setScene(studDash.display());
+        }
+        if(event.getSource()==button2){
+            dash.newdashboard.setScene(sample.Client.complain.display());
+        }
+        if(event.getSource()==button4){
+            dashboard.newdashboard.close();
+            Main.window.show();
+        }
         if(event.getSource()==delete){
-            ObservableList<stolen_model> itemselected = null;
-            ObservableList<stolen_model>allitems=null;
+            ObservableList<stModel> itemselected = null;
+            ObservableList<stModel>allitems=null;
             int index = tableView.getSelectionModel().getSelectedIndex();
-            stolen_model item = tableView.getItems().get(index);
+            stModel item = tableView.getItems().get(index);
             allitems=tableView.getItems();
             itemselected = tableView.getSelectionModel().getSelectedItems();
             //System.out.println(item.getSerial());
-            if(cont.delete_stolen(item.getId_of_item())){
+            if(cont.deletestudent(item.getID())){
                 itemselected.forEach(allitems::remove);
             }
             else{
@@ -537,42 +640,31 @@ public class stolenitem {
             }
         }
         if(event.getSource()==button){
-            System.out.println("all items is clicked");
+            System.out.println("all items is clicked.");
             dash.newdashboard.setScene(dash.scene);
             dash.newdashboard.show();
            // dash.newdashboard.setFullScreen(true);
         }
-        if(event.getSource()==button0){
-            System.out.println("nothing to do.");
-        }
-        if(event.getSource()==button1){
-            dashboard.newdashboard.setScene(studDash.display());
-        }
-        if(event.getSource()==button2){
-            dashboard.newdashboard.setScene(sample.complain.display());
-        }
-        if(event.getSource()==button4){
-            dashboard.newdashboard.close();
-            Main.window.show();
-        }
         if(event.getSource()==search){
-            ObservableList<stolen_model> allitems=null;
-            ResultSet searched= cont.searchstolen(id);
+            ObservableList<stModel> allitems=null;
+            ResultSet searched= cont.searchstudent(id);
             allitems= tableView.getItems();
-            stolen_model st=null;
+            stModel st=null;
             try{
                 while (searched.next()){
-                    String id = searched.getString("ID_of_item");
-                    String date = searched.getString("found_date");
-                    String gate = searched.getString("found_gate");
-                    String Dormn = searched.getString("found_dorm");
-                    String Bnum = searched.getString("found_block_number");
-                    st = new stolen_model(id,date,gate,Dormn,Bnum);
+                    String id = searched.getString("ID");
+                    String fullName = searched.getString("full_name");
+                    String Email = searched.getString("email");
+                    String Department= searched.getString("departement");
+                    String Bnum = searched.getString("block_number");
+                    String Dormr = searched.getString("dorm_room");
+                    String phone = searched.getString("phone_number");
+                    st = new stModel(id,fullName,Email,Department,Bnum,Dormr,phone);
                 }
             }catch (Exception e){
                 System.out.println(e);
             }
-            tableView.getItems().removeAll(allitems);
+           tableView.getItems().removeAll(allitems);
             tableView.getItems().add(st);
         }
 

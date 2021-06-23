@@ -1,4 +1,4 @@
-package sample;
+package sample.Client;
 
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
@@ -8,7 +8,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import sample.Client.items;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.Observable;
 
 public class edititem {
@@ -163,7 +168,17 @@ public class edititem {
         submit.setTextFill(Color.DARKGREEN);
         submit.setOnMouseClicked(event -> {
             // System.out.println("submit button is clicked.");
-            Controller additem = new Controller();
+            //Controller additem = new Controller();
+            ControllerInterface additem = null;
+            try {
+                additem = (ControllerInterface) Naming.lookup("rmi://192.168.0.2/controller");
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
             String id = ID.getText();
             String fullname = full_name.getText();
             String Email = email.getText();
@@ -184,7 +199,15 @@ public class edititem {
                     items item1 = new items(serial, "1",type,id,fullname,dep,block,dorm,phone);
                     dashboard.tableView.getItems().add(item1);
                     dashboard.tableView.getItems().removeAll(allitems);
-                    dashboard.getrefresh();
+                    try {
+                        dashboard.getrefresh();
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    } catch (NotBoundException e) {
+                        e.printStackTrace();
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
                 }
                 else{
                     System.out.println("couldn't edit, please try again.");

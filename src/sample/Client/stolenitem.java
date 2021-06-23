@@ -1,8 +1,9 @@
-package sample;
+package sample.Client;
 
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconName;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -19,18 +20,22 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import sample.studDash;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.sql.ResultSet;
-import java.util.Date;
 
-public  class complain {
-    public static  Scene scenecomplain;
+public class stolenitem {
+    public static  Scene scenestolen;
     protected static  Button button0;
     protected static Button button;
-    public static TableView<complain_model> tableView;
+    public static TableView<stolen_model> tableView;
     private static Button additem = new Button();
     private static Button delete = new Button();
-    private static Button status = new Button();
+    private static Button checkout = new Button();
     private static Button edit = new Button();
     private static Button checkin = new Button();
     public  static Stage newdashboardd = new Stage();
@@ -38,14 +43,15 @@ public  class complain {
     private static Button search=new Button(),reset=new Button();
     private static String id;
     public static Stage studentdashboard = new Stage();
+    private static HBox mainBox;
     private static Button button1;
     private static Button button2;
     private static Button button4;
-    public static Scene display()
-    {
-        Button button3;
+
+    public static Scene display() throws RemoteException, NotBoundException, MalformedURLException {
         VBox vBox;
         ImageView imageView;
+        Button button3;
         VBox vBox0;
         VBox vBox1;
         VBox vBox2;
@@ -61,19 +67,21 @@ public  class complain {
         Label label6;
         Label label7;
         TableColumn tableColumn;
-        TableColumn<complain_model,String> tableColumn0;
-        TableColumn<complain_model,String> tableColumn1;
-        TableColumn<complain_model,String> tableColumn2;
-        TableColumn<complain_model,String> tableColumn3;
+        TableColumn<stolen_model,String> tableColumn0;
+        TableColumn<stolen_model,String> tableColumn1;
+        TableColumn<stolen_model,String> tableColumn2;
+        TableColumn<stolen_model,String> tableColumn3;
+        TableColumn<stolen_model,String> tableColumn4;
+        TableColumn<stolen_model,String> tableColumn5;
 
-        HBox mainBox;
+
         vBox = new VBox();
         imageView = new ImageView("images/icon123.png");
         button = new Button();
         button0 = new Button();
         button1 = new Button();
-        button2 = new Button();
         button3 = new Button();
+        button2 = new Button();
         button4 = new Button();
         Button btnSignup = new Button();
         vBox0 = new VBox();
@@ -90,13 +98,14 @@ public  class complain {
         label5 = new Label();
         label6 = new Label();
         label7 = new Label();
-        tableView = new TableView<complain_model>();
+        tableView = new TableView<stolen_model>();
         tableColumn = new TableColumn<>();
         tableColumn0 = new TableColumn<>();
         tableColumn1 = new TableColumn<>();
         tableColumn2 = new TableColumn<>();
         tableColumn3 = new TableColumn<>();
-
+        tableColumn4 = new TableColumn<>();
+        tableColumn5 = new TableColumn<>();
 
 
 
@@ -132,7 +141,15 @@ public  class complain {
         button.setContentDisplay(ContentDisplay.LEFT);
         button.setTextFill(Color.valueOf("#bf7600"));
         button.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         });
         VBox.setMargin(button, new Insets(0.0, 0.0, 0.0, 30.0));
 
@@ -152,13 +169,20 @@ public  class complain {
         VBox.setMargin(button3, new Insets(0.0, 0.0, 0.0, 30.0));
 
 
-        //additem.setText("Add");
+        additem.setText("Add");
         //additem.setAlignment(Pos.BASELINE_LEFT);
         additem.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
-        additem.setGraphic(GlyphsDude.createIcon(FontAwesomeIconName.USER_PLUS,"30px"));
         additem.setTextFill(Color.DARKGREEN);
         additem.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         });
 
         //delete.setText("Delete");
@@ -167,28 +191,33 @@ public  class complain {
         delete.setGraphic(GlyphsDude.createIcon(FontAwesomeIconName.TRASH,"30px"));
         delete.setTextFill(Color.DARKRED);
         delete.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         });
 
 
-       // edit.setText("Edit");
+        edit.setText("Edit");
         //edit.setAlignment(Pos.TOP_RIGHT);
         edit.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
-        edit.setGraphic(GlyphsDude.createIcon(FontAwesomeIconName.EDIT,"30px"));
         edit.setTextFill(Color.DARKCYAN);
         edit.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         });
-
-        //status.setText("Found");
-        //edit.setAlignment(Pos.TOP_RIGHT);
-        status.setStyle("-fx-background-color: #bf7600; -fx-border-radius: 5;");
-        status.setGraphic(GlyphsDude.createIcon(FontAwesomeIconName.LAPTOP,"30px"));
-        status.setTextFill(Color.BLUE);
-        status.setOnMouseClicked(event -> {
-            onAction(event);
-        });
-
 
         VBox.setVgrow(button0, Priority.ALWAYS);
         button0.setAlignment(Pos.CENTER);
@@ -200,8 +229,16 @@ public  class complain {
         button0.setContentDisplay(ContentDisplay.LEFT);
         button0.setTextFill(Color.valueOf("#bf7600"));
         button0.setOnMouseClicked(event -> {
-                    onAction(event);
-                    //dashboard.getScene(scene2);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            //dashboard.getScene(scene2);
                     //stolenitemsview();
                 }
         );
@@ -217,7 +254,15 @@ public  class complain {
         button1.setContentDisplay(ContentDisplay.LEFT);
         button1.setTextFill(Color.valueOf("#bf7600"));
         button1.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         });
         VBox.setMargin(button1, new Insets(0.0, 0.0, 0.0, 30.0));
 
@@ -231,9 +276,18 @@ public  class complain {
         button2.setContentDisplay(ContentDisplay.LEFT);
         button2.setTextFill(Color.valueOf("#bf7600"));
         button2.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         });
         VBox.setMargin(button2, new Insets(0.0, 0.0, 0.0, 30.0));
+
 
 
         VBox.setVgrow(button4, Priority.ALWAYS);
@@ -246,7 +300,15 @@ public  class complain {
         button4.setContentDisplay(ContentDisplay.LEFT);
         button4.setTextFill(Color.valueOf("#bf7600"));
         button4.setOnMouseClicked(event -> {
-            onAction(event);
+            try {
+                onAction(event);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         });
         VBox.setMargin(button4, new Insets(0.0, 0.0, 0.0, 30.0));
 
@@ -285,15 +347,23 @@ public  class complain {
         search.setPrefWidth(25.0);
         search.setStyle("-fx-background-color: #bf7600");
         //search.setText("search");
-        search.setTextFill(javafx.scene.paint.Color.WHITE);
         search.setGraphic(GlyphsDude.createIcon(FontAwesomeIconName.SEARCH,"20px"));
+        search.setTextFill(javafx.scene.paint.Color.WHITE);
         search.setOnMouseClicked(event -> {
             if(textField.equals(null)||textField.getText()==null){
                 System.out.println("do nothing.");
             }
             else {
                 id = textField.getText();
-                onAction(event);
+                try {
+                    onAction(event);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                } catch (NotBoundException e) {
+                    e.printStackTrace();
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
                 reset.setVisible(true);
             }
         });
@@ -306,9 +376,17 @@ public  class complain {
         reset.setTextFill(javafx.scene.paint.Color.WHITE);
         reset.setVisible(false);
         reset.setOnMouseClicked(event -> {
-            ObservableList<complain_model> allitems=tableView.getItems();
+            ObservableList<stolen_model> allitems=tableView.getItems();
             tableView.getItems().removeAll(allitems);
-            getrefresh();
+            try {
+                getrefresh();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
             textField.clear();
             reset.setVisible(false);
         });
@@ -318,9 +396,9 @@ public  class complain {
         anchorPane0.setPrefWidth(434.0);
         anchorPane0.setSpacing(100);
 
-        all= Controller.itemnumbers();
-        stolen= Controller.stolennumbers();
-        complain=Controller.complainnumber();
+//        all= Controller.itemnumbers();
+//        stolen= Controller.stolennumbers();
+//        complain=Controller.complainnumber();
 
         label0.setText(String.valueOf(stolen));
         label0.setTextFill(Color.RED);
@@ -394,25 +472,25 @@ public  class complain {
 
 
         tableColumn.setPrefWidth(58.0);
-        tableColumn.setText("Complain Number");
-        tableColumn.setCellValueFactory(new PropertyValueFactory<>("Complain_number"));
+        tableColumn.setText("ID");
+        tableColumn.setCellValueFactory(new PropertyValueFactory<>("Id_of_item"));
 
 
         tableColumn0.setPrefWidth(76.0);
-        tableColumn0.setText("Id");
-        tableColumn0.setCellValueFactory(new PropertyValueFactory<>("Item_ID"));
+        tableColumn0.setText("Full Date");
+        tableColumn0.setCellValueFactory(new PropertyValueFactory<>("found_date"));
 
         tableColumn1.setPrefWidth(76.0);
-        tableColumn1.setText("Complainer");
-        tableColumn1.setCellValueFactory(new PropertyValueFactory<>("Complainer"));
+        tableColumn1.setText("Found_Gate");
+        tableColumn1.setCellValueFactory(new PropertyValueFactory<>("found_gate"));
 
         tableColumn2.setPrefWidth(74.0);
-        tableColumn2.setText("Status");
-        tableColumn2.setCellValueFactory(new PropertyValueFactory<>("Status"));
+        tableColumn2.setText("Found_Dorm");
+        tableColumn2.setCellValueFactory(new PropertyValueFactory<>("found_dorm"));
 
         tableColumn3.setPrefWidth(76.0);
-        tableColumn3.setText("Date of complain");
-        tableColumn3.setCellValueFactory(new PropertyValueFactory<>("Date_of_complain"));
+        tableColumn3.setText("Found_Block");
+        tableColumn3.setCellValueFactory(new PropertyValueFactory<>("found_block"));
 
 
 
@@ -436,7 +514,7 @@ public  class complain {
         anchorPane.getChildren().addAll(textField,search,reset);
         vBox2.getChildren().add(anchorPane);
 
-        anchorPane0.getChildren().addAll(additem,edit,delete,status);
+        anchorPane0.getChildren().add(delete);
 
         vBox2.getChildren().add(anchorPane0);
         vBox1.getChildren().add(vBox2);
@@ -454,31 +532,33 @@ public  class complain {
         vBox0.getChildren().add(vBox1);
         mainBox.getChildren().add(vBox0);
 
-        Controller item = new Controller();
-        ResultSet complain = item.getcomplaindata();
+        //Controller item = new Controller();
+        ControllerInterface item = (ControllerInterface) Naming.lookup("rmi://192.168.0.2/controller");
+        ResultSet stolen = item.getStolen_item();
         try{
-            ObservableList<complain_model> stdlist = FXCollections.observableArrayList();
-            while(complain.next()){
-                String complain_number = complain.getString("complain_number");
-                String item_id = complain.getString("item_ID");
-                String complainer = complain.getString("complainer");
-                String status = String.valueOf(complain.getInt("status"));
-                String date = complain.getString("date_of_complain");
+            ObservableList<stolen_model> stolenlist = FXCollections.observableArrayList();
+            while(stolen.next()){
+                String id = stolen.getString("ID_of_item");
+                String date = stolen.getString("found_date");
+                String gate = stolen.getString("found_gate");
+                String Dormn = stolen.getString("found_dorm");
+                String Bnum = stolen.getString("found_block_number");
+
 //                System.out.println(request);
 //                System.out.println(appending);
-                stdlist.add(new complain_model(complain_number,item_id,complainer,status,date));
+                stolenlist.add(new stolen_model(id,date,gate,Dormn,Bnum));
 
 
                 //tableView.getItems().add(itemclass);
                 // tableView.setVisible(true);
             }
-            tableView.getItems().addAll(stdlist);
+            tableView.getItems().addAll(stolenlist);
         }
         catch(Exception e){
             System.out.println("error_on_table:"+e);
         }
-        scenecomplain= new Scene(mainBox);
-        return scenecomplain;
+        scenestolen = new Scene(mainBox);
+        return scenestolen;
 //        studentdashboard.setScene(scenestud);
 //        studentdashboard.setResizable(true);
 //        studentdashboard.show();
@@ -492,28 +572,30 @@ public  class complain {
 
 
     }
-    public static void getrefresh(){
-        Controller item = new Controller();
-        ResultSet complain = item.getcomplaindata();
+    public static void getrefresh() throws RemoteException, NotBoundException, MalformedURLException {
+        //Controller item = new Controller();
+        ControllerInterface item = (ControllerInterface) Naming.lookup("rmi://192.168.0.2/controller");
+        ResultSet stolen = item.getStolen_item();
         try{
-            ObservableList<complain_model> itemlist = FXCollections.observableArrayList();
-            while(complain.next()){
-                String complain_number = complain.getString("complain_number");
-                String item_id = complain.getString("item_ID");
-                String complainer = complain.getString("complainer");
-                String status = String.valueOf(complain.getInt("status"));
-                String date = complain.getString("date_of_complain");
+            ObservableList<stolen_model> stolenlist = FXCollections.observableArrayList();
+            while(stolen.next()){
+                String id = stolen.getString("ID_of_item");
+                String date = stolen.getString("found_date");
+                String gate = stolen.getString("found_gate");
+                String Dormn = stolen.getString("found_dorm");
+                String Bnum = stolen.getString("found_block_number");
+
 //                System.out.println(request);
 //                System.out.println(appending);
-                itemlist.add(new complain_model(complain_number,item_id,complainer,status,date));
+                stolenlist.add(new stolen_model(id,date,gate,Dormn,Bnum));
 
 
                 //tableView.getItems().add(itemclass);
                 // tableView.setVisible(true);
             }
-            tableView.getItems().addAll(itemlist);
-            tableView.getItems().removeAll(itemlist);
-            tableView.getItems().addAll(itemlist);
+            tableView.getItems().addAll(stolenlist);
+            tableView.getItems().removeAll(stolenlist);
+            tableView.getItems().addAll(stolenlist);
         }
         catch(Exception e){
             System.out.println("error_on_table:"+e);
@@ -522,53 +604,19 @@ public  class complain {
 
     }
 
-    private static void onAction (MouseEvent event){
+    private static void onAction (MouseEvent event) throws RemoteException, NotBoundException, MalformedURLException {
         dashboard dash = new dashboard();
-        Controller cont = new Controller();
-        if(event.getSource()==button0){
-            dash.newdashboard.setScene(stolenitem.display());
-        }
-        if(event.getSource()==button1){
-            dash.newdashboard.setScene(studDash.display());
-        }
-        if(event.getSource()==button2){
-            System.out.println("do nothing");
-        }
-        if(event.getSource()==button4){
-            dash.newdashboard.close();
-            Main.window.show();
-        }
-        if(event.getSource()==status){
-            int index = tableView.getSelectionModel().getSelectedIndex();
-            complain_model item = tableView.getItems().get(index);
-            found.found(item);
-            sample.stolenitem.getrefresh();
-            getrefresh();
-        }
-        if(event.getSource()==edit){
-            ObservableList<complain_model> itemselected = null;
-            ObservableList<complain_model>allitems=null;
-            int index = tableView.getSelectionModel().getSelectedIndex();
-            complain_model item = tableView.getItems().get(index);
-            if(cont.deletecomplain(item.getComplain_number())&&cont.delete_stolen(item.getItem_ID())) {
-                editcomplain.editcomplain(item);
-            }
-            else{
-                System.out.println("couldn't edit");
-            }
-        }
-        if(event.getSource()==additem){
-            addcomplain.addcomplain();
-        }
+        //Controller cont = new Controller();
+        ControllerInterface cont = (ControllerInterface) Naming.lookup("rmi://192.168.0.2/controller");
         if(event.getSource()==delete){
-            ObservableList<complain_model> itemselected = null;
-            ObservableList<complain_model>allitems=null;
+            ObservableList<stolen_model> itemselected = null;
+            ObservableList<stolen_model>allitems=null;
             int index = tableView.getSelectionModel().getSelectedIndex();
-            complain_model item = tableView.getItems().get(index);
+            stolen_model item = tableView.getItems().get(index);
             allitems=tableView.getItems();
             itemselected = tableView.getSelectionModel().getSelectedItems();
             //System.out.println(item.getSerial());
-            if(cont.deletecomplain(item.getComplain_number())){
+            if(cont.delete_stolen(item.getId_of_item())){
                 itemselected.forEach(allitems::remove);
             }
             else{
@@ -576,24 +624,37 @@ public  class complain {
             }
         }
         if(event.getSource()==button){
-            System.out.println("it is clicked fam.");
+            System.out.println("all items is clicked");
             dash.newdashboard.setScene(dash.scene);
             dash.newdashboard.show();
            // dash.newdashboard.setFullScreen(true);
         }
+        if(event.getSource()==button0){
+            System.out.println("nothing to do.");
+        }
+        if(event.getSource()==button1){
+            dashboard.newdashboard.setScene(studDash.display());
+        }
+        if(event.getSource()==button2){
+            dashboard.newdashboard.setScene(sample.Client.complain.display());
+        }
+        if(event.getSource()==button4){
+            dashboard.newdashboard.close();
+            Main.window.show();
+        }
         if(event.getSource()==search){
-            ObservableList<complain_model> allitems=null;
-            ResultSet searched= cont.searchcomplain(id);
+            ObservableList<stolen_model> allitems=null;
+            ResultSet searched= cont.searchstolen(id);
             allitems= tableView.getItems();
-            complain_model st=null;
+            stolen_model st=null;
             try{
                 while (searched.next()){
-                    String complain_number =searched.getString("complain_number");
-                    String item_id = searched.getString("item_ID");
-                    String complainer = searched.getString("complainer");
-                    String status = String.valueOf(searched.getInt("status"));
-                    String date = searched.getString("date_of_complain");
-                    st = new complain_model(complain_number,item_id,complainer,status,date);
+                    String id = searched.getString("ID_of_item");
+                    String date = searched.getString("found_date");
+                    String gate = searched.getString("found_gate");
+                    String Dormn = searched.getString("found_dorm");
+                    String Bnum = searched.getString("found_block_number");
+                    st = new stolen_model(id,date,gate,Dormn,Bnum);
                 }
             }catch (Exception e){
                 System.out.println(e);
@@ -609,4 +670,3 @@ public  class complain {
     }
 
 }
-
