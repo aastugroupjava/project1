@@ -20,7 +20,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import sample.studDash;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;

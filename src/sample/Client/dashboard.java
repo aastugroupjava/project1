@@ -24,9 +24,6 @@ import javax.swing.text.GlyphView;
 import javax.xml.crypto.Data;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.StageStyle;
-import sample.edititem;
-import sample.stolenitem;
-import sample.studDash;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;

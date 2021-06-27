@@ -21,10 +21,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import sample.*;
 import sample.Server.Controller;
-import sample.complain_model;
-import sample.editcomplain;
-import sample.found;
-import sample.stolenitem;
+
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -628,7 +625,7 @@ public  class complain {
             dash.newdashboard.setScene(stolenitem.display());
         }
         if(event.getSource()==button1){
-            dash.newdashboard.setScene(sample.studDash.display());
+            dash.newdashboard.setScene(sample.Client.studDash.display());
         }
         if(event.getSource()==button2){
             System.out.println("do nothing");
@@ -641,7 +638,7 @@ public  class complain {
             int index = tableView.getSelectionModel().getSelectedIndex();
             complain_model item = tableView.getItems().get(index);
             found.found(item);
-            sample.stolenitem.getrefresh();
+            sample.Client.stolenitem.getrefresh();
             getrefresh();
         }
         if(event.getSource()==edit){

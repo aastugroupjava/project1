@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import sample.complain_model;
 
 import java.awt.event.MouseEvent;
 import java.net.MalformedURLException;

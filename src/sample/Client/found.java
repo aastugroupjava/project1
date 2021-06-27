@@ -22,7 +22,7 @@ import java.util.Random;
 
 
 public class found{
-    public static void found(sample.complain_model complainitem){
+    public static void found(sample.Client.complain_model complainitem){
         TextField found = new TextField();
         TextField gate = new TextField();
         TextField dorm = new TextField();
