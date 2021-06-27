@@ -2,63 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c192ffe0-6769-463e-884f-347704326f10" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/MessageListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/RmiInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/Rmiimplementor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/addcomplain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/additems.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/alertbox.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/chatgui.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/complain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/complain_model.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/dashboard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/editcomplain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/edititem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/forgetpassword.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/found.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/items.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/sample.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/security.policy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/sign_in.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/signin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/stModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/stolen_model.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/stolenitem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/studDash.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Client/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Server/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Server/ControllerInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Server/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Server/items.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/ControllerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Client/ControllerInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/MessageListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/RmiInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Rmiimplementor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/addcomplain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/additems.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/alertbox.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/chatgui.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/complain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/complain_model.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/dashboard.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/editcomplain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/edititem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/forgetpassword.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/found.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/items.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/security.policy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/sign_in.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/signin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/stModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/stolen_model.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/stolenitem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/studDash.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Client/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Client/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -622,7 +567,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624418157782</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Registery of RMI set">
+      <created>1624453450810</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1624453450810</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -661,7 +613,8 @@
     <MESSAGE value="Last update on the Phase1 of the project. Added icons and routes." />
     <MESSAGE value="Last update and commit on RMI Server multi-thread...." />
     <MESSAGE value="created interface for the RMI to create 3-tier Distributed system." />
-    <option name="LAST_COMMIT_MESSAGE" value="created interface for the RMI to create 3-tier Distributed system." />
+    <MESSAGE value="Registery of RMI set" />
+    <option name="LAST_COMMIT_MESSAGE" value="Registery of RMI set" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1616943864768">
@@ -684,18 +637,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="197" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1616943902334" />
-    <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1615915470078">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1615915470078" />
     <state x="499" y="160" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1624451853206">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="160" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1536.824@0.0.1536.824" timestamp="1624451853206" />
-    <state x="455" y="8" key="CommitChangelistDialog2" timestamp="1624418156461">
+    <state x="455" y="8" key="CommitChangelistDialog2" timestamp="1624453448393">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="455" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1624418156461" />
+    <state x="455" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1624453448393" />
     <state width="1537" height="89" key="GridCell.Tab.0.bottom" timestamp="1623853980072">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -712,38 +661,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1537" height="89" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1623853980072" />
-    <state width="768" height="154" key="GridCell.Tab.1.bottom" timestamp="1615828358934">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="768" height="154" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1615828358934" />
-    <state width="768" height="154" key="GridCell.Tab.1.center" timestamp="1615828358934">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="768" height="154" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1615828358934" />
-    <state width="768" height="154" key="GridCell.Tab.1.left" timestamp="1615828358934">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="768" height="154" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1615828358934" />
-    <state width="768" height="154" key="GridCell.Tab.1.right" timestamp="1615828358934">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="768" height="154" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1615828358934" />
     <state x="249" y="0" key="SettingsEditor" timestamp="1623815115070">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1623815115070" />
-    <state x="618" y="329" key="VCS.ChangelistChooser" timestamp="1615818296686">
+    <state x="618" y="329" key="VCS.ChangelistChooser" timestamp="1624453456589">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="618" y="329" key="VCS.ChangelistChooser/0.0.1536.824@0.0.1536.824" timestamp="1615818296686" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1624418176294">
+    <state x="618" y="329" key="VCS.ChangelistChooser/0.0.1536.824@0.0.1536.824" timestamp="1624453456589" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1624453465626">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1624418176294" />
-    <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1624448894324">
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1624453465626" />
+    <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1624813481128">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1624448894324" />
+    <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1624813481128" />
     <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1624453420924">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -752,10 +685,6 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="209" y="67" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1624366475210" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1616045963862">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1616045963862" />
     <state x="814" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1623813248793">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

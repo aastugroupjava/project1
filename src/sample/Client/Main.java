@@ -15,7 +15,6 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import sample.*;
 import sample.Chat.client;
-import sample.signin;
 //import jdk.nashorn.api.scripting.ScriptObjectMirror;
 import java.io.*;
 import java.net.MalformedURLException;
