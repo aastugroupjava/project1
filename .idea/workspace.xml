@@ -3,16 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="c192ffe0-6769-463e-884f-347704326f10" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Chat/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Chat/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Chat/Servermain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Chat/Servermain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Chat/Serverworker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Chat/Serverworker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Chat/client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Chat/client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Chat/client2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Chat/client2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Client/ControllerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Client/ControllerInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Client/Rmiimplementor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Client/Rmiimplementor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Client/chatgui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Client/chatgui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Server/ControllerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Server/ControllerInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Server/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/login/sample/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/login/sample/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/login/sample/alertbox.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/login/sample/dashboard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/login/sample/forgetpassword.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/login/sample/sample.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/login/sample/sign_in.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/login/sample/signin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/login/sample/style.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +142,7 @@
       <recent name="sample.Chat" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main (1)">
+  <component name="RunManager" selected="Application.Main (2)">
     <configuration default="true" type="Applet" factoryName="Applet">
       <module name="" />
       <option name="MAIN_CLASS_NAME" />
@@ -169,20 +168,6 @@
       <Host>localhost</Host>
       <Port>5050</Port>
     </configuration>
-    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sample.Chat.Client" />
-      <module name="login" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="sample.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="sample.Server.Main" />
       <module name="login" />
@@ -190,6 +175,20 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="sample.Server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sample.Client.Main" />
+      <module name="login" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sample.Client.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -306,19 +305,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="Application.Client" />
       <item itemvalue="Application.Server" />
       <item itemvalue="Application.client2" />
       <item itemvalue="Application.client" />
       <item itemvalue="Application.Main (1)" />
+      <item itemvalue="Application.Main (2)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Server" />
         <item itemvalue="Application.client2" />
         <item itemvalue="Application.client" />
-        <item itemvalue="Application.Client" />
       </list>
     </recent_temporary>
   </component>
@@ -605,7 +604,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624816143683</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Registery of RMI set">
+      <created>1624824471091</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1624824471091</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -672,26 +678,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="160" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1536.824@0.0.1536.824" timestamp="1624451853206" />
-    <state x="455" y="8" key="CommitChangelistDialog2" timestamp="1624816142043">
+    <state x="455" y="8" key="CommitChangelistDialog2" timestamp="1624824469223">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="455" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1624816142043" />
-    <state width="1537" height="408" key="GridCell.Tab.0.bottom" timestamp="1624824432627">
+    <state x="455" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1624824469223" />
+    <state width="1537" height="125" key="GridCell.Tab.0.bottom" timestamp="1624824567175">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="408" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1624824432627" />
-    <state width="1537" height="408" key="GridCell.Tab.0.center" timestamp="1624824432627">
+    <state width="1537" height="125" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1624824567175" />
+    <state width="1537" height="125" key="GridCell.Tab.0.center" timestamp="1624824567174">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="408" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1624824432627" />
-    <state width="1537" height="408" key="GridCell.Tab.0.left" timestamp="1624824432627">
+    <state width="1537" height="125" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1624824567174" />
+    <state width="1537" height="125" key="GridCell.Tab.0.left" timestamp="1624824567174">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="408" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1624824432627" />
-    <state width="1537" height="408" key="GridCell.Tab.0.right" timestamp="1624824432627">
+    <state width="1537" height="125" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1624824567174" />
+    <state width="1537" height="125" key="GridCell.Tab.0.right" timestamp="1624824567174">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="408" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1624824432627" />
+    <state width="1537" height="125" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1624824567174" />
     <state x="249" y="0" key="SettingsEditor" timestamp="1623815115070">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -700,10 +706,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="618" y="329" key="VCS.ChangelistChooser/0.0.1536.824@0.0.1536.824" timestamp="1624453456589" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1624816734503">
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1624824475087">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1624816734503" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1624824475087" />
     <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1624813481128">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
