@@ -192,25 +192,29 @@ public class edititem {
                 System.out.println("fill all the forms");
             }
             else{
-                if(additem.additems(id,fullname,Email,dep,block,dorm,phone,serial,type)){
-                    ObservableList<items> allitems = null;
-                    allitems = dashboard.tableView.getItems();
-                    additemstage.close();
-                    items item1 = new items(serial, "1",type,id,fullname,dep,block,dorm,phone);
-                    dashboard.tableView.getItems().add(item1);
-                    dashboard.tableView.getItems().removeAll(allitems);
-                    try {
-                        dashboard.getrefresh();
-                    } catch (RemoteException e) {
-                        e.printStackTrace();
-                    } catch (NotBoundException e) {
-                        e.printStackTrace();
-                    } catch (MalformedURLException e) {
-                        e.printStackTrace();
+                try {
+                    if(additem.additems(id,fullname,Email,dep,block,dorm,phone,serial,type)){
+                        ObservableList<items> allitems = null;
+                        allitems = dashboard.tableView.getItems();
+                        additemstage.close();
+                        items item1 = new items(serial, "1",type,id,fullname,dep,block,dorm,phone);
+                        dashboard.tableView.getItems().add(item1);
+                        dashboard.tableView.getItems().removeAll(allitems);
+                        try {
+                            dashboard.getrefresh();
+                        } catch (RemoteException e) {
+                            e.printStackTrace();
+                        } catch (NotBoundException e) {
+                            e.printStackTrace();
+                        } catch (MalformedURLException e) {
+                            e.printStackTrace();
+                        }
                     }
-                }
-                else{
-                    System.out.println("couldn't edit, please try again.");
+                    else{
+                        System.out.println("couldn't edit, please try again.");
+                    }
+                } catch (RemoteException e) {
+                    e.printStackTrace();
                 }
             }
 

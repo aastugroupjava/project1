@@ -92,25 +92,29 @@ public class editcomplain{
                 System.out.println("fill all the forms");
             }
             else{
-                if(addcomplain.addcomplain(id,Complainer,complain_number,status,found,gate,dorm,block,String.valueOf(date))){
-                    ObservableList<complain_model> allitems = null;
-                    allitems = sample.Client.complain.tableView.getItems();
-                    addcomplainstage.close();
-                    complain_model complain = new complain_model(complain_number,id,Complainer,String.valueOf(status),String.valueOf(date));
-                    sample.Client.complain.tableView.getItems().add(complain);
-                    sample.Client.complain.tableView.getItems().removeAll(allitems);
-                    try {
-                        sample.Client.complain.getrefresh();
-                    } catch (RemoteException e) {
-                        e.printStackTrace();
-                    } catch (NotBoundException e) {
-                        e.printStackTrace();
-                    } catch (MalformedURLException e) {
-                        e.printStackTrace();
+                try {
+                    if(addcomplain.addcomplain(id,Complainer,complain_number,status,found,gate,dorm,block,String.valueOf(date))){
+                        ObservableList<complain_model> allitems = null;
+                        allitems = complain.tableView.getItems();
+                        addcomplainstage.close();
+                        complain_model complain = new complain_model(complain_number,id,Complainer,String.valueOf(status),String.valueOf(date));
+                        sample.Client.complain.tableView.getItems().add(complain);
+                        sample.Client.complain.tableView.getItems().removeAll(allitems);
+                        try {
+                            sample.Client.complain.getrefresh();
+                        } catch (RemoteException e) {
+                            e.printStackTrace();
+                        } catch (NotBoundException e) {
+                            e.printStackTrace();
+                        } catch (MalformedURLException e) {
+                            e.printStackTrace();
+                        }
                     }
-                }
-                else{
-                    System.out.println("couldn't register, please try again.");
+                    else{
+                        System.out.println("couldn't register, please try again.");
+                    }
+                } catch (RemoteException e) {
+                    e.printStackTrace();
                 }
             }
 

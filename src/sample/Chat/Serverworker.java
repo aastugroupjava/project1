@@ -1,6 +1,6 @@
 package sample.Chat;
 
-import sample.RmiInterface;
+import sample.Client.RmiInterface;
 
 import java.io.*;
 import java.net.ServerSocket;

@@ -9,8 +9,9 @@ import java.rmi.registry.Registry;
 
 public class Main {
     public static void main(String[] args) throws RemoteException, AlreadyBoundException {
-        System.setProperty("java.rmi.server.hostname","192.168.0.2");
+        System.setProperty("java.rmi.server.hostname","192.168.1.2");
         Registry reg = LocateRegistry.createRegistry(1278);
         reg.bind("controller",new Controller());
+        System.out.println("server started...");
     }
 }

@@ -92,23 +92,27 @@ public class addcomplain{
                 System.out.println("fill all the forms");
             }
             else{
-                if(addcomplain.searchpossibleitem(id)) {
-                    if (addcomplain.addcomplain(id, Complainer, complain_number, status, found, gate, dorm, block, String.valueOf(date))) {
-                        addcomplainstage.close();
-                        complain_model complain = new complain_model(complain_number, id, Complainer, String.valueOf(status), String.valueOf(date));
-                        sample.Client.complain.tableView.getItems().add(complain);
-                        try {
-                            RmiInterface remote = (RmiInterface) Naming.lookup("rmi://localhost:7000/notification");
-                            client.startMessageWriter(remote.echo());
-                        } catch (Exception e) {
-                            System.out.println("rmi error:"+e);
+                try {
+                    if(addcomplain.searchpossibleitem(id)) {
+                        if (addcomplain.addcomplain(id, Complainer, complain_number, status, found, gate, dorm, block, String.valueOf(date))) {
+                            addcomplainstage.close();
+                            complain_model complain = new complain_model(complain_number, id, Complainer, String.valueOf(status), String.valueOf(date));
+                            sample.Client.complain.tableView.getItems().add(complain);
+                            try {
+                                RmiInterface remote = (RmiInterface) Naming.lookup("rmi://localhost:7000/notification");
+                                client.startMessageWriter(remote.echo());
+                            } catch (Exception e) {
+                                System.out.println("rmi error:"+e);
+                            }
+                        } else {
+                            System.out.println("couldn't register, please try again.");
                         }
-                    } else {
-                        System.out.println("couldn't register, please try again.");
                     }
-                }
-                else{
-                    System.out.println("there is no item registered with this serial number.");
+                    else{
+                        System.out.println("there is no item registered with this serial number.");
+                    }
+                } catch (RemoteException e) {
+                    e.printStackTrace();
                 }
             }
         });

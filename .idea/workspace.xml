@@ -3,17 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="c192ffe0-6769-463e-884f-347704326f10" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Client/MessageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Client/MessageListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Client/RmiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Client/RmiInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Client/addcomplain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Client/addcomplain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Client/alertbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Client/alertbox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Client/complain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Client/complain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Client/complain_model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Client/complain_model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Client/dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Client/dashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Client/editcomplain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Client/editcomplain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Client/found.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Client/found.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Client/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Client/sample.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Client/stolenitem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Client/stolenitem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Chat/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Chat/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Chat/Servermain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Chat/Servermain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Chat/Serverworker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Chat/Serverworker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Chat/client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Chat/client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Chat/client2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Chat/client2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Client/ControllerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Client/ControllerInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Client/Rmiimplementor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Client/Rmiimplementor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Client/chatgui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Client/chatgui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Server/ControllerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Server/ControllerInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Server/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +143,7 @@
       <recent name="sample.Chat" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Server">
+  <component name="RunManager" selected="Application.Main (1)">
     <configuration default="true" type="Applet" factoryName="Applet">
       <module name="" />
       <option name="MAIN_CLASS_NAME" />
@@ -177,6 +176,20 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="sample.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sample.Server.Main" />
+      <module name="login" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sample.Server.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -260,19 +273,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="signin" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sample.signin" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="sample.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -310,15 +310,15 @@
       <item itemvalue="Application.Server" />
       <item itemvalue="Application.client2" />
       <item itemvalue="Application.client" />
-      <item itemvalue="Application.signin" />
+      <item itemvalue="Application.Main (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Server" />
         <item itemvalue="Application.client2" />
         <item itemvalue="Application.client" />
         <item itemvalue="Application.Client" />
-        <item itemvalue="Application.signin" />
       </list>
     </recent_temporary>
   </component>
@@ -598,7 +598,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624815790451</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Registery of RMI set">
+      <created>1624816143683</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1624816143683</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -653,10 +660,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="792" y="103" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/0.0.1536.824@0.0.1536.824" timestamp="1623813433172" />
-    <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1624449798049">
+    <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1624823760654">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1624449798049" />
+    <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1624823760654" />
     <state x="498" y="197" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1616943902334">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -665,26 +672,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="160" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1536.824@0.0.1536.824" timestamp="1624451853206" />
-    <state x="455" y="8" key="CommitChangelistDialog2" timestamp="1624816093578">
+    <state x="455" y="8" key="CommitChangelistDialog2" timestamp="1624816142043">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="455" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1624816093578" />
-    <state width="1537" height="89" key="GridCell.Tab.0.bottom" timestamp="1623853980072">
+    <state x="455" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1624816142043" />
+    <state width="1537" height="408" key="GridCell.Tab.0.bottom" timestamp="1624824432627">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="89" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1623853980072" />
-    <state width="1537" height="89" key="GridCell.Tab.0.center" timestamp="1623853980071">
+    <state width="1537" height="408" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1624824432627" />
+    <state width="1537" height="408" key="GridCell.Tab.0.center" timestamp="1624824432627">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="89" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1623853980071" />
-    <state width="1537" height="89" key="GridCell.Tab.0.left" timestamp="1623853980071">
+    <state width="1537" height="408" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1624824432627" />
+    <state width="1537" height="408" key="GridCell.Tab.0.left" timestamp="1624824432627">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="89" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1623853980071" />
-    <state width="1537" height="89" key="GridCell.Tab.0.right" timestamp="1623853980072">
+    <state width="1537" height="408" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1624824432627" />
+    <state width="1537" height="408" key="GridCell.Tab.0.right" timestamp="1624824432627">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1537" height="89" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1623853980072" />
+    <state width="1537" height="408" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1624824432627" />
     <state x="249" y="0" key="SettingsEditor" timestamp="1623815115070">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -693,10 +700,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="618" y="329" key="VCS.ChangelistChooser/0.0.1536.824@0.0.1536.824" timestamp="1624453456589" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1624815813500">
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1624816734503">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1624815813500" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1624816734503" />
     <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1624813481128">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

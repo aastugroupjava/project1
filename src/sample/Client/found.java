@@ -103,12 +103,16 @@ public class found{
                 System.out.println("fill all the forms");
             }
             else{
-                if(foundct.addfound(String.valueOf(date),gated,dormed,blocked,id)){
-                    foundct.deletecomplain(complainitem.getComplain_number());
-                    addcomplainstage.close();
-                }
-                else{
-                    System.out.println("couldn't register, please try again.");
+                try {
+                    if(foundct.addfound(String.valueOf(date),gated,dormed,blocked,id)){
+                        foundct.deletecomplain(complainitem.getComplain_number());
+                        addcomplainstage.close();
+                    }
+                    else{
+                        System.out.println("couldn't register, please try again.");
+                    }
+                } catch (RemoteException e) {
+                    e.printStackTrace();
                 }
             }
 

@@ -194,13 +194,17 @@ public class additems {
                     System.out.println("fill all the forms");
                 }
                 else{
-                    if(additem.additems(id,fullname,Email,dep,block,dorm,phone,serial,type)){
-                        additemstage.close();
-                        sample.Client.items item = new sample.Client.items(serial, "1",type,id,fullname,dep,block,dorm,phone);
-                        dashboard.tableView.getItems().add(item);
-                    }
-                    else{
-                        System.out.println("couldn't register, please try again.");
+                    try {
+                        if(additem.additems(id,fullname,Email,dep,block,dorm,phone,serial,type)){
+                            additemstage.close();
+                            items item = new items(serial, "1",type,id,fullname,dep,block,dorm,phone);
+                            dashboard.tableView.getItems().add(item);
+                        }
+                        else{
+                            System.out.println("couldn't register, please try again.");
+                        }
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
                     }
                 }
 

@@ -7,7 +7,7 @@ import sample.Chat.client;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class Rmiimplementor extends UnicastRemoteObject implements sample.RmiInterface {
+public class Rmiimplementor extends UnicastRemoteObject implements sample.Client.RmiInterface {
 
     public Rmiimplementor() throws RemoteException {
         super();

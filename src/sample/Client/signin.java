@@ -182,16 +182,20 @@ public class signin {
                 warning.setVisible(true);
             }
             else {
-                if (signup.signup(username, password, ID,Email,phonenumber)) {
-                    try {
-                        dashboard.newdashboard();
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
+                try {
+                    if (signup.signup(username, password, ID,Email,phonenumber)) {
+                        try {
+                            dashboard.newdashboard();
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                        //it is the sign-up stage.
+                        signin.close();
+                    } else {
+                        System.out.println("couldn't register.please try again.");
                     }
-                    //it is the sign-up stage.
-                    signin.close();
-                } else {
-                    System.out.println("couldn't register.please try again.");
+                } catch (RemoteException ex) {
+                    ex.printStackTrace();
                 }
             }
         });

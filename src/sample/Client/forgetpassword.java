@@ -126,7 +126,12 @@ public class forgetpassword {
             } catch (RemoteException ex) {
                 ex.printStackTrace();
             }
-            String password = Forgetpassword.forgetpassword(phonenumber);
+            String password = null;
+            try {
+                password = Forgetpassword.forgetpassword(phonenumber);
+            } catch (RemoteException ex) {
+                ex.printStackTrace();
+            }
             alertbox.passwordrecovery(password);
         });
         btnFindPassword.setEffect(blend);

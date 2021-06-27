@@ -1,5 +1,5 @@
 package sample.Chat;
-import sample.Rmiimplementor;
+import sample.Client.Rmiimplementor;
 
 import java.io.*;
 import java.net.*;

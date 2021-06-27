@@ -1,6 +1,7 @@
 package sample.Chat;
 
-import sample.MessageListener;
+import sample.Client.MessageListener;
+
 
 import java.io.*;
 import java.net.Socket;
